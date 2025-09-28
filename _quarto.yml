@@ -5,12 +5,12 @@ execute:
   freeze: auto
 
 website:
-  title: "R Foundations 2024"
+  title: "R Foundations 2025"
 #  favicon: images/warwick-monogram-favicon.png
   navbar:
     right:
       - text: "Join"
-        href: https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/kaye/r-foundations-2024/
+        href: https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/kaye/r-foundations-2025/
       - text: "Prerequisites"
         file: prerequisites.qmd
       - text: "Schedule"
@@ -18,7 +18,7 @@ website:
       - text: "Content"
         file: content.qmd
       - icon: github
-        href: https://github.com/Warwick-Stats-Resources/r-foundations-2024
+        href: https://github.com/Warwick-Stats-Resources/r-foundations-2025
   page-footer: "All material is shared under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target='_blank'} license."
   
 format:
