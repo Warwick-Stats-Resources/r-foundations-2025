@@ -2,15 +2,15 @@
 title: "Schedule"
 ---
 
-This course is taking place in **Term 1, 2024**. 
+This course is taking place in **Term 1, 2025**. 
 
-It takes place in weeks 4, 6 and 8, on **Mondays from 10:30-12:30** and **Thursdays from 12:30-14:00**. 
+It takes place in weeks 2, 4 and 6, on Thursdays and Fridays, from 12:30-14:00.
 
-For dates, see the [content](content.qmd) page.
-
-
-| Week | Monday 10:30-12:00                                                   | Thursday 12:30-14:00                            |
-|------|----------------------------------------------------------------------|----------------------------------------|
-| 4    | [Introduction to R and RStudio](/content/01-intro/index.qmd)         | [Data Types, Structures and Wrangling](/content/02-data-wrangling/index.qmd)   |
-| 6    | [Programming in R](/content/03-programming/index.qmd)                | [Simulation and Optimisation](/content/04-sim-optim/index.qmd)                                 |
-| 8    | [Graphics](/content/05-graphics/index.qmd)                           | [Quarto](/content/06-quarto/index.qmd) |
+| Week | Date                    | Content                                                                      |
+|------|-------------------------|------------------------------------------------------------------------------|
+| 2    | Thursday October 16th   | [Introduction to R and RStudio](/content/01-intro/index.qmd)                 |
+| 2    | Friday October 17th     | [Data Types, Structures and Wrangling](/content/02-data-wrangling/index.qmd) |
+| 4    | Thursday October 30th   | [Programming in R](/content/03-programming/index.qmd)                        |
+| 4    | Friday October 31st     | [Simulation and Optimisation](/content/04-sim-optim/index.qmd)               |
+| 6    | Thursday November 13th  | [Graphics](/content/05-graphics/index.qmd)                                   |
+| 6    | Friday November 14th    | [Quarto](/content/06-quarto/index.qmd)                                       |
