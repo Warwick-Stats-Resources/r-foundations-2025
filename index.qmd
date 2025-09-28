@@ -1,12 +1,12 @@
 ---
-title: "R Foundations 2024"
+title: "R Foundations 2025"
 ---
 
-Welcome to the R Foundations course for 2024!
+Welcome to the R Foundations course for 2025!
 
 This course is primarily aimed at first year Statistics PhD students. It has been developed as a prerequisite for those attending the [Academy for PhD Training in Statistics (APTS)](https://warwick.ac.uk/fac/sci/statistics/apts/) to cover the R material that’s required for those modules.
 
-Students and staff at the University of Warwick have the opportunity to take this course in-person in Term 1. See the schedule for dates. Details for signing up will be sent round through Department of Statistics mailing lists. 
+The course is also suitable for doctoral students and post-docs across other departments, and open to all interested members of the university, space permitting.
 
 For students at other universities attending APTS, working through the content should give you a sufficient grounding to prepare for the R component of the APTS modules. 
 
@@ -18,15 +18,15 @@ All slides and further resources can be accessed from the [content](content.qmd)
 
 ## Session details
 
-{{< fa calendar >}} &nbsp; Monday and Thursday of weeks 4, 6 and 8
+{{< fa calendar >}} &nbsp; Thursday and Friday of weeks 2, 4 and 6
 
-{{< fa clock >}} &nbsp; 10:30--12:00 on Mondays, 12:30--14:00 on Thursdays
+{{< fa clock >}} &nbsp; 12:30--14:00 on Mondays
 
-{{< fa location-dot >}} &nbsp; A1.28, Milburn House
+{{< fa location-dot >}} &nbsp; A0.28, Milburn House
 
 {{< fa calendar-alt >}} &nbsp; See the full [schedule](schedule.qmd).
 
-Please fill in the [join](https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/kaye/r-foundations-2024/) form to register to attend.
+Please fill in the [join](https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/kaye/r-foundations-2025/) form to register to attend.
 
 ## Instructor details
 
