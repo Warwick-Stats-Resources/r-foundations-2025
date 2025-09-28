@@ -1,6 +1,6 @@
 ---
 title: Quarto
-date: 2024-11-21
+date: 2025-11-14
 ---
 
 
@@ -10,7 +10,7 @@ Here's a link to the [slides](/slides/06-quarto/index.qmd){target="_blank"} in a
 
 Here are the slides embedded:
 
-<iframe class="slide-deck ar3x2" src="/slides/06-quarto/index.html" title="06-quarto slides">
+<iframe class="slide-deck ar16x9" src="/slides/06-quarto/index.html" title="06-quarto slides">
 </iframe>
 
 ## Resources

@@ -1,6 +1,6 @@
 ---
 title: Programming in R
-date: 2024-11-04
+date: 2025-10-30
 ---
 
 ## Slides
@@ -9,7 +9,7 @@ Here's a link to the [slides](/slides/03-programming/index.qmd){target="_blank"}
 
 Here are the slides embedded:
 
-<iframe class="slide-deck ar3x2" src="/slides/03-programming/index.html" title="03-programming slides">
+<iframe class="slide-deck ar16x9" src="/slides/03-programming/index.html" title="03-programming slides">
 </iframe>
 
 ## Resources

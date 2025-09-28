@@ -1,6 +1,6 @@
 ---
 title: Graphics
-date: 2024-11-18
+date: 2025-11-13
 ---
 
 ## Slides
@@ -9,7 +9,7 @@ Here's a link to the [slides](/slides/05-graphics/index.qmd){target="_blank"} in
 
 Here are the slides embedded:
 
-<iframe class="slide-deck ar3x2" src="/slides/05-graphics/index.html" title="05-graphics slides">
+<iframe class="slide-deck ar16x9" src="/slides/05-graphics/index.html" title="05-graphics slides">
 </iframe>
 
 ## Resources

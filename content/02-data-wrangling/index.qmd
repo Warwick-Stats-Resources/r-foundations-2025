@@ -1,6 +1,6 @@
 ---
 title: Data types, stuctures, and wrangling
-date: 2024-10-24
+date: 2025-10-17
 ---
 
 ## Slides
@@ -9,7 +9,7 @@ Here's a link to the [slides](/slides/02-data-wrangling/index.qmd){target="_blan
 
 Here are the slides embedded:
 
-<iframe class="slide-deck ar3x2" src="/slides/02-data-wrangling/index.html" title="02-data-wrangling slides">
+<iframe class="slide-deck ar16x9" src="/slides/02-data-wrangling/index.html" title="02-data-wrangling slides">
 </iframe>
 
 ## Resources

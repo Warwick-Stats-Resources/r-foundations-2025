@@ -1,6 +1,6 @@
 ---
 title: Simulation and optimisation
-date: 2024-11-07
+date: 2025-10-31
 ---
 
 
@@ -10,7 +10,7 @@ Here's a link to the [slides](/slides/04-sim-optim/index.qmd){target="_blank"} i
 
 Here are the slides embedded:
 
-<iframe class="slide-deck ar3x2" src="/slides/04-sim-optim/index.html" title="04-sim-optim slides">
+<iframe class="slide-deck ar16x9" src="/slides/04-sim-optim/index.html" title="04-sim-optim slides">
 </iframe>
 
 ## Resources
