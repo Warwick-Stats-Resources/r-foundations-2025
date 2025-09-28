@@ -1,0 +1,112 @@
+/*-- scss:defaults --*/
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono&display=swap);
+
+$font-family-sans-serif: Arial, sans-serif !default;
+$font-family-monospace: "Fira Mono", monospace;
+$headings-font-family: Arial, sans-serif !default;
+
+// Warwick colors 
+$lavendar: #A499F4;
+$purple: #440379;
+$coral: #F1977F; 
+$blue: #6CB7FF;
+$green: #51D7C1;
+$yellow: #FEDE7B;
+
+$black: #0C0C0C;
+$gray-mid: #9E9E9E;
+$gray-light: #CECECE;
+$white: #FDFCFC;
+
+// Different shades 
+$purple-bright: #693594;
+$blue-dark: #4C80B3;
+
+$primary:       $lavendar !default;
+$body-color: $black;
+$link-color: $blue-dark;
+$code-color: $purple-bright;
+$navbar-bg: $primary;
+$navbar-fg: $black;
+
+/*-- scss:rules --*/
+
+// color classes
+.primary {
+  color: $primary;
+}
+
+#quarto-header > nav > div > div.navbar-brand-container.mx-auto > a:hover {
+  color: $purple;
+}
+
+#navbarCollapse > ul > li > a:hover {
+  color: $purple;
+}
+
+#navbarCollapse > ul > li > a.active {
+  color: $purple;
+}
+
+// links
+a {
+  text-decoration: underline;
+}
+
+// code
+pre.sourceCode {
+  border-radius: 0;
+  border-left-color: $gray-mid;
+}
+
+h1, h2 {
+  //text-transform: uppercase;
+  font-weight: 700;
+}
+
+#quarto-header {
+  //text-transform: uppercase;
+  font-family: $headings-font-family;
+  font-weight: 700;
+}
+
+// iframes for slides embedded in talks pages
+iframe.slide-deck {
+  border: 3px solid $gray-mid;
+  width: 100%;
+}
+
+.ar4x3 {
+  aspect-ratio: 4 / 3;  
+}
+
+.ar3x2 {
+  aspect-ratio: 3 / 2;  
+}
+
+.ar16x9 {
+  aspect-ratio: 16 / 9;  
+}
+
+// icon-links
+.icon-link {
+    background-color: transparent;
+    color: $primary;
+    border: 2px solid !important;
+    border-color: $primary;
+    padding: 5px .4rem 5px .4rem !important;
+    margin-top: 4px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    border-radius: 5px; 
+    display: inline-block;
+    text-decoration: none;
+}
+
+.icon-link:hover{
+    background-color: $primary;
+    border-color: $primary;
+    color: $body-bg;
+    text-decoration: none;
+}
+
