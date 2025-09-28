@@ -1,0 +1,26 @@
+---
+title: Simulation and optimisation
+date: 2024-11-07
+---
+
+
+## Slides
+
+Here's a link to the [slides](/slides/04-sim-optim/index.qmd){target="_blank"} in a new window. 
+
+Here are the slides embedded:
+
+<iframe class="slide-deck ar3x2" src="/slides/04-sim-optim/index.html" title="04-sim-optim slides">
+</iframe>
+
+## Resources
+
+### Reading
+
+- David Goldberg (1991), “What Every Computer Scientist Should Know About Floating-Point Arithmetic”, ACM Computing Surveys, 23/1, 5–48
+
+  <https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html>.
+
+- Ruth Ripley’s numerical considerations notes for APTS 2013
+
+  <https://portal.stats.ox.ac.uk/userdata/ruth/APTS2013/Numerics.pdf>

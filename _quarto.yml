@@ -1,0 +1,32 @@
+project:
+  type: website
+  
+execute:
+  freeze: auto
+
+website:
+  title: "R Foundations 2024"
+  favicon: images/warwick-monogram-favicon.png
+  navbar:
+    right:
+      - text: "Join"
+        href: https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/kaye/r-foundations-2024/
+      - text: "Prerequisites"
+        file: prerequisites.qmd
+      - text: "Schedule"
+        file: schedule.qmd
+      - text: "Content"
+        file: content.qmd
+      - icon: github
+        href: https://github.com/Warwick-Stats-Resources/r-foundations-2024
+  page-footer: "All material is shared under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target='_blank'} license."
+  
+format:
+  html:
+    theme: custom.scss
+    highlight-style: warwick.theme
+    css: styles.css
+    toc: true
+    link-external-newwindow: true
+    
+

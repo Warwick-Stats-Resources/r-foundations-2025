@@ -1,0 +1,917 @@
+---
+title: Programming in R
+subtitle: R Foundations 2024
+author: Ella Kaye, Department of Statistics
+date: 2024-11-04
+date-format: long
+format: 
+  warwickpres-revealjs:
+    execute:
+      echo: true
+      code-overflow: wrap
+    title-slide-attributes: 
+      data-background-image: ../../images/warwick-logo-white.png
+      data-background-size: 15%
+      data-background-position: 100% 0%
+---
+
+## Overview
+
+- More on data structures
+
+- Control flow and iteration functions
+
+- Efficient R programming
+
+- Writing functions (basics)
+
+## Introduction
+
+Understanding the basics of R programming helps to improve
+analysis/reporting scripts and extend what we can do with R.
+
+Good coding practice follows the DRY principle: **D**on't **R**epeat **Y**ourself. 
+Rather than modifying copy-pasted code chunks, we might
+
+- write a custom function
+- use loops or iteration functions to perform multiple similar tasks
+ 
+Custom functions can be used to provide convenient wrappers to complex 
+code chunks as well as implement novel functionality.
+
+
+# More on data structures {.inverse}
+
+## Data structures revisited
+
+For basic data analysis, our data is usually imported and we use 
+high-level functions (e.g. from **dplyr**) to handle it.
+
+For programming, we need to work with lower-level data structures and be
+able to
+
+- create basic objects
+- extract components
+- coerce one data type to another
+
+Working with base R functions when programming also helps avoid dependencies, which is useful when writing packages.
+
+
+## Vectors
+
+`numeric()`, `character()` and `logical()` can be used to initialize 
+vectors of the corresponding type for a given length
+
+```{r}
+x <- numeric(3)
+x
+```
+
+Elements can be assigned by indexing the positions to be filled, e.g.
+
+```{r}
+x[1] <- 4 # assign 4 to 1st element
+x[-c(2, 3)] <- 4 # assign 4 to everying *except* 2nd and 3rd element
+```
+
+This is particularly useful when programming an iterative procedure.
+
+`as.logical()`, `as.numeric()` and `as.character()` coerce to the 
+corresponding type, producing `NA`s if coercion fails.
+
+## Logical vectors
+
+Logical vectors are commonly used when indexing. The vector might be 
+produced by a logical operator:
+```{r}
+x <- c(1, 1, 2, 2, 2)
+x > 1
+x[x > 1]
+```
+`duplicated()` is also useful here:
+```{r}
+duplicated(x)
+!duplicated(x)
+```
+
+## Numeric vectors
+
+The are several convenience function for creating
+numeric vectors, notably `seq()` and `rep()`.
+
+As they are so useful there are fast shortcuts for
+particular cases
+```{r}
+seq_len(4)
+fruits <- c("apple", "pear", "banana")
+seq_along(fruits) # a sequence from 1 to the length of x
+rep.int(1:2, times = c(2, 3))
+```
+
+## Character vectors
+
+Character vectors may be used for creating names
+```{r}
+x <- 3:5
+names(x) <- paste0(LETTERS[1:3], 1229:1231)
+x
+names(x)
+```
+Names can be used as an alternative to numeric or logical vectors when indexing
+```{r}
+x["B1230"]
+```
+
+## Matrices
+
+A matrix is in fact also a vector, with an attribute giving the dimensions of the matrix
+
+::: {.panel-tabset}
+## default
+```{r}
+M <- matrix(1:6, 2, 3) # data, nrow, ncol
+M
+str(M)
+attributes(M)
+```
+
+## byrow
+The `byrow` argument is also useful:
+
+```{r}
+N <- matrix(1:6, 2, 3, byrow = TRUE) # data, nrow, ncol
+N
+```
+:::
+
+## Matrix functions 
+
+Useful functions for matrices include `dim()`, `ncol()`, `nrow()`, 
+`colnames()` and `rownames()`. `rbind()` and `cbind()` can be used to 
+row-bind or column-bind vectors.
+
+Matrices enable computation via matrix algebra as well as row/column-wise operations.
+
+## Lists
+
+Lists collect together items which may be different types or lengths. Like a 
+vector, elements may be named.
+```{r}
+results <- list(matrix = M, vector = x)
+results
+```
+
+Lists are often used to return the results of a function. 
+
+## Indexing lists
+
+Elements can be indexed by `[` to return a list or `[[` to return a 
+single element, either by index or name:
+
+```{r}
+results["vector"] # returns a list
+results[[2]] # returns a vector
+```
+
+
+`$` can be used to extract elements by name:
+
+```{r}
+results$vector # equivalent to results[["vector"]]
+```
+
+## Data frames
+
+Data frames are lists of variables of the same length and hence can often 
+be treated as a matrix 
+```{r}
+x <- 1:3
+dat <- data.frame(x = x, id = letters[1:3])
+dat
+dat[1]
+dat[[1]]
+dat[1, 2]
+```
+
+
+
+## Your turn!
+
+The `lm` function calls the "workhorse" function `lm.fit` to actually 
+fit the model. Unlike `lm`, which works from a formula, `lm.fit` works 
+from the model matrix and the response vector.
+
+1. Define a response `y` containing 10 numeric values. Define an 
+explanatory variable `z` of the numbers 1 to 10.
+
+1. Use the function `cbind()` to create a matrix `x` with `1`s in the first
+column and `z` in the second column.
+
+1. Fit a model using `fit1 <- lm.fit(x, y)`. Use `str` to explore the structure of
+the results. Use `$` to extract the coefficients.
+
+1. Create a second fit using `lm(y ~ z)`. Use `names` to compare the 
+results. Check the coefficients of the second fit are the same.
+
+## Your turn! (a solution)
+
+```{r}
+#| eval: false
+
+# A possible solution
+
+set.seed(1)
+y <- sample(10)
+z <- 1:10
+
+x <- cbind(1, z) # we'll see this trick in a few slides time!
+
+fit1 <- lm.fit(x,y)
+str(fit1)
+fit1$coefficients
+
+fit2 <- lm(y ~ z)
+names(fit1)
+names(fit2)
+fit2$coefficients
+```
+
+## `~` notation
+
+The `~` notation can be used to specify a model formula, where the LHS is the response and the RHS are a collection of predictors, e.g. 
+
+`body_mass_g ~ bill_length_mm + flipper_length_mm`. 
+
+This can be used as the `formula` argument when fitting a model, e.g. a linear model:
+
+```{r}
+#| eval: false
+lm(body_mass_g ~ bill_length_mm + flipper_length_mm, data = penguins) 
+```
+
+. . .
+
+In the formula, crucially, the `+` does not have to mean it is a linear additive model and should be read more as "this variable *and* this one etc" which the model function might use additively (e.g. `lm`) or might not (e.g. many ML models). 
+
+::: {.notes}
+This is a bit of an aside in the context of this session, but discusses a point that Louis Aslett, one of the APTS module leaders, mentioned to me creates confusion in his course.
+:::
+
+# Control flow {.inverse}
+
+## Control structures
+
+Control structures are the commands that make decisions or execute loops.
+
+Conditional execution: `if`/`else`, `switch`
+
+Loops: `for`, `while`, `repeat`
+
+
+## `if`/`else`
+
+An `if` statement can stand alone or be combined with an `else` statement
+
+```{r}
+x <- 1:3
+if (all(x > 0)) {
+    res <- mean(x)
+} else {
+    res <- mean(abs(x))
+}
+res
+```
+
+The condition must evaluate to logical vector of length one. The 
+functions `all()`, `any()`, `is.na()`, `is.null()` and other `is.`
+functions are useful here.
+
+## Conditioning on equality
+
+Using `==` may not be appropriate as it compares each element; `identical()` will test the whole object
+
+```{r}
+x <- y <- 1:2
+x == y
+identical(x, y)
+```
+
+`all.equal()` will allow for some numerical tolerance.
+
+```{r}
+z <- sqrt(2)
+identical(z * z, 2)
+all.equal(z * z, 2)
+```
+
+## `switch`
+
+The `switch()` function provides a more readable alternative to nested 
+`if` statements
+```{r}
+#| eval: false
+if (summary == "IQR") { 
+    y <- IQR(x)
+} else {
+    if (summary == "range"){
+        y <- range(x)
+    } else y <- mean(x)
+}
+```
+
+
+```{r}
+x <- 1:5
+switch("range", # can enter an arg name or position
+       IQR = IQR(x),
+       range = range(x),
+       mean(x))
+```
+
+The final unnamed argument is the default. [Further examples](https://www.datamentor.io/r-programming/switch-function/){target="_blank}
+
+## `for`
+
+A `for` loop repeats a chunk of code, iterating along the values of a 
+vector or list
+
+```{r}
+x <- c("apple", "pear")
+for (nm in x) print(nm)
+```
+
+Unassigned objects are not automatically printed; hence call to `print()`. 
+
+```{r}
+for (i in seq_along(x)) {
+    message("Element ", i, ": ", x[i])
+}
+```
+
+`seq_along()` is used here rather than `1:length(x)` as `length(x)` may 
+be zero. `message` is used to print messages to the console.
+
+::: {.notes}
+`message` doesn't produce output on a Quarto slide   
+:::
+
+## `while` and `repeat`
+
+The `while` loop repeats while a condition is `TRUE`
+```{r}
+#| eval: false
+n_iter <- 1
+while (n_iter < 3) {
+    x <- x * 2
+    n_iter <- n_iter + 1
+}
+```
+
+The `repeat` loop repeats until exited by `break`
+```{r}
+#| eval: false
+repeat {
+    x <- x + 1
+    if (max(x) > 10) break
+}
+```
+
+`break` can be used in `for` or `while` loops too. 
+
+`next` can be used to skip to the next iteration.
+
+
+## Iteration functions
+
+Iteration functions provide a general alternative to for loops. They are 
+not necessarily faster, but can be more compact.
+
+`apply()` applies a function over rows/columns of a matrix.
+
+`lapply()`, `sapply()` and `vapply()` iterate over a list or vector. `vapply()` 
+is recommended for programming as it specifies the type of return value
+```{r}
+vapply(list(a = 1:3, b = 1:6), FUN = mean, FUN.VALUE = numeric(1))
+```
+`mapply()` iterates over two or more lists/vectors in parallel.
+
+## Iteration function resources
+
+- [Efficient R](https://csgillespie.github.io/efficientR/programming.html#the-apply-family){target="_blank"} by Colin Gillespie and Robin Lovelace
+
+- The built-in help pages. You can directly access the examples using the `example()` function, e.g. to run the `apply()` examples, use `example("apply")`.
+
+- This StackOverflow [answer](https://stackoverflow.com/questions/3505701/grouping-functions-tapply-by-aggregate-and-the-apply-family){target="_blank"}, describing when, where and how to use each of the functions. 
+
+- This blog [post](https://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/){target="_blank"} by Neil Saunders
+
+
+## **purrr**
+
+The [**purrr**](https://purrr.tidyverse.org){target="_blank"} package (part of the tidyverse) provides alternatives to the apply family that have a simpler, more consistent interface with fixed type of return value.
+
+```{r}
+# Split a data frame into pieces, 
+# fit a model to each piece, summarise and extract R^2
+library(purrr)
+
+mtcars %>%
+  split(.$cyl) %>% # base R
+  map(~ lm(mpg ~ wt, data = .x)) %>% # returns a list
+  map(summary) %>%
+  map_dbl("r.squared") # returns a vector
+```
+
+
+**Note:** We do need `%>%` not `|>` here. See [here](https://ivelasq.rbind.io/blog/understanding-the-r-pipe/){target="_blank"} for more details.
+
+::: {.notes}
+Do need to use the %>% pipe here, not |>.  
+:::
+
+## Advantages of **purrr**
+
+- The first argument is always the data, so **purrr** works naturally with the pipe.
+
+- All **purrr** functions are type-stable. They always return the advertised output type (e.g. `map()` returns lists; `map_dbl()` returns double vectors), or they throw an error.
+
+- All `map()` functions either accept function, formulas (used for succinctly generating anonymous functions), a character vector (used to extract components by name), or a numeric vector (used to extract by position).
+
+See the [iteration chapter](https://r4ds.had.co.nz/iteration.html){target="_blank"} of R for Data Science for further examples and details
+
+
+# Efficient R programming {.inverse}
+
+## Growing objects
+
+Adding to an object in a loop, e.g. via `c()` or `cbind()`
+
+```{r}
+#| eval: false
+res <- NULL
+for (i in 1:10000) res <- c(res, 1)
+```
+
+forces a copy to be made at each iteration. **THIS IS BAD!**
+
+It is far better to create an object of the necessary size first
+
+```{r}
+res <- numeric(10000)
+for (i in seq_along(res)) res[i] <- 1
+```
+
+To initialise a list we can use
+```{r}
+res <- vector(mode = "list", length = 100)
+```
+
+
+## Benchmarking
+
+There will usually be many ways to write code for a given task. To compare
+alternatives, we can benchmark the expression
+
+```{r}
+#| cache: true
+library(rbenchmark)
+benchmark({res <- NULL;
+           for (i in 1:10000) res <- c(res, 1)})$elapsed
+benchmark({res <- numeric(10000)
+           for (i in seq_along(res)) res[i] <- 1})$elapsed
+```
+
+Note the **BIG** difference between growing and initialising a vector (the latter around 150 times faster in this case).
+
+
+## `for` loops revisited
+
+Each loop has three components:
+
+1. The output: allocate sufficient space before you start the loop
+
+2. The sequence: this determines what you loop over
+
+3. The body: the code that does the work
+
+See <https://r4ds.had.co.nz/iteration.html#for-loops>
+
+## Vectorization
+
+Vectorization is operating on vectors (or vector-like objects) rather than individual elements.
+
+Many operations in R are vectorized, e.g.
+
+```{r}
+x <- 1:3
+y <- 3:1
+x == y
+log(x)
+res <- list(a = 1:3, b = 1:6)
+lengths(res)
+```
+
+We do not need to loop through each element!
+
+## Recycling
+
+Vectorized functions will recycle shorter vectors to create vectors of 
+the same length
+```{r}
+1:4 + 0:1 # 1+0, 2+1, 3+0, 4+1
+```
+This is particularly useful for single values
+```{r}
+cbind(1, 3:4)
+```
+and for generating regular patterns
+```{r}
+paste0(rep(1:3, each = 2), c("a", "b"))
+```
+
+## Your turn!
+
+1. Write a `for` loop to compute the mean of every column of in `mtcars`, saving each to a preallocated vector
+
+2. Use `lapply()` with `rnorm` to generate a list of length 10 where the 1st item contains a vector of 1 sample from an $N(0,1)$ distribution, the 2nd item contains a vector of 2 samples from an $N(0,1)$ distribution up to the 10th item contains a vector of 10 samples from an $N(0,1)$ distibution.
+
+3. Use `lapply()` with `rnorm` to generate a list of length 10, where the 1st item contains a vector of 5 samples from $N(1,1)$, the 2nd item contains a vector of 5 samples $N(2,1)$ and so on until you get 5 samples from $N(10,1)$
+
+## Your turn! (sample solutions)
+
+```{r}
+#| eval: false
+
+out <- numeric(ncol(mtcars))
+
+for (i in seq_len(ncol(mtcars))) {
+  out[i] <- mean(mtcars[[i]])
+}
+```
+
+```{r}
+#| eval: false
+lapply(1:10, rnorm)
+```
+
+```{r}
+#| eval: false
+lapply(1:10, rnorm, n = 5)
+```
+
+## Vectorization and matrices
+
+Vectorizations applies to matices too, not only through matrix algebra
+```{r}
+M <- matrix(1:4, nrow = 2, ncol = 2)
+M + M
+```
+but also vectorized functions
+```{r}
+M <- M + 1.3
+round(M)
+```
+
+## Matrices and recycling: rows
+
+Values are recycled down matrix, which is convenient for 
+row-wise operations
+
+```{r}
+M <- matrix(1:6, nrow = 2, ncol = 3)
+M
+M - 1:2
+```
+
+## Matrices and recycling: columns
+
+To do the same for columns we would need to explicitly replicate, 
+which is not so efficient.
+```{r}
+M - rep(1:3, each = 2)
+```
+
+## Vectorization vs `for` loop
+
+Operations that can be vectorized will be more efficient than a loop in R
+
+```{r}
+#| cache: true
+M <- matrix(1:100000, nrow = 200, ncol = 500)
+x <- 1:200
+benchmark({for (i in 1:200){
+             for (j in 1:500){
+               M[i, j] <- M[i, j] - x[i]
+             }
+           }})$elapsed
+benchmark({M - x})$elapsed
+```
+
+The latter is nearly 30 times faster!
+
+## Row/column-wise operations
+
+Several functions are available implementing efficient row/column-wise
+operations, e.g. `colMeans()`, `rowMeans()`, `colSums()`, `rowSums()`, `sweep()`
+
+```{r}
+M <- matrix(1:4, nrow = 2, ncol = 2)
+rowMeans(M)
+```
+
+These provide an alternative to iterating though rows and columns in R (the 
+iteration happens in C, which is faster).
+
+The **matrixStats** package provides further "matricised" methods.
+
+## Top tips for efficient programming
+
+A **golden rule** in R programming is to access the underlying C/Fortran routines as quickly as possible; the fewer functions calls required to achieve this, the better. 
+
+- Be careful never to grow vectors
+
+- Vectorise code wherever possible
+
+See [Efficient Programming](https://csgillespie.github.io/efficientR/programming.html){target="_blank"} for more details and examples.
+
+We will also expand on this topic in the Advanced R course next term.
+
+# Writing functions {.inverse}
+
+## Components of a function
+
+Functions are defined by three components:
+
+ - the name of the function
+ - the arguments of the function, inside `( )`
+ - the body of the function that computes the result, inside `{ }`
+ 
+They are created using `function()`
+
+```{r}
+t_statistic <- function(n) {
+    x <- rnorm(n)
+    y <- rnorm(n)
+    t.test(x, y)$statistic
+}
+```
+
+## Naming functions
+
+As with arguments, function names are important:
+
+- use a name that describes what it returns (e.g. `t_statistic`) or what it does (e.g. `remove_na`)
+
+- try to use one convention for combining words (e.g. snake case `t_statistic` or camel case `tStatistic`)
+
+- avoid using the same name as other functions
+
+## Specified arguments
+
+*specified* arguments are those named in the function definition, e.g. 
+in `rnorm()`
+
+```{r}
+args(rnorm)
+```
+the arguments are `n`, `mean` and `sd`.
+
+`mean` and `sd` have been given default values in the function definition, but `n` has not, so the function fails if the user does not pass a value to `n`
+
+```{r, error = TRUE}
+rnorm()
+```
+
+## Name and order of arguments
+
+The user can pass objects to these arguments using their names or by supplying unnamed values in the right order
+
+```{r}
+rnorm(5, 1, 10)
+rnorm(5, sd = 10)
+```
+
+So naming and order is important! Some guidelines
+
+- put compulsory arguments first, e.g. data
+- put rarely used arguments last, e.g. tolerance setting
+- use short but meaningful argument names
+- if relevant, use the same argument names as similar functions
+
+## Using arguments
+
+Arguments are used as objects in the function code.
+
+An new environment is created each time the function is called, separate 
+from the global workspace.
+
+```{r, error = TRUE}
+x <- 1
+y <- 3
+f <- function(x, y){
+    a <- 1
+    x <- x + a
+    x + y
+}
+f(x, y)
+x
+a
+```
+
+## Lexical scoping
+
+If an object is not defined within the function, or passed in as an argument, R looks for it in the *parent environment* where the function was defined
+
+```{r, error = TRUE}
+x <- 1
+y <- 3
+f <- function(x){
+    x + y
+}
+f(x)
+rm(y)
+f(x)
+```
+
+It is safest (and best practice) to use arguments rather than depend on global variables! 
+
+## Return values (single)
+
+By default, functions return the object created by the last line of code
+```{r}
+f <- function(x) {
+    x <- x + 1
+    log(x)
+}
+```
+
+Alternatively `return()` can be used to terminate the function and return
+a given object
+```{r}
+f <- function(x) {
+    if (all(x > 0)) return(log(x))
+    x[x <= 0] <- 0.1
+    log(x)
+}
+```
+
+## Return values (multiple)
+
+Multiple objects can be returned in a list:
+
+```{r}
+mean_and_sd <- function(x) {
+  res_mean <- mean(x, na.rm = TRUE)
+  res_sd <- sd(x)
+  
+  list(mean = res_mean, sd = res_sd)
+}
+
+mean_and_sd(1:3)
+```
+
+We use a list so that we can return different types of objects simultaneously, and access them easily with `$`, e.g. `mean_and_sd(1:3)$mean` returns `2`.
+
+## Your turn!
+
+Write your own function, `variance`, to compute the variance of a numeric vector:
+
+$$
+Var(x) = \frac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2
+$$
+
+Make use of R's built in vectorisation.
+
+Test it and compare your answer with the built-in `var()` function.
+
+## Your turn! (a solution)
+
+```{r}
+#| eval: false
+
+variance <- function(x) {
+  1/(length(x) - 1) * sum((x - mean(x))^2)
+}
+```
+
+
+# End matter {background-color="#552D62"}
+
+## Resources
+
+Material (very largely) inspired by and remixed from:
+
+- Heather Turner and Erlap Dogu's [R Programming slides](https://www.heatherturner.net/teaching/turkey2018/r_programming/#1){target="_blank"} (with permission)
+
+Additionally:
+
+- [Efficient R, Chapter 3](https://csgillespie.github.io/efficientR/programming.html#the-apply-family) by Colin Gillespie and Robin Lovelace
+
+- [R for Data Science](https://r4ds.had.co.nz/index.html){target="_blank"}, by Hadley Wickham and Garrett Grolemund, chapters on [iteration](https://r4ds.had.co.nz/iteration.html){target="_blank"} and [functions](https://r4ds.had.co.nz/functions.html){target="_blank"}
+
+## License
+
+Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target="_blank"}).
+
+# Extra stuff we probably won't get to {background-color="#552D62"}
+
+(Use in Fuctions session of Advanced R course in Term 2 instead)
+
+## Unspecified Arguments
+
+`...` or the *ellipsis* allow unspecified arguments to be passed to the function. 
+
+This device is used by functions that work with arbitrary numbers of objects, e.g. 
+```{r}
+args(sum)
+sum(1, 4, 10, 2)
+```
+
+It can also be used to pass on arguments to another function, e.g.
+```{r}
+t_statistic <- function(x, g, ...) {
+    t.test(x ~ g, ...)$stat
+}
+```
+
+## Using `...`
+
+Arguments passed to `...` can be collected into a
+list for further analysis
+
+```{r}
+means <- function(...){
+    dots <- list(...)
+    vapply(dots, mean, numeric(1), na.rm = TRUE)
+}
+x <- 1
+y <- 2:3
+means(x, y)
+```
+Similarly the objects could be concatenated using `c()`
+
+## Side Effects
+
+A side-effect is a change outside the function that occurs when the
+function is run, e.g.
+
+- plot to the graphics window or other device
+- printing output to the console
+- write data to a file
+
+A function *can* have many side-effects and a return value, but it is 
+best practice to have a separate function for each task, e.g creating a 
+plot or a table.
+
+Writing to file is usually best done outside a function.
+
+
+
+```{=html}
+<!-- needs to be last chunk of presentation otherwise creates an extra slide -->
+<!-- requires Quarto v1.3 -->
+<!-- tint80 for border, tint20 for title -->
+<!-- this should hopefully no longer be necessary in a future version of Quarto -->
+<!-- https://github.com/quarto-dev/quarto-cli/issues/5038 -->
+<style type="text/css">
+div.callout-note {
+  border-left-color: #00A9CE !important;
+}
+
+div.callout-note.callout-style-default .callout-title {
+  background-color: #B3E5F0 !important;
+}
+
+div.callout-warning {
+  border-left-color: #CB333B !important;
+}
+
+div.callout-warning.callout-style-default .callout-title {
+  background-color: #EEC3C3 !important;
+}
+
+div.callout-tip {
+  border-left-color: #6DCDB8 !important;
+}
+
+div.callout-tip.callout-style-default .callout-title {
+  background-color: #D3F0EB !important;
+}
+
+div.callout-important {
+  border-left-color: #F1BE48 !important;
+}
+
+div.callout-important.callout-style-default .callout-title {
+  background-color: #FAECC8 !important;
+}
+
+div.callout-caution {
+  border-left-color: #E87722 !important;
+}
+
+div.callout-caution.callout-style-default .callout-title {
+  background-color: #F8D5BC !important;
+}
+</style>
+```

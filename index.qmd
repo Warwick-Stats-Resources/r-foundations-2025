@@ -1,0 +1,39 @@
+---
+title: "R Foundations 2024"
+---
+
+Welcome to the R Foundations course for 2024!
+
+This course is primarily aimed at first year Statistics PhD students. It has been developed as a prerequisite for those attending the [Academy for PhD Training in Statistics (APTS)](https://warwick.ac.uk/fac/sci/statistics/apts/) to cover the R material that’s required for those modules.
+
+Students and staff at the University of Warwick have the opportunity to take this course in-person in Term 1. See the schedule for dates. Details for signing up will be sent round through Department of Statistics mailing lists. 
+
+For students at other universities attending APTS, working through the content should give you a sufficient grounding to prepare for the R component of the APTS modules. 
+
+## Syllabus overview
+
+We cover an introduction to R and RStudio; Data types, structures, and data wrangling using the tidyverse; programming in R; simulation and optimisation; graphics (both base and ggplot2), and Quarto.
+
+All slides and further resources can be accessed from the [content](content.qmd) page and also via the [schedule](schedule.qmd). 
+
+## Session details
+
+{{< fa calendar >}} &nbsp; Monday and Thursday of weeks 4, 6 and 8
+
+{{< fa clock >}} &nbsp; 10:30--12:00 on Mondays, 12:30--14:00 on Thursdays
+
+{{< fa location-dot >}} &nbsp; A1.28, Milburn House
+
+{{< fa calendar-alt >}} &nbsp; See the full [schedule](schedule.qmd).
+
+Please fill in the [join](https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/kaye/r-foundations-2024/) form to register to attend.
+
+## Instructor details
+
+{{< fa user >}} &nbsp; [Ella Kaye](https://warwick.ac.uk/ellakaye)
+
+{{< fa envelope >}} &nbsp; [ella.m.kaye@warwick.ac.uk](mailto:ella.m.kaye@warwick.ac.uk)
+
+## Prerequistes
+
+Please see the [prerequisites](prerequisites.qmd) page for details on getting set up in advance of the first session.

@@ -1,0 +1,36 @@
+---
+title: TITLE
+date: last-modified
+draft: true
+---
+
+:::{.callout-note}
+This page and the slides for this session are still under development
+:::
+
+## TODO
+
+- Update TITLE
+- Update date
+- Fill in resources
+- change `draft` to `false`
+
+## Slides
+
+Here's a link to the [slides](/slides/UPDATE-DIR-NAME/index.qmd){target="_blank"} in a new window. 
+
+Here are the slides embedded:
+
+<iframe class="slide-deck ar3x2" src="/slides/UPDATE-DIR-NAME/index.html" title="UPDATE-DIR-NAME slides">
+</iframe>
+
+## Resources
+
+### Reading
+
+- TITLE
+
+  <LINK>
+
+
+### Packages

@@ -1,0 +1,30 @@
+---
+title: Programming in R
+date: 2024-11-04
+---
+
+## Slides
+
+Here's a link to the [slides](/slides/03-programming/index.qmd){target="_blank"} in a new window. 
+
+Here are the slides embedded:
+
+<iframe class="slide-deck ar3x2" src="/slides/03-programming/index.html" title="03-programming slides">
+</iframe>
+
+## Resources
+
+### Reading
+
+- Efficient Programming, from Efficient R by Colin Gillespie and Robin Lovelace
+
+  <https://csgillespie.github.io/efficientR/programming.html>
+
+- Chapters on functions and iteration, from R for Data Science by Hadley Wickham and Garrett Grolemund
+
+  <https://r4ds.had.co.nz/index.html>
+  
+  <https://r4ds.had.co.nz/functions.html>
+
+  <https://r4ds.had.co.nz/iteration.html>
+

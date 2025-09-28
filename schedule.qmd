@@ -1,0 +1,16 @@
+---
+title: "Schedule"
+---
+
+This course is taking place in **Term 1, 2024**. 
+
+It takes place in weeks 4, 6 and 8, on **Mondays from 10:30-12:30** and **Thursdays from 12:30-14:00**. 
+
+For dates, see the [content](content.qmd) page.
+
+
+| Week | Monday 10:30-12:00                                                   | Thursday 12:30-14:00                            |
+|------|----------------------------------------------------------------------|----------------------------------------|
+| 4    | [Introduction to R and RStudio](/content/01-intro/index.qmd)         | [Data Types, Structures and Wrangling](/content/02-data-wrangling/index.qmd)   |
+| 6    | [Programming in R](/content/03-programming/index.qmd)                | [Simulation and Optimisation](/content/04-sim-optim/index.qmd)                                 |
+| 8    | [Graphics](/content/05-graphics/index.qmd)                           | [Quarto](/content/06-quarto/index.qmd) |
