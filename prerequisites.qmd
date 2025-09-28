@@ -2,7 +2,7 @@
 title: Getting set up
 ---
 
-Please ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that's R-4.4.1 and RStudio-2024.09.0. 
+Please ensure that you have the latest versions of R and RStudio installed prior to the first session. Currently, that's R-4.5.1 and RStudio-2025.09.0. 
 
 We also **strongly** recommend you install the development tools to avoid potential issues installing packages.
 
@@ -12,7 +12,7 @@ Download the pre-compiled binary for your OS from https://cloud.r-project.org/ a
 
 **For Windows with admin rights**
 
-Click "Download R for Windows", then "base", then "Download R-4.4.1 for Windows". This will download an `.exe` file; once downloaded, open to start the installation. 
+Click "Download R for Windows", then "base", then "Download R-4.5.1 for Windows". This will download an `.exe` file; once downloaded, open to start the installation. 
 
 **For Windows with no admin rights**
 
@@ -20,7 +20,7 @@ Download the `.zip` source archive under "Zip/Tarballs". Extract the files to a 
 
 **For Mac**
 
-Click "Download R for macOS", then "R-4.4.1-arm64.pkg" (the first option) to download the installer for Macs with **Apple Silicon** chips or "R-4.4.1-x86_64.pkg" (the second option) to download the installer for Macs with **Intel** chips. Run the installer to complete installation.
+Click "Download R for macOS", then "R-4.5.1-arm64.pkg" (the first option) to download the installer for Macs with **Apple Silicon** chips or "R-4.5.1-x86_64.pkg" (the second option) to download the installer for Macs with **Intel** chips. Run the installer to complete installation.
 
 **For Linux**
 
@@ -32,7 +32,7 @@ Download the relevant installer for your OS listed under "Installers for Support
 
 ## Installing R Studio Desktop (Open Source Edition)
 
-Downloads are available from <https://posit.co/download/rstudio-desktop/#download>
+Downloads are available from <https://posit.co/download/rstudio-desktop/>
 
 Download the relevant installer either under the "Install RStudio" header or, scrolling down the page, from the 'All installers and Tarballs' section. Run the installer to complete installation.
 
@@ -55,7 +55,7 @@ default settings.
 
 **For Mac**
 
-Install XCode. Either:
+Either install XCode:
 
 1.  Download and install XCode from the Mac AppStore: <http://itunes.apple.com/us/app/xcode/id497799835?mt=12>
 2.  Within XCode go to Preferences : Downloads and install the Command Line 
