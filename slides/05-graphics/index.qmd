@@ -1,8 +1,8 @@
 ---
 title: Graphics
-subtitle: R Foundations 2024
+subtitle: R Foundations 2025
 author: Ella Kaye, Department of Statistics
-date: 2024-11-18
+date: 2025-11-13
 date-format: long
 format: warwickpres-revealjs
 ---
@@ -22,7 +22,7 @@ library(ggplot2) # for later in the session
 library(palmerpenguins)
 ```
 
-# Plots in base R {.inverse}
+# Plots in base R {.blue-bg}
 
 ## No frills
 
@@ -114,7 +114,7 @@ Can you create a plot with triangular points linked by lines?
 
 Can you do the same with the `lines()` function? What are the similarities and differences?
 
-# ggplot2 {.inverse}
+# ggplot2 {.green-bg}
 
 ## Intro to ggplot2
 
@@ -449,7 +449,7 @@ Books about greating good data viz:
 
 - [Fundamental's of Data Visualisation by Claus Wilke](https://clauswilke.com/dataviz/)
 
-# Plots in RStudio  {.inverse}
+# Plots in RStudio  {.coral-bg}
 
 ## Viewing and saving plots in RStudio
 
@@ -461,7 +461,7 @@ Plots can be saved in various formats using the Export drop down menu, which als
 
 **DEMO**
 
-# Tables {.inverse}
+# Tables {.lavendar-bg}
 
 ## Getting started with tables
 
@@ -613,7 +613,7 @@ The winners of the RStudio/Posit Table Contest
 *Contest does not appear to have been held in 2023.*
 
 
-# End matter {.inverse}
+# End matter {.yellow-bg}
 
 
 ## License

@@ -1,8 +1,8 @@
 ---
 title: Simulation and Optimisation
-subtitle: R Foundations 2024
+subtitle: R Foundations 2025
 author: Ella Kaye, Department of Statistics
-date: 2024-11-07
+date: 2025-10-31
 date-format: long
 format: warwickpres-revealjs
 ---
@@ -20,7 +20,7 @@ format: warwickpres-revealjs
 
 This material is largely reproduced from [Ruth Ripley's 2013 APTS course](https://portal.stats.ox.ac.uk/userdata/ruth/APTS2013/Rcourse5.pdf)
 
-# Numerical precision {.inverse}
+# Numerical precision {.blue-bg}
 
 ## How R stores numbers
 
@@ -51,7 +51,7 @@ For more information, see e.g.
 
 - Ruth Ripley's [numerical considerations](https://portal.stats.ox.ac.uk/userdata/ruth/APTS2013/Numerics.pdf){target="_blank} notes for APTS 2013.
 
-# Simulation {.inverse}
+# Simulation {.green-bg}
 
 ## Uses of simulation
 
@@ -260,7 +260,7 @@ You need to be careful when using `sample()` programmatically (i.e. in your func
 See `?sample` for a safer version and check you understand how the proposed `resample()` function in the examples works.
 :::
 
-# Optimisation {.inverse}
+# Optimisation {.coral-bg}
 
 ## The optimisation problem
 
@@ -478,7 +478,7 @@ gr <- function(x) {
 
 - Using a start value of `c(0, 0)`, experiment with the `optim()` function to see which methods converge
 
-# End matter {.inverse}
+# End matter {.yellow-bg}
 
 ## Resources
 

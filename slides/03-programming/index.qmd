@@ -1,8 +1,8 @@
 ---
 title: Programming in R
-subtitle: R Foundations 2024
+subtitle: R Foundations 2025
 author: Ella Kaye, Department of Statistics
-date: 2024-11-04
+date: 2025-10-30
 date-format: long
 format: warwickpres-revealjs
 ---
@@ -32,7 +32,7 @@ Custom functions can be used to provide convenient wrappers to complex
 code chunks as well as implement novel functionality.
 
 
-# More on data structures {.inverse}
+# More on data structures {.coral-bg}
 
 ## Data structures revisited
 
@@ -249,7 +249,7 @@ In the formula, crucially, the `+` does not have to mean it is a linear additive
 This is a bit of an aside in the context of this session, but discusses a point that Louis Aslett, one of the APTS module leaders, mentioned to me creates confusion in his course.
 :::
 
-# Control flow {.inverse}
+# Control flow {.lavendar-bg}
 
 ## Control structures
 
@@ -432,7 +432,7 @@ Do need to use the %>% pipe here, not |>.
 See the [iteration chapter](https://r4ds.had.co.nz/iteration.html){target="_blank"} of R for Data Science for further examples and details
 
 
-# Efficient R programming {.inverse}
+# Efficient R programming {.blue-bg}
 
 ## Growing objects
 
@@ -628,7 +628,7 @@ See [Efficient Programming](https://csgillespie.github.io/efficientR/programming
 
 We will also expand on this topic in the Advanced R course next term.
 
-# Writing functions {.inverse}
+# Writing functions {.green-bg}
 
 ## Components of a function
 
@@ -787,7 +787,7 @@ variance <- function(x) {
 ```
 
 
-# End matter {background-color="#552D62"}
+# End matter {.yellow-bg}
 
 ## Resources
 
@@ -805,7 +805,7 @@ Additionally:
 
 Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/){target="_blank"}).
 
-# Extra stuff we probably won't get to {background-color="#552D62"}
+# Extra stuff we probably won't get to {.blue-bg}
 
 (Use in Fuctions session of Advanced R course in Term 2 instead)
 

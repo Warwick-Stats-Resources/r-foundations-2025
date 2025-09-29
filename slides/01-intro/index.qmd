@@ -1,8 +1,8 @@
 ---
 title: Introduction to R and RStudio
-subtitle: R Foundations 2024
+subtitle: R Foundations 2025
 author: Ella Kaye, Department of Statistics
-date: 2024-10-21
+date: 2025-10-16
 date-format: long
 format: warwickpres-revealjs
 ---
@@ -21,7 +21,7 @@ format: warwickpres-revealjs
 
 -   See examples of data wrangling and visualisation
 
-# Why use R? {.inverse}
+# Why use R? {.blue-bg}
 
 ## What can R do? {.smaller90}
 
@@ -149,7 +149,7 @@ It prides itself on being friendly, diverse, helpful, and supportive.
 
 -   [MiR](https://mircommunity.com){target="_blank"} (minorities in R)
 
-# Introducing RStudio {.inverse}
+# Introducing RStudio {.coral-bg}
 
 ## At first
 
@@ -278,7 +278,7 @@ head(penguins)
 summary(penguins)
 ```
 
-# Getting help in R {.inverse}
+# Getting help in R {.green-bg}
 
 ## Within R: Help with functions
 
@@ -489,7 +489,7 @@ This is an illustration of [Simpson's Paradox](https://en.wikipedia.org/wiki/Sim
 
 [Example adapted from https://allisonhorst.github.io/palmerpenguins/articles/examples.html](https://allisonhorst.github.io/palmerpenguins/articles/examples.html){style="font-size: 50%"}
 
-# End matter {.inverse}
+# End matter {.yellow-bg}
 
 ## Resources
 

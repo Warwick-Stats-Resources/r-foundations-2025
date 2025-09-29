@@ -1,8 +1,8 @@
 ---
 title: Data Types, Structures and Wrangling
-subtitle: R Foundations 2024
+subtitle: R Foundations 2025
 author: Ella Kaye, Department of Statistics
-date: 2024-10-24
+date: 2025-10-17
 date-format: long
 format: warwickpres-revealjs
 ---
@@ -97,7 +97,7 @@ There is an RStudio shortcut for `<-` which also puts spaces around it:
 
 <kbd>Alt</kbd>/<kbd title = "option">⌥</kbd> + <kbd title = "minus">-</kbd>
 
-# Data types and structures {.inverse}
+# Data types and structures {.coral-bg}
 
 ## Basic data types in R
 
@@ -331,7 +331,7 @@ Show both button (in Environment and from the file itself) and code
   
 - Your turn!
 
-# Data wrangling {background-color="#552D62"}
+# Data wrangling {.green-bg}
 
 ## dplyr
 
@@ -610,7 +610,7 @@ count() and summarise(n = n()) give different orderings
 
 DEMO
 
-# End matter {background-color="#552D62"}
+# End matter {.yellow-bg}
 
 ## Additional resources
 

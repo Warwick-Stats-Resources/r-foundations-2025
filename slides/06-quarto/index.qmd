@@ -1,8 +1,8 @@
 ---
 title: Quarto
-subtitle: R Foundations 2024
+subtitle: R Foundations 2025
 author: Ella Kaye, Department of Statistics
-date: 2024-11-21
+date: 2025-11-14
 date-format: long
 format: warwickpres-revealjs
 ---
@@ -17,7 +17,7 @@ These slides are almost entirely copied from Tom Mock's 'Getting Started with Qu
 
 Shared under Creative Commons 4.0 License. 
 
-# Intro to Quarto {.inverse}
+# Intro to Quarto {.green-bg}
 
 ## Hello Quarto
 
@@ -392,9 +392,9 @@ format:
   - Advanced slide themes
   - 7 tips and tricks
 
-# Demo {.inverse}
+# Demo {.coral-bg}
 
-# Publishing {.inverse}
+# Publishing {.blue-bg}
 
 ## Web publishing venues
 
@@ -445,7 +445,7 @@ quarto publish <document>
 - [Quarto for R and RStudio workshop](https://posit-conf-2023.github.io/quarto-r/)
 
 
-# Congratulations! {.inverse .center-h}
+# Congratulations! {.lavendar-bg .center-h}
 
 </br>
 
@@ -453,9 +453,9 @@ You have reached the end of R Foundations!
 
 Please leave (anonymous) feedback to help us improve the course.
 
-<https://warwick.ac.uk/ellakaye/r-foundations-2024-feedback>
+<https://warwick.ac.uk/ellakaye/r-foundations-2025-feedback>
 
-# End matter {.inverse}
+# End matter {.yellow-bg}
 
 ## Resources
 
