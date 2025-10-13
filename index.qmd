@@ -18,7 +18,7 @@ All slides and further resources can be accessed from the [content](content.qmd)
 
 ## Session details
 
-{{< fa calendar >}} &nbsp; Thursday and Friday of weeks 2, 4 and 6 (Oct 16th, 17th, 20th, 31st, Nov 13th, 14th)
+{{< fa calendar >}} &nbsp; Thursday and Friday of weeks 2, 4 and 6 (Oct 16th, 17th, 30th, 31st, Nov 13th, 14th)
 
 {{< fa clock >}} &nbsp; 12:30--14:00
 
