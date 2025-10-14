@@ -96,7 +96,7 @@ https://en.wikipedia.org/wiki/R_package#Base_and_recommended_packages
 
 -   Official R repository
 -   <https://cran.r-project.org>
--   nearly 20000 packages
+-   Over 20,000 packages
 :::
 
 ::: {.column width="50%"}
@@ -121,9 +121,11 @@ The [tidyverse](https://www.tidyverse.org) is an opinionated collection of R pac
 
 **tidyverse** 2.0.0. includes **lubridate** for date-times as well (not shown in image).
 
-## palmerpenguins
+## `penguins` data
 
--   [**palmerpenguins**](https://allisonhorst.github.io/palmerpenguins/) is a dataset package, designed to be a great example for data exploration and visualisation.
+- Available in R >= 4.5.0
+
+- Originally popularised in the [**palmerpenguins**](https://allisonhorst.github.io/palmerpenguins/) package, as a great dataset for learning data exploration, visualisation and on which to practice statistical methodology.
 
 -   It contains measurement data for 344 penguins, from three different species, collected from three islands in the Palmer Archipelago, Antarctica.
 
@@ -209,7 +211,7 @@ Code completion (using <kbd>Tab</kbd>) is also provided in the source editor
 log(10)
 exp(-4 * 4 / 2) / sqrt(2 * pi)
 install.packages("tidyverse")
-install.packages("palmerpenguins")
+install.packages("palmerpenguins") # Only if using R < 4.5.0
 ```
 
 ## Using scripts
@@ -264,19 +266,187 @@ Organising your R script well will help you and others understand and use it.
 
 -   Load packages with `library(package_name)`
 
+## Your turn
+
+-   Create an R project called "r-foundations"
+
+-   Install the **tidyverse** package, and **palmerpenguins** if using R < 4.5.0
+
+-   Find the help page for the `penguins` dataset
+
+-   Find the help page for the `filter` function in the `dplyr` package
+
+-   Experiment typing commands into the console or in an R script.
+
+link to [slides](https://warwick-stats-resources.github.io/R-foundations/slides/01-intro/#/title-slide){target="_blank"}
+
 ## R script demo
 
 ``` r
 ### load packages
-library(palmerpenguins)
 library(tidyverse)
+library(palmerpenguins) # Only if R < 4.5
 
-### Inspect data
+### Inspect data (base R functions)
 View(penguins)
-glimpse(penguins)
 head(penguins)
 summary(penguins)
+
+### tidyverse functions
+glimpse(penguins)  
 ```
+
+#  {#penguin-questions data-menu-title="What can we learn about penguins?" background-image="images/gentoo.jpeg"}
+
+::: columns
+::: {.column width="50%"}
+[What can we learn about penguins?]{#penguin-slide-text}
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
+## The data
+
+::: smaller90
+
+```{r}
+penguins
+```
+
+:::
+
+## datasets::penguins vs palmerpenguins::penguins
+
+```{r}
+colnames(penguins)
+```
+
+
+```{r}
+colnames(palmerpenguins::penguins)
+```
+
+. . .
+
+| datasets      | palmerpenguins      |
+|---------------|---------------------|
+| `bill_len`    | `bill_length_mm`    |
+| `bill_dep`    | `bill_depth_mm`     |
+| `flipper_len` | `flipper_length_mm` |
+| `body_mass`   | `body_mass_g `      |
+
+## How many of each species?
+
+```{r}
+library(tidyverse)
+count(penguins, species)
+```
+
+## How many of each species on each island?
+
+```{r}
+count(penguins, species, island, .drop = FALSE)
+```
+
+## Show me the bill dimensions of the 5 heaviest female Gentoo penguins
+
+```{r}
+penguins |>
+  filter(sex == "female",
+         species == "Gentoo") |>
+  slice_max(body_mass, n = 5) |>
+  select(contains("bill"))
+  
+```
+
+## The native pipe
+
+`|>` is a pipe.
+
+It passes what comes before into the first argument of what comes after.
+
+Pipes are a powerful tool for clearly expressing a sequence of multiple operations.
+
+We'll talk more about pipes in the data wrangling session.
+
+## What's the mean bill length, by species?
+
+```{r}
+penguins |>
+  summarise(mean_bill_length = mean(bill_len, na.rm = TRUE),
+            .by = species)
+```
+
+## What's the relationship between bill length and depth? {.smaller80}
+
+::: panel-tabset
+### picture
+
+![Artwork by Allison Horst <https://allisonhorst.github.io/palmerpenguins/articles/art.html>](images/culmen_depth.png){width="50%"}
+
+### plot 1
+
+![](`r knitr::fig_chunk("bill-no-species", "png")`){width="80%"}
+
+### code 1
+
+```{r}
+#| label: bill-no-species
+#| fig-show: hide
+ggplot(data = penguins,
+       aes(x = bill_len,
+           y = bill_dep)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "gray50") +
+  labs(title = "Penguin bill dimensions",
+       subtitle = "Negative correlation between bill length and depth for Penguins at Palmer Station LTER",
+       x = "Bill length (mm)",
+       y = "Bill depth (mm)") +
+  theme_minimal() + 
+  theme(plot.title.position = "plot")
+```
+
+### plot 2
+
+![](`r knitr::fig_chunk("bill-species", "png")`){width="80%"}
+
+### code 2
+
+```{r}
+#| label: bill-species
+#| fig-show: hide
+#| code-overflow: wrap
+ggplot(data = penguins,
+       aes(x = bill_len,
+           y = bill_dep,
+           group = species)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 3,
+             alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(title = "Penguin bill dimensions",
+       subtitle = "Positive correlation between bill length and depth for Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER",
+       x = "Bill length (mm)",
+       y = "Bill depth (mm)",
+       color = "Penguin species",
+       shape = "Penguin species") +
+  theme_minimal() +
+  theme(plot.title.position = "plot",
+        plot.subtitle = element_text(size = rel(0.95)))
+```
+
+### what?!
+
+This is an illustration of [Simpson's Paradox](https://en.wikipedia.org/wiki/Simpson's_paradox){target="_blank"}.
+
+> Simpson's paradox is a phenomenon in probability and statistics in which a trend appears in several groups of data but disappears or reverses when the groups are combined.
+:::
+
+[Example adapted from https://allisonhorst.github.io/palmerpenguins/articles/examples.html](https://allisonhorst.github.io/palmerpenguins/articles/examples.html){style="font-size: 50%"}
 
 # Getting help in R {.green-bg}
 
@@ -336,158 +506,11 @@ browseVignettes("package_name")
 
 RStudio Help home demo
 
-## Your turn
-
--   Create an R project called "R-foundations"
-
--   Install the packages **palmerpenguins** and **tidyverse**
-
--   Find the help page for the `penguins` dataset
-
--   Find the help page for the `filter` function in the `dplyr` package
-
--   Experiment typing commands into the console or in an R script.
-
-link to [slides](https://warwick-stats-resources.github.io/R-foundations/slides/01-intro/#/title-slide){target="_blank"}
 
 ## Getting help at Warwick
 
 -   The [Warwick R Users Viva Engage](https://web.yammer.com/main/org/warwick.ac.uk/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIxMTk5MzIzODczMjgifQ/all)
 
-#  {#penguin-questions data-menu-title="What can we learn about penguins?" background-image="images/gentoo.jpeg"}
-
-::: columns
-::: {.column width="50%"}
-[What can we learn about penguins?]{#penguin-slide-text}
-:::
-
-::: {.column width="50%"}
-:::
-:::
-
-## The data
-
-::: smaller90
-```{r}
-#| message: false
-library(palmerpenguins)
-library(tidyverse)
-```
-
-```{r}
-penguins
-```
-:::
-
-## How many of each species?
-
-```{r}
-count(penguins, species)
-```
-
-## How many of each species on each island?
-
-```{r}
-count(penguins, species, island, .drop = FALSE)
-```
-
-## Show me the bill dimensions of the 5 heaviest female Gentoo penguins
-
-```{r}
-penguins |>
-  filter(sex == "female",
-         species == "Gentoo") |>
-  slice_max(body_mass_g, n = 5) |>
-  select(contains("bill"))
-  
-```
-
-## The native pipe
-
-`|>` is a pipe.
-
-It passes what comes before into the first argument of what comes after.
-
-Pipes are a powerful tool for clearly expressing a sequence of multiple operations.
-
-We'll talk more about pipes in the data wrangling session.
-
-## What's the mean bill length, by species?
-
-```{r}
-penguins |>
-  summarise(mean_bill_length = mean(bill_length_mm, na.rm = TRUE),
-            .by = species)
-```
-
-## What's the relationship between bill length and depth? {.smaller80}
-
-::: panel-tabset
-### picture
-
-![Artwork by Allison Horst <https://allisonhorst.github.io/palmerpenguins/articles/art.html>](images/culmen_depth.png){width="50%"}
-
-### plot 1
-
-![](`r knitr::fig_chunk("bill-no-species", "png")`){width="80%"}
-
-### code 1
-
-```{r}
-#| label: bill-no-species
-#| fig-show: hide
-ggplot(data = penguins,
-       aes(x = bill_length_mm,
-           y = bill_depth_mm)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE, color = "gray50") +
-  labs(title = "Penguin bill dimensions",
-       subtitle = "Bill length and depth for Penguins at Palmer Station LTER",
-       x = "Bill length (mm)",
-       y = "Bill depth (mm)") +
-  theme_minimal() + 
-  theme(plot.title.position = "plot")
-```
-
-### plot 2
-
-![](`r knitr::fig_chunk("bill-species", "png")`){width="80%"}
-
-### code 2
-
-```{r}
-#| label: bill-species
-#| fig-show: hide
-#| code-overflow: wrap
-ggplot(data = penguins,
-       aes(x = bill_length_mm,
-           y = bill_depth_mm,
-           group = species)) +
-  geom_point(aes(color = species, 
-                 shape = species),
-             size = 3,
-             alpha = 0.8) +
-  geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
-  scale_color_manual(values = c("darkorange","purple","cyan4")) +
-  labs(title = "Penguin bill dimensions",
-       subtitle = "Bill length and depth for Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER",
-       x = "Bill length (mm)",
-       y = "Bill depth (mm)",
-       color = "Penguin species",
-       shape = "Penguin species") +
-  theme_minimal() +
-  theme(plot.title.position = "plot",
-        plot.subtitle = element_text(size = rel(0.95)))
-```
-
-### what?
-
-This is an illustration of [Simpson's Paradox](https://en.wikipedia.org/wiki/Simpson's_paradox){target="_blank"}.
-
-> Simpson's paradox is a phenomenon in probability and statistics in which a trend appears in several groups of data but disappears or reverses when the groups are combined.
-:::
-
-[Example adapted from https://allisonhorst.github.io/palmerpenguins/articles/examples.html](https://allisonhorst.github.io/palmerpenguins/articles/examples.html){style="font-size: 50%"}
 
 # End matter {.yellow-bg}
 
