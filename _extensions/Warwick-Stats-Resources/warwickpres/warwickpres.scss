@@ -30,7 +30,6 @@ $green-dark: #318174;
 $yellow-dark: #7F6F3E;
 */
 
-
 $primary: $lavendar !default;
 
 $presentation-font-size-root: 32px;
@@ -147,11 +146,13 @@ pre.sourceCode {
 }
 
 // title-slide
-/*
 #title-slide {
-  color: $white;
+  background-image: url('UoW_Wordmark_Positive_RGB.png');
+  background-size: 5%;
+  background-position: 5% 100%
 }
 
+/*
 #title-slide .title {
   font-size: 70px;
   padding-bottom: .25em;
@@ -188,11 +189,6 @@ p {
 
 .cell {
   padding-bottom: 20px;
-}
-
-// headings - ensure these rules are not being overridden
-.reveal h2, .reveal h3 {
-  color: $purple;
 }
 
 .reveal h2 {
