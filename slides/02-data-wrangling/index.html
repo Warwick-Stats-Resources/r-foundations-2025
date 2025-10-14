@@ -1193,7 +1193,7 @@ dayone</code></pre>
 </section>
 <section id="vectors" class="slide level2">
 <h2>Vectors</h2>
-<p>A single number is a special case of a numeric vector. Vectors of length greater than one can be created using the concatenate function, <code>c</code>.</p>
+<p>A single number is a special case of a numeric vector. Vectors of length greater than one can be created using the <em>combine</em> function, <code>c</code>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>)</span>
 <span id="cb10-2"><a></a>fruits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;pear&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1259,7 +1259,7 @@ dayone</code></pre>
 <section id="your-turn" class="slide level2">
 <h2>Your turn!</h2>
 <ul>
-<li><p>In your R-Foundations project from last week, create and save a new script called data-types.R</p></li>
+<li><p>In your R-Foundations project from last session, create and save a new script called data-types.R</p></li>
 <li><p>Look at the help page for the <code>rep()</code> function: <code>?rep</code></p></li>
 <li><p>Starting with the vector <code>x &lt;- c(1,3,6)</code>, can you make the following patterns:</p>
 <ul>
@@ -1311,29 +1311,20 @@ Levels: apple pear</code></pre>
 <p>These are structured as a list of objects, typically vectors, of the same length.</p>
 <div class="smaller90">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb29-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb29-3"><a></a><span class="fu">str</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">str</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
- $ species          : Factor w/ 3 levels &quot;Adelie&quot;,&quot;Chinstrap&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
- $ island           : Factor w/ 3 levels &quot;Biscoe&quot;,&quot;Dream&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
- $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
- $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
- $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
- $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
- $ sex              : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 1 NA 1 2 1 2 NA NA ...
- $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
+<pre><code>&#39;data.frame&#39;:   344 obs. of  8 variables:
+ $ species    : Factor w/ 3 levels &quot;Adelie&quot;,&quot;Chinstrap&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ island     : Factor w/ 3 levels &quot;Biscoe&quot;,&quot;Dream&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ bill_len   : num  39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+ $ bill_dep   : num  18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+ $ flipper_len: int  181 186 195 NA 193 190 181 195 193 190 ...
+ $ body_mass  : int  3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+ $ sex        : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 1 NA 1 2 1 2 NA NA ...
+ $ year       : int  2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="tibbles" class="slide level2">
-<h2>tibbles</h2>
-<p>From the <a href="https://tibble.tidyverse.org" target="_blank">tibble</a> page:</p>
-<blockquote>
-<p>A <strong>tibble</strong>, or <code>tbl_df</code>, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don’t change variable names or types, and don’t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code. Tibbles also have an enhanced print() method which makes them easier to use with large datasets containing complex objects.</p>
-</blockquote>
 </section>
 <section id="creating-data-frames" class="slide level2">
 <h2>Creating data frames</h2>
@@ -1361,7 +1352,7 @@ Levels: apple pear</code></pre>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">tibble</span>(<span class="st">`</span><span class="at">my numbers</span><span class="st">`</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="st">`</span><span class="at">my numbers</span><span class="st">`</span>, </span>
 <span id="cb34-2"><a></a>       fruits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
@@ -1379,7 +1370,14 @@ Levels: apple pear</code></pre>
 </div>
 </div>
 </div></div>
-<p>Spot the differences!</p>
+<p><span class="coral">Spot the differences!</span></p>
+</section>
+<section id="tibbles" class="slide level2">
+<h2>tibbles</h2>
+<p>From the <a href="https://tibble.tidyverse.org" target="_blank">tibble</a> page:</p>
+<blockquote>
+<p>A <strong>tibble</strong>, or <code>tbl_df</code>, is a modern reimagining of the data.frame, keeping what time has proven to be effective, and throwing out what is not. Tibbles are data.frames that are lazy and surly: they do less (i.e. they don’t change variable names or types, and don’t do partial matching) and complain more (e.g. when a variable does not exist). This forces you to confront problems earlier, typically leading to cleaner, more expressive code. Tibbles also have an enhanced print() method which makes them easier to use with large datasets containing complex objects.</p>
+</blockquote>
 </section>
 <section id="import-dataset-button" class="slide level2">
 <h2>Import dataset (button)</h2>
@@ -1446,8 +1444,7 @@ Levels: apple pear</code></pre>
 <section id="load-packages" class="slide level2">
 <h2>Load packages</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb37-2"><a></a><span class="fu">library</span>(palmerpenguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="filter-pick-rows-based-on-values-of-observations." class="slide level2">
@@ -1460,24 +1457,49 @@ Levels: apple pear</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">filter</span>(penguins, </span>
 <span id="cb38-2"><a></a>       species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>, </span>
-<span id="cb38-3"><a></a>       bill_length_mm <span class="sc">&gt;</span> <span class="dv">48</span> <span class="sc">&amp;</span> bill_depth_mm <span class="sc">&gt;</span> <span class="dv">15</span>, </span>
+<span id="cb38-3"><a></a>       bill_len <span class="sc">&gt;</span> <span class="dv">48</span> <span class="sc">&amp;</span> bill_dep <span class="sc">&gt;</span> <span class="dv">15</span>, </span>
 <span id="cb38-4"><a></a>       <span class="sc">!</span><span class="fu">is.na</span>(sex))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 39 × 8
-   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Gentoo  Biscoe           50            16.3               230        5700
- 2 Gentoo  Biscoe           50            15.2               218        5700
- 3 Gentoo  Biscoe           49            16.1               216        5550
- 4 Gentoo  Biscoe           49.3          15.7               217        5850
- 5 Gentoo  Biscoe           49.2          15.2               221        6300
- 6 Gentoo  Biscoe           48.7          15.1               222        5350
- 7 Gentoo  Biscoe           50            15.3               220        5550
- 8 Gentoo  Biscoe           59.6          17                 230        6050
- 9 Gentoo  Biscoe           48.4          16.3               220        5400
-10 Gentoo  Biscoe           48.7          15.7               208        5350
-# ℹ 29 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+<pre><code>   species island bill_len bill_dep flipper_len body_mass    sex year
+1   Gentoo Biscoe     50.0     16.3         230      5700   male 2007
+2   Gentoo Biscoe     50.0     15.2         218      5700   male 2007
+3   Gentoo Biscoe     49.0     16.1         216      5550   male 2007
+4   Gentoo Biscoe     49.3     15.7         217      5850   male 2007
+5   Gentoo Biscoe     49.2     15.2         221      6300   male 2007
+6   Gentoo Biscoe     48.7     15.1         222      5350   male 2007
+7   Gentoo Biscoe     50.0     15.3         220      5550   male 2007
+8   Gentoo Biscoe     59.6     17.0         230      6050   male 2007
+9   Gentoo Biscoe     48.4     16.3         220      5400   male 2008
+10  Gentoo Biscoe     48.7     15.7         208      5350   male 2008
+11  Gentoo Biscoe     49.6     16.0         225      5700   male 2008
+12  Gentoo Biscoe     50.5     15.9         222      5550   male 2008
+13  Gentoo Biscoe     50.5     15.9         225      5400   male 2008
+14  Gentoo Biscoe     50.4     15.3         224      5550   male 2008
+15  Gentoo Biscoe     54.3     15.7         231      5650   male 2008
+16  Gentoo Biscoe     49.8     16.8         230      5700   male 2008
+17  Gentoo Biscoe     49.5     16.2         229      5800   male 2008
+18  Gentoo Biscoe     48.2     15.6         221      5100   male 2008
+19  Gentoo Biscoe     48.6     16.0         230      5800   male 2008
+20  Gentoo Biscoe     51.1     16.3         220      6000   male 2008
+21  Gentoo Biscoe     52.5     15.6         221      5450   male 2009
+22  Gentoo Biscoe     50.0     15.9         224      5350   male 2009
+23  Gentoo Biscoe     50.8     17.3         228      5600   male 2009
+24  Gentoo Biscoe     52.1     17.0         230      5550   male 2009
+25  Gentoo Biscoe     52.2     17.1         228      5400   male 2009
+26  Gentoo Biscoe     49.5     16.1         224      5650   male 2009
+27  Gentoo Biscoe     50.8     15.7         226      5200   male 2009
+28  Gentoo Biscoe     49.4     15.8         216      4925   male 2009
+29  Gentoo Biscoe     51.1     16.5         225      5250   male 2009
+30  Gentoo Biscoe     55.9     17.0         228      5600   male 2009
+31  Gentoo Biscoe     53.4     15.8         219      5500   male 2009
+32  Gentoo Biscoe     48.1     15.1         209      5500   male 2009
+33  Gentoo Biscoe     50.5     15.2         216      5000 female 2009
+34  Gentoo Biscoe     49.8     15.9         229      5950   male 2009
+35  Gentoo Biscoe     51.5     16.3         230      5500   male 2009
+36  Gentoo Biscoe     55.1     16.0         230      5850   male 2009
+37  Gentoo Biscoe     48.8     16.2         222      6000   male 2009
+38  Gentoo Biscoe     50.4     15.7         222      5750   male 2009
+39  Gentoo Biscoe     49.9     16.1         213      5400   male 2009</code></pre>
 </div>
 </div>
 </div>
@@ -1524,43 +1546,705 @@ Levels: apple pear</code></pre>
 <div class="tab-content">
 <div id="tabset-3-1">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">select</span>(penguins, bill_length_mm, bill_depth_mm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">select</span>(penguins, bill_len, bill_dep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 2
-   bill_length_mm bill_depth_mm
-            &lt;dbl&gt;         &lt;dbl&gt;
- 1           39.1          18.7
- 2           39.5          17.4
- 3           40.3          18  
- 4           NA            NA  
- 5           36.7          19.3
- 6           39.3          20.6
- 7           38.9          17.8
- 8           39.2          19.6
- 9           34.1          18.1
-10           42            20.2
-# ℹ 334 more rows</code></pre>
+<pre><code>    bill_len bill_dep
+1       39.1     18.7
+2       39.5     17.4
+3       40.3     18.0
+4         NA       NA
+5       36.7     19.3
+6       39.3     20.6
+7       38.9     17.8
+8       39.2     19.6
+9       34.1     18.1
+10      42.0     20.2
+11      37.8     17.1
+12      37.8     17.3
+13      41.1     17.6
+14      38.6     21.2
+15      34.6     21.1
+16      36.6     17.8
+17      38.7     19.0
+18      42.5     20.7
+19      34.4     18.4
+20      46.0     21.5
+21      37.8     18.3
+22      37.7     18.7
+23      35.9     19.2
+24      38.2     18.1
+25      38.8     17.2
+26      35.3     18.9
+27      40.6     18.6
+28      40.5     17.9
+29      37.9     18.6
+30      40.5     18.9
+31      39.5     16.7
+32      37.2     18.1
+33      39.5     17.8
+34      40.9     18.9
+35      36.4     17.0
+36      39.2     21.1
+37      38.8     20.0
+38      42.2     18.5
+39      37.6     19.3
+40      39.8     19.1
+41      36.5     18.0
+42      40.8     18.4
+43      36.0     18.5
+44      44.1     19.7
+45      37.0     16.9
+46      39.6     18.8
+47      41.1     19.0
+48      37.5     18.9
+49      36.0     17.9
+50      42.3     21.2
+51      39.6     17.7
+52      40.1     18.9
+53      35.0     17.9
+54      42.0     19.5
+55      34.5     18.1
+56      41.4     18.6
+57      39.0     17.5
+58      40.6     18.8
+59      36.5     16.6
+60      37.6     19.1
+61      35.7     16.9
+62      41.3     21.1
+63      37.6     17.0
+64      41.1     18.2
+65      36.4     17.1
+66      41.6     18.0
+67      35.5     16.2
+68      41.1     19.1
+69      35.9     16.6
+70      41.8     19.4
+71      33.5     19.0
+72      39.7     18.4
+73      39.6     17.2
+74      45.8     18.9
+75      35.5     17.5
+76      42.8     18.5
+77      40.9     16.8
+78      37.2     19.4
+79      36.2     16.1
+80      42.1     19.1
+81      34.6     17.2
+82      42.9     17.6
+83      36.7     18.8
+84      35.1     19.4
+85      37.3     17.8
+86      41.3     20.3
+87      36.3     19.5
+88      36.9     18.6
+89      38.3     19.2
+90      38.9     18.8
+91      35.7     18.0
+92      41.1     18.1
+93      34.0     17.1
+94      39.6     18.1
+95      36.2     17.3
+96      40.8     18.9
+97      38.1     18.6
+98      40.3     18.5
+99      33.1     16.1
+100     43.2     18.5
+101     35.0     17.9
+102     41.0     20.0
+103     37.7     16.0
+104     37.8     20.0
+105     37.9     18.6
+106     39.7     18.9
+107     38.6     17.2
+108     38.2     20.0
+109     38.1     17.0
+110     43.2     19.0
+111     38.1     16.5
+112     45.6     20.3
+113     39.7     17.7
+114     42.2     19.5
+115     39.6     20.7
+116     42.7     18.3
+117     38.6     17.0
+118     37.3     20.5
+119     35.7     17.0
+120     41.1     18.6
+121     36.2     17.2
+122     37.7     19.8
+123     40.2     17.0
+124     41.4     18.5
+125     35.2     15.9
+126     40.6     19.0
+127     38.8     17.6
+128     41.5     18.3
+129     39.0     17.1
+130     44.1     18.0
+131     38.5     17.9
+132     43.1     19.2
+133     36.8     18.5
+134     37.5     18.5
+135     38.1     17.6
+136     41.1     17.5
+137     35.6     17.5
+138     40.2     20.1
+139     37.0     16.5
+140     39.7     17.9
+141     40.2     17.1
+142     40.6     17.2
+143     32.1     15.5
+144     40.7     17.0
+145     37.3     16.8
+146     39.0     18.7
+147     39.2     18.6
+148     36.6     18.4
+149     36.0     17.8
+150     37.8     18.1
+151     36.0     17.1
+152     41.5     18.5
+153     46.1     13.2
+154     50.0     16.3
+155     48.7     14.1
+156     50.0     15.2
+157     47.6     14.5
+158     46.5     13.5
+159     45.4     14.6
+160     46.7     15.3
+161     43.3     13.4
+162     46.8     15.4
+163     40.9     13.7
+164     49.0     16.1
+165     45.5     13.7
+166     48.4     14.6
+167     45.8     14.6
+168     49.3     15.7
+169     42.0     13.5
+170     49.2     15.2
+171     46.2     14.5
+172     48.7     15.1
+173     50.2     14.3
+174     45.1     14.5
+175     46.5     14.5
+176     46.3     15.8
+177     42.9     13.1
+178     46.1     15.1
+179     44.5     14.3
+180     47.8     15.0
+181     48.2     14.3
+182     50.0     15.3
+183     47.3     15.3
+184     42.8     14.2
+185     45.1     14.5
+186     59.6     17.0
+187     49.1     14.8
+188     48.4     16.3
+189     42.6     13.7
+190     44.4     17.3
+191     44.0     13.6
+192     48.7     15.7
+193     42.7     13.7
+194     49.6     16.0
+195     45.3     13.7
+196     49.6     15.0
+197     50.5     15.9
+198     43.6     13.9
+199     45.5     13.9
+200     50.5     15.9
+201     44.9     13.3
+202     45.2     15.8
+203     46.6     14.2
+204     48.5     14.1
+205     45.1     14.4
+206     50.1     15.0
+207     46.5     14.4
+208     45.0     15.4
+209     43.8     13.9
+210     45.5     15.0
+211     43.2     14.5
+212     50.4     15.3
+213     45.3     13.8
+214     46.2     14.9
+215     45.7     13.9
+216     54.3     15.7
+217     45.8     14.2
+218     49.8     16.8
+219     46.2     14.4
+220     49.5     16.2
+221     43.5     14.2
+222     50.7     15.0
+223     47.7     15.0
+224     46.4     15.6
+225     48.2     15.6
+226     46.5     14.8
+227     46.4     15.0
+228     48.6     16.0
+229     47.5     14.2
+230     51.1     16.3
+231     45.2     13.8
+232     45.2     16.4
+233     49.1     14.5
+234     52.5     15.6
+235     47.4     14.6
+236     50.0     15.9
+237     44.9     13.8
+238     50.8     17.3
+239     43.4     14.4
+240     51.3     14.2
+241     47.5     14.0
+242     52.1     17.0
+243     47.5     15.0
+244     52.2     17.1
+245     45.5     14.5
+246     49.5     16.1
+247     44.5     14.7
+248     50.8     15.7
+249     49.4     15.8
+250     46.9     14.6
+251     48.4     14.4
+252     51.1     16.5
+253     48.5     15.0
+254     55.9     17.0
+255     47.2     15.5
+256     49.1     15.0
+257     47.3     13.8
+258     46.8     16.1
+259     41.7     14.7
+260     53.4     15.8
+261     43.3     14.0
+262     48.1     15.1
+263     50.5     15.2
+264     49.8     15.9
+265     43.5     15.2
+266     51.5     16.3
+267     46.2     14.1
+268     55.1     16.0
+269     44.5     15.7
+270     48.8     16.2
+271     47.2     13.7
+272       NA       NA
+273     46.8     14.3
+274     50.4     15.7
+275     45.2     14.8
+276     49.9     16.1
+277     46.5     17.9
+278     50.0     19.5
+279     51.3     19.2
+280     45.4     18.7
+281     52.7     19.8
+282     45.2     17.8
+283     46.1     18.2
+284     51.3     18.2
+285     46.0     18.9
+286     51.3     19.9
+287     46.6     17.8
+288     51.7     20.3
+289     47.0     17.3
+290     52.0     18.1
+291     45.9     17.1
+292     50.5     19.6
+293     50.3     20.0
+294     58.0     17.8
+295     46.4     18.6
+296     49.2     18.2
+297     42.4     17.3
+298     48.5     17.5
+299     43.2     16.6
+300     50.6     19.4
+301     46.7     17.9
+302     52.0     19.0
+303     50.5     18.4
+304     49.5     19.0
+305     46.4     17.8
+306     52.8     20.0
+307     40.9     16.6
+308     54.2     20.8
+309     42.5     16.7
+310     51.0     18.8
+311     49.7     18.6
+312     47.5     16.8
+313     47.6     18.3
+314     52.0     20.7
+315     46.9     16.6
+316     53.5     19.9
+317     49.0     19.5
+318     46.2     17.5
+319     50.9     19.1
+320     45.5     17.0
+321     50.9     17.9
+322     50.8     18.5
+323     50.1     17.9
+324     49.0     19.6
+325     51.5     18.7
+326     49.8     17.3
+327     48.1     16.4
+328     51.4     19.0
+329     45.7     17.3
+330     50.7     19.7
+331     42.5     17.3
+332     52.2     18.8
+333     45.2     16.6
+334     49.3     19.9
+335     50.2     18.8
+336     45.6     19.4
+337     51.9     19.5
+338     46.8     16.5
+339     45.7     17.0
+340     55.8     19.8
+341     43.5     18.1
+342     49.6     18.2
+343     50.8     19.0
+344     50.2     18.7</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-3-2">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">select</span>(penguins, bill_length_mm<span class="sc">:</span>body_mass_g)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">select</span>(penguins, bill_len<span class="sc">:</span>body_mass)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 4
-   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1           39.1          18.7               181        3750
- 2           39.5          17.4               186        3800
- 3           40.3          18                 195        3250
- 4           NA            NA                  NA          NA
- 5           36.7          19.3               193        3450
- 6           39.3          20.6               190        3650
- 7           38.9          17.8               181        3625
- 8           39.2          19.6               195        4675
- 9           34.1          18.1               193        3475
-10           42            20.2               190        4250
-# ℹ 334 more rows</code></pre>
+<pre><code>    bill_len bill_dep flipper_len body_mass
+1       39.1     18.7         181      3750
+2       39.5     17.4         186      3800
+3       40.3     18.0         195      3250
+4         NA       NA          NA        NA
+5       36.7     19.3         193      3450
+6       39.3     20.6         190      3650
+7       38.9     17.8         181      3625
+8       39.2     19.6         195      4675
+9       34.1     18.1         193      3475
+10      42.0     20.2         190      4250
+11      37.8     17.1         186      3300
+12      37.8     17.3         180      3700
+13      41.1     17.6         182      3200
+14      38.6     21.2         191      3800
+15      34.6     21.1         198      4400
+16      36.6     17.8         185      3700
+17      38.7     19.0         195      3450
+18      42.5     20.7         197      4500
+19      34.4     18.4         184      3325
+20      46.0     21.5         194      4200
+21      37.8     18.3         174      3400
+22      37.7     18.7         180      3600
+23      35.9     19.2         189      3800
+24      38.2     18.1         185      3950
+25      38.8     17.2         180      3800
+26      35.3     18.9         187      3800
+27      40.6     18.6         183      3550
+28      40.5     17.9         187      3200
+29      37.9     18.6         172      3150
+30      40.5     18.9         180      3950
+31      39.5     16.7         178      3250
+32      37.2     18.1         178      3900
+33      39.5     17.8         188      3300
+34      40.9     18.9         184      3900
+35      36.4     17.0         195      3325
+36      39.2     21.1         196      4150
+37      38.8     20.0         190      3950
+38      42.2     18.5         180      3550
+39      37.6     19.3         181      3300
+40      39.8     19.1         184      4650
+41      36.5     18.0         182      3150
+42      40.8     18.4         195      3900
+43      36.0     18.5         186      3100
+44      44.1     19.7         196      4400
+45      37.0     16.9         185      3000
+46      39.6     18.8         190      4600
+47      41.1     19.0         182      3425
+48      37.5     18.9         179      2975
+49      36.0     17.9         190      3450
+50      42.3     21.2         191      4150
+51      39.6     17.7         186      3500
+52      40.1     18.9         188      4300
+53      35.0     17.9         190      3450
+54      42.0     19.5         200      4050
+55      34.5     18.1         187      2900
+56      41.4     18.6         191      3700
+57      39.0     17.5         186      3550
+58      40.6     18.8         193      3800
+59      36.5     16.6         181      2850
+60      37.6     19.1         194      3750
+61      35.7     16.9         185      3150
+62      41.3     21.1         195      4400
+63      37.6     17.0         185      3600
+64      41.1     18.2         192      4050
+65      36.4     17.1         184      2850
+66      41.6     18.0         192      3950
+67      35.5     16.2         195      3350
+68      41.1     19.1         188      4100
+69      35.9     16.6         190      3050
+70      41.8     19.4         198      4450
+71      33.5     19.0         190      3600
+72      39.7     18.4         190      3900
+73      39.6     17.2         196      3550
+74      45.8     18.9         197      4150
+75      35.5     17.5         190      3700
+76      42.8     18.5         195      4250
+77      40.9     16.8         191      3700
+78      37.2     19.4         184      3900
+79      36.2     16.1         187      3550
+80      42.1     19.1         195      4000
+81      34.6     17.2         189      3200
+82      42.9     17.6         196      4700
+83      36.7     18.8         187      3800
+84      35.1     19.4         193      4200
+85      37.3     17.8         191      3350
+86      41.3     20.3         194      3550
+87      36.3     19.5         190      3800
+88      36.9     18.6         189      3500
+89      38.3     19.2         189      3950
+90      38.9     18.8         190      3600
+91      35.7     18.0         202      3550
+92      41.1     18.1         205      4300
+93      34.0     17.1         185      3400
+94      39.6     18.1         186      4450
+95      36.2     17.3         187      3300
+96      40.8     18.9         208      4300
+97      38.1     18.6         190      3700
+98      40.3     18.5         196      4350
+99      33.1     16.1         178      2900
+100     43.2     18.5         192      4100
+101     35.0     17.9         192      3725
+102     41.0     20.0         203      4725
+103     37.7     16.0         183      3075
+104     37.8     20.0         190      4250
+105     37.9     18.6         193      2925
+106     39.7     18.9         184      3550
+107     38.6     17.2         199      3750
+108     38.2     20.0         190      3900
+109     38.1     17.0         181      3175
+110     43.2     19.0         197      4775
+111     38.1     16.5         198      3825
+112     45.6     20.3         191      4600
+113     39.7     17.7         193      3200
+114     42.2     19.5         197      4275
+115     39.6     20.7         191      3900
+116     42.7     18.3         196      4075
+117     38.6     17.0         188      2900
+118     37.3     20.5         199      3775
+119     35.7     17.0         189      3350
+120     41.1     18.6         189      3325
+121     36.2     17.2         187      3150
+122     37.7     19.8         198      3500
+123     40.2     17.0         176      3450
+124     41.4     18.5         202      3875
+125     35.2     15.9         186      3050
+126     40.6     19.0         199      4000
+127     38.8     17.6         191      3275
+128     41.5     18.3         195      4300
+129     39.0     17.1         191      3050
+130     44.1     18.0         210      4000
+131     38.5     17.9         190      3325
+132     43.1     19.2         197      3500
+133     36.8     18.5         193      3500
+134     37.5     18.5         199      4475
+135     38.1     17.6         187      3425
+136     41.1     17.5         190      3900
+137     35.6     17.5         191      3175
+138     40.2     20.1         200      3975
+139     37.0     16.5         185      3400
+140     39.7     17.9         193      4250
+141     40.2     17.1         193      3400
+142     40.6     17.2         187      3475
+143     32.1     15.5         188      3050
+144     40.7     17.0         190      3725
+145     37.3     16.8         192      3000
+146     39.0     18.7         185      3650
+147     39.2     18.6         190      4250
+148     36.6     18.4         184      3475
+149     36.0     17.8         195      3450
+150     37.8     18.1         193      3750
+151     36.0     17.1         187      3700
+152     41.5     18.5         201      4000
+153     46.1     13.2         211      4500
+154     50.0     16.3         230      5700
+155     48.7     14.1         210      4450
+156     50.0     15.2         218      5700
+157     47.6     14.5         215      5400
+158     46.5     13.5         210      4550
+159     45.4     14.6         211      4800
+160     46.7     15.3         219      5200
+161     43.3     13.4         209      4400
+162     46.8     15.4         215      5150
+163     40.9     13.7         214      4650
+164     49.0     16.1         216      5550
+165     45.5     13.7         214      4650
+166     48.4     14.6         213      5850
+167     45.8     14.6         210      4200
+168     49.3     15.7         217      5850
+169     42.0     13.5         210      4150
+170     49.2     15.2         221      6300
+171     46.2     14.5         209      4800
+172     48.7     15.1         222      5350
+173     50.2     14.3         218      5700
+174     45.1     14.5         215      5000
+175     46.5     14.5         213      4400
+176     46.3     15.8         215      5050
+177     42.9     13.1         215      5000
+178     46.1     15.1         215      5100
+179     44.5     14.3         216      4100
+180     47.8     15.0         215      5650
+181     48.2     14.3         210      4600
+182     50.0     15.3         220      5550
+183     47.3     15.3         222      5250
+184     42.8     14.2         209      4700
+185     45.1     14.5         207      5050
+186     59.6     17.0         230      6050
+187     49.1     14.8         220      5150
+188     48.4     16.3         220      5400
+189     42.6     13.7         213      4950
+190     44.4     17.3         219      5250
+191     44.0     13.6         208      4350
+192     48.7     15.7         208      5350
+193     42.7     13.7         208      3950
+194     49.6     16.0         225      5700
+195     45.3     13.7         210      4300
+196     49.6     15.0         216      4750
+197     50.5     15.9         222      5550
+198     43.6     13.9         217      4900
+199     45.5     13.9         210      4200
+200     50.5     15.9         225      5400
+201     44.9     13.3         213      5100
+202     45.2     15.8         215      5300
+203     46.6     14.2         210      4850
+204     48.5     14.1         220      5300
+205     45.1     14.4         210      4400
+206     50.1     15.0         225      5000
+207     46.5     14.4         217      4900
+208     45.0     15.4         220      5050
+209     43.8     13.9         208      4300
+210     45.5     15.0         220      5000
+211     43.2     14.5         208      4450
+212     50.4     15.3         224      5550
+213     45.3     13.8         208      4200
+214     46.2     14.9         221      5300
+215     45.7     13.9         214      4400
+216     54.3     15.7         231      5650
+217     45.8     14.2         219      4700
+218     49.8     16.8         230      5700
+219     46.2     14.4         214      4650
+220     49.5     16.2         229      5800
+221     43.5     14.2         220      4700
+222     50.7     15.0         223      5550
+223     47.7     15.0         216      4750
+224     46.4     15.6         221      5000
+225     48.2     15.6         221      5100
+226     46.5     14.8         217      5200
+227     46.4     15.0         216      4700
+228     48.6     16.0         230      5800
+229     47.5     14.2         209      4600
+230     51.1     16.3         220      6000
+231     45.2     13.8         215      4750
+232     45.2     16.4         223      5950
+233     49.1     14.5         212      4625
+234     52.5     15.6         221      5450
+235     47.4     14.6         212      4725
+236     50.0     15.9         224      5350
+237     44.9     13.8         212      4750
+238     50.8     17.3         228      5600
+239     43.4     14.4         218      4600
+240     51.3     14.2         218      5300
+241     47.5     14.0         212      4875
+242     52.1     17.0         230      5550
+243     47.5     15.0         218      4950
+244     52.2     17.1         228      5400
+245     45.5     14.5         212      4750
+246     49.5     16.1         224      5650
+247     44.5     14.7         214      4850
+248     50.8     15.7         226      5200
+249     49.4     15.8         216      4925
+250     46.9     14.6         222      4875
+251     48.4     14.4         203      4625
+252     51.1     16.5         225      5250
+253     48.5     15.0         219      4850
+254     55.9     17.0         228      5600
+255     47.2     15.5         215      4975
+256     49.1     15.0         228      5500
+257     47.3     13.8         216      4725
+258     46.8     16.1         215      5500
+259     41.7     14.7         210      4700
+260     53.4     15.8         219      5500
+261     43.3     14.0         208      4575
+262     48.1     15.1         209      5500
+263     50.5     15.2         216      5000
+264     49.8     15.9         229      5950
+265     43.5     15.2         213      4650
+266     51.5     16.3         230      5500
+267     46.2     14.1         217      4375
+268     55.1     16.0         230      5850
+269     44.5     15.7         217      4875
+270     48.8     16.2         222      6000
+271     47.2     13.7         214      4925
+272       NA       NA          NA        NA
+273     46.8     14.3         215      4850
+274     50.4     15.7         222      5750
+275     45.2     14.8         212      5200
+276     49.9     16.1         213      5400
+277     46.5     17.9         192      3500
+278     50.0     19.5         196      3900
+279     51.3     19.2         193      3650
+280     45.4     18.7         188      3525
+281     52.7     19.8         197      3725
+282     45.2     17.8         198      3950
+283     46.1     18.2         178      3250
+284     51.3     18.2         197      3750
+285     46.0     18.9         195      4150
+286     51.3     19.9         198      3700
+287     46.6     17.8         193      3800
+288     51.7     20.3         194      3775
+289     47.0     17.3         185      3700
+290     52.0     18.1         201      4050
+291     45.9     17.1         190      3575
+292     50.5     19.6         201      4050
+293     50.3     20.0         197      3300
+294     58.0     17.8         181      3700
+295     46.4     18.6         190      3450
+296     49.2     18.2         195      4400
+297     42.4     17.3         181      3600
+298     48.5     17.5         191      3400
+299     43.2     16.6         187      2900
+300     50.6     19.4         193      3800
+301     46.7     17.9         195      3300
+302     52.0     19.0         197      4150
+303     50.5     18.4         200      3400
+304     49.5     19.0         200      3800
+305     46.4     17.8         191      3700
+306     52.8     20.0         205      4550
+307     40.9     16.6         187      3200
+308     54.2     20.8         201      4300
+309     42.5     16.7         187      3350
+310     51.0     18.8         203      4100
+311     49.7     18.6         195      3600
+312     47.5     16.8         199      3900
+313     47.6     18.3         195      3850
+314     52.0     20.7         210      4800
+315     46.9     16.6         192      2700
+316     53.5     19.9         205      4500
+317     49.0     19.5         210      3950
+318     46.2     17.5         187      3650
+319     50.9     19.1         196      3550
+320     45.5     17.0         196      3500
+321     50.9     17.9         196      3675
+322     50.8     18.5         201      4450
+323     50.1     17.9         190      3400
+324     49.0     19.6         212      4300
+325     51.5     18.7         187      3250
+326     49.8     17.3         198      3675
+327     48.1     16.4         199      3325
+328     51.4     19.0         201      3950
+329     45.7     17.3         193      3600
+330     50.7     19.7         203      4050
+331     42.5     17.3         187      3350
+332     52.2     18.8         197      3450
+333     45.2     16.6         191      3250
+334     49.3     19.9         203      4050
+335     50.2     18.8         202      3800
+336     45.6     19.4         194      3525
+337     51.9     19.5         206      3950
+338     46.8     16.5         189      3650
+339     45.7     17.0         195      3650
+340     55.8     19.8         207      4000
+341     43.5     18.1         202      3400
+342     49.6     18.2         193      3775
+343     50.8     19.0         210      4100
+344     50.2     18.7         198      3775</code></pre>
 </div>
 </div>
 </div>
@@ -1568,20 +2252,351 @@ Levels: apple pear</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">select</span>(penguins, <span class="fu">starts_with</span>(<span class="st">&quot;bill&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 2
-   bill_length_mm bill_depth_mm
-            &lt;dbl&gt;         &lt;dbl&gt;
- 1           39.1          18.7
- 2           39.5          17.4
- 3           40.3          18  
- 4           NA            NA  
- 5           36.7          19.3
- 6           39.3          20.6
- 7           38.9          17.8
- 8           39.2          19.6
- 9           34.1          18.1
-10           42            20.2
-# ℹ 334 more rows</code></pre>
+<pre><code>    bill_len bill_dep
+1       39.1     18.7
+2       39.5     17.4
+3       40.3     18.0
+4         NA       NA
+5       36.7     19.3
+6       39.3     20.6
+7       38.9     17.8
+8       39.2     19.6
+9       34.1     18.1
+10      42.0     20.2
+11      37.8     17.1
+12      37.8     17.3
+13      41.1     17.6
+14      38.6     21.2
+15      34.6     21.1
+16      36.6     17.8
+17      38.7     19.0
+18      42.5     20.7
+19      34.4     18.4
+20      46.0     21.5
+21      37.8     18.3
+22      37.7     18.7
+23      35.9     19.2
+24      38.2     18.1
+25      38.8     17.2
+26      35.3     18.9
+27      40.6     18.6
+28      40.5     17.9
+29      37.9     18.6
+30      40.5     18.9
+31      39.5     16.7
+32      37.2     18.1
+33      39.5     17.8
+34      40.9     18.9
+35      36.4     17.0
+36      39.2     21.1
+37      38.8     20.0
+38      42.2     18.5
+39      37.6     19.3
+40      39.8     19.1
+41      36.5     18.0
+42      40.8     18.4
+43      36.0     18.5
+44      44.1     19.7
+45      37.0     16.9
+46      39.6     18.8
+47      41.1     19.0
+48      37.5     18.9
+49      36.0     17.9
+50      42.3     21.2
+51      39.6     17.7
+52      40.1     18.9
+53      35.0     17.9
+54      42.0     19.5
+55      34.5     18.1
+56      41.4     18.6
+57      39.0     17.5
+58      40.6     18.8
+59      36.5     16.6
+60      37.6     19.1
+61      35.7     16.9
+62      41.3     21.1
+63      37.6     17.0
+64      41.1     18.2
+65      36.4     17.1
+66      41.6     18.0
+67      35.5     16.2
+68      41.1     19.1
+69      35.9     16.6
+70      41.8     19.4
+71      33.5     19.0
+72      39.7     18.4
+73      39.6     17.2
+74      45.8     18.9
+75      35.5     17.5
+76      42.8     18.5
+77      40.9     16.8
+78      37.2     19.4
+79      36.2     16.1
+80      42.1     19.1
+81      34.6     17.2
+82      42.9     17.6
+83      36.7     18.8
+84      35.1     19.4
+85      37.3     17.8
+86      41.3     20.3
+87      36.3     19.5
+88      36.9     18.6
+89      38.3     19.2
+90      38.9     18.8
+91      35.7     18.0
+92      41.1     18.1
+93      34.0     17.1
+94      39.6     18.1
+95      36.2     17.3
+96      40.8     18.9
+97      38.1     18.6
+98      40.3     18.5
+99      33.1     16.1
+100     43.2     18.5
+101     35.0     17.9
+102     41.0     20.0
+103     37.7     16.0
+104     37.8     20.0
+105     37.9     18.6
+106     39.7     18.9
+107     38.6     17.2
+108     38.2     20.0
+109     38.1     17.0
+110     43.2     19.0
+111     38.1     16.5
+112     45.6     20.3
+113     39.7     17.7
+114     42.2     19.5
+115     39.6     20.7
+116     42.7     18.3
+117     38.6     17.0
+118     37.3     20.5
+119     35.7     17.0
+120     41.1     18.6
+121     36.2     17.2
+122     37.7     19.8
+123     40.2     17.0
+124     41.4     18.5
+125     35.2     15.9
+126     40.6     19.0
+127     38.8     17.6
+128     41.5     18.3
+129     39.0     17.1
+130     44.1     18.0
+131     38.5     17.9
+132     43.1     19.2
+133     36.8     18.5
+134     37.5     18.5
+135     38.1     17.6
+136     41.1     17.5
+137     35.6     17.5
+138     40.2     20.1
+139     37.0     16.5
+140     39.7     17.9
+141     40.2     17.1
+142     40.6     17.2
+143     32.1     15.5
+144     40.7     17.0
+145     37.3     16.8
+146     39.0     18.7
+147     39.2     18.6
+148     36.6     18.4
+149     36.0     17.8
+150     37.8     18.1
+151     36.0     17.1
+152     41.5     18.5
+153     46.1     13.2
+154     50.0     16.3
+155     48.7     14.1
+156     50.0     15.2
+157     47.6     14.5
+158     46.5     13.5
+159     45.4     14.6
+160     46.7     15.3
+161     43.3     13.4
+162     46.8     15.4
+163     40.9     13.7
+164     49.0     16.1
+165     45.5     13.7
+166     48.4     14.6
+167     45.8     14.6
+168     49.3     15.7
+169     42.0     13.5
+170     49.2     15.2
+171     46.2     14.5
+172     48.7     15.1
+173     50.2     14.3
+174     45.1     14.5
+175     46.5     14.5
+176     46.3     15.8
+177     42.9     13.1
+178     46.1     15.1
+179     44.5     14.3
+180     47.8     15.0
+181     48.2     14.3
+182     50.0     15.3
+183     47.3     15.3
+184     42.8     14.2
+185     45.1     14.5
+186     59.6     17.0
+187     49.1     14.8
+188     48.4     16.3
+189     42.6     13.7
+190     44.4     17.3
+191     44.0     13.6
+192     48.7     15.7
+193     42.7     13.7
+194     49.6     16.0
+195     45.3     13.7
+196     49.6     15.0
+197     50.5     15.9
+198     43.6     13.9
+199     45.5     13.9
+200     50.5     15.9
+201     44.9     13.3
+202     45.2     15.8
+203     46.6     14.2
+204     48.5     14.1
+205     45.1     14.4
+206     50.1     15.0
+207     46.5     14.4
+208     45.0     15.4
+209     43.8     13.9
+210     45.5     15.0
+211     43.2     14.5
+212     50.4     15.3
+213     45.3     13.8
+214     46.2     14.9
+215     45.7     13.9
+216     54.3     15.7
+217     45.8     14.2
+218     49.8     16.8
+219     46.2     14.4
+220     49.5     16.2
+221     43.5     14.2
+222     50.7     15.0
+223     47.7     15.0
+224     46.4     15.6
+225     48.2     15.6
+226     46.5     14.8
+227     46.4     15.0
+228     48.6     16.0
+229     47.5     14.2
+230     51.1     16.3
+231     45.2     13.8
+232     45.2     16.4
+233     49.1     14.5
+234     52.5     15.6
+235     47.4     14.6
+236     50.0     15.9
+237     44.9     13.8
+238     50.8     17.3
+239     43.4     14.4
+240     51.3     14.2
+241     47.5     14.0
+242     52.1     17.0
+243     47.5     15.0
+244     52.2     17.1
+245     45.5     14.5
+246     49.5     16.1
+247     44.5     14.7
+248     50.8     15.7
+249     49.4     15.8
+250     46.9     14.6
+251     48.4     14.4
+252     51.1     16.5
+253     48.5     15.0
+254     55.9     17.0
+255     47.2     15.5
+256     49.1     15.0
+257     47.3     13.8
+258     46.8     16.1
+259     41.7     14.7
+260     53.4     15.8
+261     43.3     14.0
+262     48.1     15.1
+263     50.5     15.2
+264     49.8     15.9
+265     43.5     15.2
+266     51.5     16.3
+267     46.2     14.1
+268     55.1     16.0
+269     44.5     15.7
+270     48.8     16.2
+271     47.2     13.7
+272       NA       NA
+273     46.8     14.3
+274     50.4     15.7
+275     45.2     14.8
+276     49.9     16.1
+277     46.5     17.9
+278     50.0     19.5
+279     51.3     19.2
+280     45.4     18.7
+281     52.7     19.8
+282     45.2     17.8
+283     46.1     18.2
+284     51.3     18.2
+285     46.0     18.9
+286     51.3     19.9
+287     46.6     17.8
+288     51.7     20.3
+289     47.0     17.3
+290     52.0     18.1
+291     45.9     17.1
+292     50.5     19.6
+293     50.3     20.0
+294     58.0     17.8
+295     46.4     18.6
+296     49.2     18.2
+297     42.4     17.3
+298     48.5     17.5
+299     43.2     16.6
+300     50.6     19.4
+301     46.7     17.9
+302     52.0     19.0
+303     50.5     18.4
+304     49.5     19.0
+305     46.4     17.8
+306     52.8     20.0
+307     40.9     16.6
+308     54.2     20.8
+309     42.5     16.7
+310     51.0     18.8
+311     49.7     18.6
+312     47.5     16.8
+313     47.6     18.3
+314     52.0     20.7
+315     46.9     16.6
+316     53.5     19.9
+317     49.0     19.5
+318     46.2     17.5
+319     50.9     19.1
+320     45.5     17.0
+321     50.9     17.9
+322     50.8     18.5
+323     50.1     17.9
+324     49.0     19.6
+325     51.5     18.7
+326     49.8     17.3
+327     48.1     16.4
+328     51.4     19.0
+329     45.7     17.3
+330     50.7     19.7
+331     42.5     17.3
+332     52.2     18.8
+333     45.2     16.6
+334     49.3     19.9
+335     50.2     18.8
+336     45.6     19.4
+337     51.9     19.5
+338     46.8     16.5
+339     45.7     17.0
+340     55.8     19.8
+341     43.5     18.1
+342     49.6     18.2
+343     50.8     19.0
+344     50.2     18.7</code></pre>
 </div>
 </div>
 </div>
@@ -1589,20 +2604,351 @@ Levels: apple pear</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">select</span>(penguins, <span class="fu">where</span>(is.numeric))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 5
-   bill_length_mm bill_depth_mm flipper_length_mm body_mass_g  year
-            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt; &lt;int&gt;
- 1           39.1          18.7               181        3750  2007
- 2           39.5          17.4               186        3800  2007
- 3           40.3          18                 195        3250  2007
- 4           NA            NA                  NA          NA  2007
- 5           36.7          19.3               193        3450  2007
- 6           39.3          20.6               190        3650  2007
- 7           38.9          17.8               181        3625  2007
- 8           39.2          19.6               195        4675  2007
- 9           34.1          18.1               193        3475  2007
-10           42            20.2               190        4250  2007
-# ℹ 334 more rows</code></pre>
+<pre><code>    bill_len bill_dep flipper_len body_mass year
+1       39.1     18.7         181      3750 2007
+2       39.5     17.4         186      3800 2007
+3       40.3     18.0         195      3250 2007
+4         NA       NA          NA        NA 2007
+5       36.7     19.3         193      3450 2007
+6       39.3     20.6         190      3650 2007
+7       38.9     17.8         181      3625 2007
+8       39.2     19.6         195      4675 2007
+9       34.1     18.1         193      3475 2007
+10      42.0     20.2         190      4250 2007
+11      37.8     17.1         186      3300 2007
+12      37.8     17.3         180      3700 2007
+13      41.1     17.6         182      3200 2007
+14      38.6     21.2         191      3800 2007
+15      34.6     21.1         198      4400 2007
+16      36.6     17.8         185      3700 2007
+17      38.7     19.0         195      3450 2007
+18      42.5     20.7         197      4500 2007
+19      34.4     18.4         184      3325 2007
+20      46.0     21.5         194      4200 2007
+21      37.8     18.3         174      3400 2007
+22      37.7     18.7         180      3600 2007
+23      35.9     19.2         189      3800 2007
+24      38.2     18.1         185      3950 2007
+25      38.8     17.2         180      3800 2007
+26      35.3     18.9         187      3800 2007
+27      40.6     18.6         183      3550 2007
+28      40.5     17.9         187      3200 2007
+29      37.9     18.6         172      3150 2007
+30      40.5     18.9         180      3950 2007
+31      39.5     16.7         178      3250 2007
+32      37.2     18.1         178      3900 2007
+33      39.5     17.8         188      3300 2007
+34      40.9     18.9         184      3900 2007
+35      36.4     17.0         195      3325 2007
+36      39.2     21.1         196      4150 2007
+37      38.8     20.0         190      3950 2007
+38      42.2     18.5         180      3550 2007
+39      37.6     19.3         181      3300 2007
+40      39.8     19.1         184      4650 2007
+41      36.5     18.0         182      3150 2007
+42      40.8     18.4         195      3900 2007
+43      36.0     18.5         186      3100 2007
+44      44.1     19.7         196      4400 2007
+45      37.0     16.9         185      3000 2007
+46      39.6     18.8         190      4600 2007
+47      41.1     19.0         182      3425 2007
+48      37.5     18.9         179      2975 2007
+49      36.0     17.9         190      3450 2007
+50      42.3     21.2         191      4150 2007
+51      39.6     17.7         186      3500 2008
+52      40.1     18.9         188      4300 2008
+53      35.0     17.9         190      3450 2008
+54      42.0     19.5         200      4050 2008
+55      34.5     18.1         187      2900 2008
+56      41.4     18.6         191      3700 2008
+57      39.0     17.5         186      3550 2008
+58      40.6     18.8         193      3800 2008
+59      36.5     16.6         181      2850 2008
+60      37.6     19.1         194      3750 2008
+61      35.7     16.9         185      3150 2008
+62      41.3     21.1         195      4400 2008
+63      37.6     17.0         185      3600 2008
+64      41.1     18.2         192      4050 2008
+65      36.4     17.1         184      2850 2008
+66      41.6     18.0         192      3950 2008
+67      35.5     16.2         195      3350 2008
+68      41.1     19.1         188      4100 2008
+69      35.9     16.6         190      3050 2008
+70      41.8     19.4         198      4450 2008
+71      33.5     19.0         190      3600 2008
+72      39.7     18.4         190      3900 2008
+73      39.6     17.2         196      3550 2008
+74      45.8     18.9         197      4150 2008
+75      35.5     17.5         190      3700 2008
+76      42.8     18.5         195      4250 2008
+77      40.9     16.8         191      3700 2008
+78      37.2     19.4         184      3900 2008
+79      36.2     16.1         187      3550 2008
+80      42.1     19.1         195      4000 2008
+81      34.6     17.2         189      3200 2008
+82      42.9     17.6         196      4700 2008
+83      36.7     18.8         187      3800 2008
+84      35.1     19.4         193      4200 2008
+85      37.3     17.8         191      3350 2008
+86      41.3     20.3         194      3550 2008
+87      36.3     19.5         190      3800 2008
+88      36.9     18.6         189      3500 2008
+89      38.3     19.2         189      3950 2008
+90      38.9     18.8         190      3600 2008
+91      35.7     18.0         202      3550 2008
+92      41.1     18.1         205      4300 2008
+93      34.0     17.1         185      3400 2008
+94      39.6     18.1         186      4450 2008
+95      36.2     17.3         187      3300 2008
+96      40.8     18.9         208      4300 2008
+97      38.1     18.6         190      3700 2008
+98      40.3     18.5         196      4350 2008
+99      33.1     16.1         178      2900 2008
+100     43.2     18.5         192      4100 2008
+101     35.0     17.9         192      3725 2009
+102     41.0     20.0         203      4725 2009
+103     37.7     16.0         183      3075 2009
+104     37.8     20.0         190      4250 2009
+105     37.9     18.6         193      2925 2009
+106     39.7     18.9         184      3550 2009
+107     38.6     17.2         199      3750 2009
+108     38.2     20.0         190      3900 2009
+109     38.1     17.0         181      3175 2009
+110     43.2     19.0         197      4775 2009
+111     38.1     16.5         198      3825 2009
+112     45.6     20.3         191      4600 2009
+113     39.7     17.7         193      3200 2009
+114     42.2     19.5         197      4275 2009
+115     39.6     20.7         191      3900 2009
+116     42.7     18.3         196      4075 2009
+117     38.6     17.0         188      2900 2009
+118     37.3     20.5         199      3775 2009
+119     35.7     17.0         189      3350 2009
+120     41.1     18.6         189      3325 2009
+121     36.2     17.2         187      3150 2009
+122     37.7     19.8         198      3500 2009
+123     40.2     17.0         176      3450 2009
+124     41.4     18.5         202      3875 2009
+125     35.2     15.9         186      3050 2009
+126     40.6     19.0         199      4000 2009
+127     38.8     17.6         191      3275 2009
+128     41.5     18.3         195      4300 2009
+129     39.0     17.1         191      3050 2009
+130     44.1     18.0         210      4000 2009
+131     38.5     17.9         190      3325 2009
+132     43.1     19.2         197      3500 2009
+133     36.8     18.5         193      3500 2009
+134     37.5     18.5         199      4475 2009
+135     38.1     17.6         187      3425 2009
+136     41.1     17.5         190      3900 2009
+137     35.6     17.5         191      3175 2009
+138     40.2     20.1         200      3975 2009
+139     37.0     16.5         185      3400 2009
+140     39.7     17.9         193      4250 2009
+141     40.2     17.1         193      3400 2009
+142     40.6     17.2         187      3475 2009
+143     32.1     15.5         188      3050 2009
+144     40.7     17.0         190      3725 2009
+145     37.3     16.8         192      3000 2009
+146     39.0     18.7         185      3650 2009
+147     39.2     18.6         190      4250 2009
+148     36.6     18.4         184      3475 2009
+149     36.0     17.8         195      3450 2009
+150     37.8     18.1         193      3750 2009
+151     36.0     17.1         187      3700 2009
+152     41.5     18.5         201      4000 2009
+153     46.1     13.2         211      4500 2007
+154     50.0     16.3         230      5700 2007
+155     48.7     14.1         210      4450 2007
+156     50.0     15.2         218      5700 2007
+157     47.6     14.5         215      5400 2007
+158     46.5     13.5         210      4550 2007
+159     45.4     14.6         211      4800 2007
+160     46.7     15.3         219      5200 2007
+161     43.3     13.4         209      4400 2007
+162     46.8     15.4         215      5150 2007
+163     40.9     13.7         214      4650 2007
+164     49.0     16.1         216      5550 2007
+165     45.5     13.7         214      4650 2007
+166     48.4     14.6         213      5850 2007
+167     45.8     14.6         210      4200 2007
+168     49.3     15.7         217      5850 2007
+169     42.0     13.5         210      4150 2007
+170     49.2     15.2         221      6300 2007
+171     46.2     14.5         209      4800 2007
+172     48.7     15.1         222      5350 2007
+173     50.2     14.3         218      5700 2007
+174     45.1     14.5         215      5000 2007
+175     46.5     14.5         213      4400 2007
+176     46.3     15.8         215      5050 2007
+177     42.9     13.1         215      5000 2007
+178     46.1     15.1         215      5100 2007
+179     44.5     14.3         216      4100 2007
+180     47.8     15.0         215      5650 2007
+181     48.2     14.3         210      4600 2007
+182     50.0     15.3         220      5550 2007
+183     47.3     15.3         222      5250 2007
+184     42.8     14.2         209      4700 2007
+185     45.1     14.5         207      5050 2007
+186     59.6     17.0         230      6050 2007
+187     49.1     14.8         220      5150 2008
+188     48.4     16.3         220      5400 2008
+189     42.6     13.7         213      4950 2008
+190     44.4     17.3         219      5250 2008
+191     44.0     13.6         208      4350 2008
+192     48.7     15.7         208      5350 2008
+193     42.7     13.7         208      3950 2008
+194     49.6     16.0         225      5700 2008
+195     45.3     13.7         210      4300 2008
+196     49.6     15.0         216      4750 2008
+197     50.5     15.9         222      5550 2008
+198     43.6     13.9         217      4900 2008
+199     45.5     13.9         210      4200 2008
+200     50.5     15.9         225      5400 2008
+201     44.9     13.3         213      5100 2008
+202     45.2     15.8         215      5300 2008
+203     46.6     14.2         210      4850 2008
+204     48.5     14.1         220      5300 2008
+205     45.1     14.4         210      4400 2008
+206     50.1     15.0         225      5000 2008
+207     46.5     14.4         217      4900 2008
+208     45.0     15.4         220      5050 2008
+209     43.8     13.9         208      4300 2008
+210     45.5     15.0         220      5000 2008
+211     43.2     14.5         208      4450 2008
+212     50.4     15.3         224      5550 2008
+213     45.3     13.8         208      4200 2008
+214     46.2     14.9         221      5300 2008
+215     45.7     13.9         214      4400 2008
+216     54.3     15.7         231      5650 2008
+217     45.8     14.2         219      4700 2008
+218     49.8     16.8         230      5700 2008
+219     46.2     14.4         214      4650 2008
+220     49.5     16.2         229      5800 2008
+221     43.5     14.2         220      4700 2008
+222     50.7     15.0         223      5550 2008
+223     47.7     15.0         216      4750 2008
+224     46.4     15.6         221      5000 2008
+225     48.2     15.6         221      5100 2008
+226     46.5     14.8         217      5200 2008
+227     46.4     15.0         216      4700 2008
+228     48.6     16.0         230      5800 2008
+229     47.5     14.2         209      4600 2008
+230     51.1     16.3         220      6000 2008
+231     45.2     13.8         215      4750 2008
+232     45.2     16.4         223      5950 2008
+233     49.1     14.5         212      4625 2009
+234     52.5     15.6         221      5450 2009
+235     47.4     14.6         212      4725 2009
+236     50.0     15.9         224      5350 2009
+237     44.9     13.8         212      4750 2009
+238     50.8     17.3         228      5600 2009
+239     43.4     14.4         218      4600 2009
+240     51.3     14.2         218      5300 2009
+241     47.5     14.0         212      4875 2009
+242     52.1     17.0         230      5550 2009
+243     47.5     15.0         218      4950 2009
+244     52.2     17.1         228      5400 2009
+245     45.5     14.5         212      4750 2009
+246     49.5     16.1         224      5650 2009
+247     44.5     14.7         214      4850 2009
+248     50.8     15.7         226      5200 2009
+249     49.4     15.8         216      4925 2009
+250     46.9     14.6         222      4875 2009
+251     48.4     14.4         203      4625 2009
+252     51.1     16.5         225      5250 2009
+253     48.5     15.0         219      4850 2009
+254     55.9     17.0         228      5600 2009
+255     47.2     15.5         215      4975 2009
+256     49.1     15.0         228      5500 2009
+257     47.3     13.8         216      4725 2009
+258     46.8     16.1         215      5500 2009
+259     41.7     14.7         210      4700 2009
+260     53.4     15.8         219      5500 2009
+261     43.3     14.0         208      4575 2009
+262     48.1     15.1         209      5500 2009
+263     50.5     15.2         216      5000 2009
+264     49.8     15.9         229      5950 2009
+265     43.5     15.2         213      4650 2009
+266     51.5     16.3         230      5500 2009
+267     46.2     14.1         217      4375 2009
+268     55.1     16.0         230      5850 2009
+269     44.5     15.7         217      4875 2009
+270     48.8     16.2         222      6000 2009
+271     47.2     13.7         214      4925 2009
+272       NA       NA          NA        NA 2009
+273     46.8     14.3         215      4850 2009
+274     50.4     15.7         222      5750 2009
+275     45.2     14.8         212      5200 2009
+276     49.9     16.1         213      5400 2009
+277     46.5     17.9         192      3500 2007
+278     50.0     19.5         196      3900 2007
+279     51.3     19.2         193      3650 2007
+280     45.4     18.7         188      3525 2007
+281     52.7     19.8         197      3725 2007
+282     45.2     17.8         198      3950 2007
+283     46.1     18.2         178      3250 2007
+284     51.3     18.2         197      3750 2007
+285     46.0     18.9         195      4150 2007
+286     51.3     19.9         198      3700 2007
+287     46.6     17.8         193      3800 2007
+288     51.7     20.3         194      3775 2007
+289     47.0     17.3         185      3700 2007
+290     52.0     18.1         201      4050 2007
+291     45.9     17.1         190      3575 2007
+292     50.5     19.6         201      4050 2007
+293     50.3     20.0         197      3300 2007
+294     58.0     17.8         181      3700 2007
+295     46.4     18.6         190      3450 2007
+296     49.2     18.2         195      4400 2007
+297     42.4     17.3         181      3600 2007
+298     48.5     17.5         191      3400 2007
+299     43.2     16.6         187      2900 2007
+300     50.6     19.4         193      3800 2007
+301     46.7     17.9         195      3300 2007
+302     52.0     19.0         197      4150 2007
+303     50.5     18.4         200      3400 2008
+304     49.5     19.0         200      3800 2008
+305     46.4     17.8         191      3700 2008
+306     52.8     20.0         205      4550 2008
+307     40.9     16.6         187      3200 2008
+308     54.2     20.8         201      4300 2008
+309     42.5     16.7         187      3350 2008
+310     51.0     18.8         203      4100 2008
+311     49.7     18.6         195      3600 2008
+312     47.5     16.8         199      3900 2008
+313     47.6     18.3         195      3850 2008
+314     52.0     20.7         210      4800 2008
+315     46.9     16.6         192      2700 2008
+316     53.5     19.9         205      4500 2008
+317     49.0     19.5         210      3950 2008
+318     46.2     17.5         187      3650 2008
+319     50.9     19.1         196      3550 2008
+320     45.5     17.0         196      3500 2008
+321     50.9     17.9         196      3675 2009
+322     50.8     18.5         201      4450 2009
+323     50.1     17.9         190      3400 2009
+324     49.0     19.6         212      4300 2009
+325     51.5     18.7         187      3250 2009
+326     49.8     17.3         198      3675 2009
+327     48.1     16.4         199      3325 2009
+328     51.4     19.0         201      3950 2009
+329     45.7     17.3         193      3600 2009
+330     50.7     19.7         203      4050 2009
+331     42.5     17.3         187      3350 2009
+332     52.2     18.8         197      3450 2009
+333     45.2     16.6         191      3250 2009
+334     49.3     19.9         203      4050 2009
+335     50.2     18.8         202      3800 2009
+336     45.6     19.4         194      3525 2009
+337     51.9     19.5         206      3950 2009
+338     46.8     16.5         189      3650 2009
+339     45.7     17.0         195      3650 2009
+340     55.8     19.8         207      4000 2009
+341     43.5     18.1         202      3400 2009
+342     49.6     18.2         193      3775 2009
+343     50.8     19.0         210      4100 2009
+344     50.2     18.7         198      3775 2009</code></pre>
 </div>
 </div>
 </div>
@@ -1729,69 +3075,1062 @@ Levels: apple pear</code></pre>
 <div id="tabset-6-1">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb72-2"><a></a>  <span class="fu">select</span>(species, sex, flipper_length_mm) <span class="sc">|&gt;</span></span>
-<span id="cb72-3"><a></a>  <span class="fu">arrange</span>(flipper_length_mm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb72-2"><a></a>  <span class="fu">select</span>(species, sex, flipper_len) <span class="sc">|&gt;</span></span>
+<span id="cb72-3"><a></a>  <span class="fu">arrange</span>(flipper_len)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 3
-   species   sex    flipper_length_mm
-   &lt;fct&gt;     &lt;fct&gt;              &lt;int&gt;
- 1 Adelie    female               172
- 2 Adelie    female               174
- 3 Adelie    female               176
- 4 Adelie    female               178
- 5 Adelie    male                 178
- 6 Adelie    female               178
- 7 Chinstrap female               178
- 8 Adelie    &lt;NA&gt;                 179
- 9 Adelie    &lt;NA&gt;                 180
-10 Adelie    male                 180
-# ℹ 334 more rows</code></pre>
+<pre><code>      species    sex flipper_len
+1      Adelie female         172
+2      Adelie female         174
+3      Adelie female         176
+4      Adelie female         178
+5      Adelie   male         178
+6      Adelie female         178
+7   Chinstrap female         178
+8      Adelie   &lt;NA&gt;         179
+9      Adelie   &lt;NA&gt;         180
+10     Adelie   male         180
+11     Adelie   male         180
+12     Adelie   male         180
+13     Adelie female         180
+14     Adelie   male         181
+15     Adelie female         181
+16     Adelie female         181
+17     Adelie female         181
+18     Adelie female         181
+19  Chinstrap female         181
+20  Chinstrap female         181
+21     Adelie female         182
+22     Adelie female         182
+23     Adelie   male         182
+24     Adelie   male         183
+25     Adelie female         183
+26     Adelie female         184
+27     Adelie   male         184
+28     Adelie   male         184
+29     Adelie female         184
+30     Adelie   male         184
+31     Adelie   male         184
+32     Adelie female         184
+33     Adelie female         185
+34     Adelie   male         185
+35     Adelie female         185
+36     Adelie female         185
+37     Adelie female         185
+38     Adelie female         185
+39     Adelie female         185
+40     Adelie   male         185
+41  Chinstrap female         185
+42     Adelie female         186
+43     Adelie   &lt;NA&gt;         186
+44     Adelie female         186
+45     Adelie female         186
+46     Adelie female         186
+47     Adelie   male         186
+48     Adelie female         186
+49     Adelie female         187
+50     Adelie female         187
+51     Adelie female         187
+52     Adelie female         187
+53     Adelie female         187
+54     Adelie female         187
+55     Adelie female         187
+56     Adelie female         187
+57     Adelie   male         187
+58     Adelie female         187
+59  Chinstrap female         187
+60  Chinstrap female         187
+61  Chinstrap female         187
+62  Chinstrap female         187
+63  Chinstrap   male         187
+64  Chinstrap female         187
+65     Adelie female         188
+66     Adelie   male         188
+67     Adelie   male         188
+68     Adelie female         188
+69     Adelie female         188
+70  Chinstrap female         188
+71     Adelie female         189
+72     Adelie female         189
+73     Adelie female         189
+74     Adelie   male         189
+75     Adelie female         189
+76     Adelie   male         189
+77  Chinstrap female         189
+78     Adelie   male         190
+79     Adelie   &lt;NA&gt;         190
+80     Adelie   male         190
+81     Adelie   male         190
+82     Adelie female         190
+83     Adelie female         190
+84     Adelie female         190
+85     Adelie female         190
+86     Adelie   male         190
+87     Adelie female         190
+88     Adelie   male         190
+89     Adelie female         190
+90     Adelie female         190
+91     Adelie   male         190
+92     Adelie   male         190
+93     Adelie female         190
+94     Adelie   male         190
+95     Adelie   male         190
+96     Adelie   male         190
+97  Chinstrap female         190
+98  Chinstrap female         190
+99  Chinstrap female         190
+100    Adelie   male         191
+101    Adelie   male         191
+102    Adelie   male         191
+103    Adelie female         191
+104    Adelie female         191
+105    Adelie   male         191
+106    Adelie female         191
+107    Adelie female         191
+108    Adelie female         191
+109    Adelie female         191
+110 Chinstrap   male         191
+111 Chinstrap female         191
+112 Chinstrap female         191
+113    Adelie   male         192
+114    Adelie   male         192
+115    Adelie   male         192
+116    Adelie female         192
+117    Adelie female         192
+118 Chinstrap female         192
+119 Chinstrap female         192
+120    Adelie female         193
+121    Adelie   &lt;NA&gt;         193
+122    Adelie   male         193
+123    Adelie   male         193
+124    Adelie female         193
+125    Adelie female         193
+126    Adelie female         193
+127    Adelie   male         193
+128    Adelie female         193
+129    Adelie   male         193
+130 Chinstrap   male         193
+131 Chinstrap female         193
+132 Chinstrap   male         193
+133 Chinstrap female         193
+134 Chinstrap   male         193
+135    Adelie   male         194
+136    Adelie   male         194
+137    Adelie   male         194
+138 Chinstrap   male         194
+139 Chinstrap female         194
+140    Adelie female         195
+141    Adelie   male         195
+142    Adelie female         195
+143    Adelie female         195
+144    Adelie   male         195
+145    Adelie   male         195
+146    Adelie female         195
+147    Adelie   male         195
+148    Adelie   male         195
+149    Adelie   male         195
+150    Adelie female         195
+151 Chinstrap female         195
+152 Chinstrap   male         195
+153 Chinstrap female         195
+154 Chinstrap   male         195
+155 Chinstrap female         195
+156 Chinstrap female         195
+157    Adelie   male         196
+158    Adelie   male         196
+159    Adelie female         196
+160    Adelie   male         196
+161    Adelie   male         196
+162    Adelie   male         196
+163 Chinstrap   male         196
+164 Chinstrap   male         196
+165 Chinstrap female         196
+166 Chinstrap female         196
+167    Adelie   male         197
+168    Adelie   male         197
+169    Adelie   male         197
+170    Adelie   male         197
+171    Adelie   male         197
+172 Chinstrap   male         197
+173 Chinstrap   male         197
+174 Chinstrap   male         197
+175 Chinstrap   male         197
+176 Chinstrap   male         197
+177    Adelie   male         198
+178    Adelie   male         198
+179    Adelie female         198
+180    Adelie   male         198
+181 Chinstrap female         198
+182 Chinstrap   male         198
+183 Chinstrap female         198
+184 Chinstrap female         198
+185    Adelie female         199
+186    Adelie   male         199
+187    Adelie   male         199
+188    Adelie   male         199
+189 Chinstrap female         199
+190 Chinstrap female         199
+191    Adelie   male         200
+192    Adelie   male         200
+193 Chinstrap female         200
+194 Chinstrap   male         200
+195    Adelie   male         201
+196 Chinstrap   male         201
+197 Chinstrap   male         201
+198 Chinstrap   male         201
+199 Chinstrap   male         201
+200 Chinstrap   male         201
+201    Adelie female         202
+202    Adelie   male         202
+203 Chinstrap   male         202
+204 Chinstrap female         202
+205    Adelie   male         203
+206    Gentoo female         203
+207 Chinstrap   male         203
+208 Chinstrap   male         203
+209 Chinstrap   male         203
+210    Adelie   male         205
+211 Chinstrap   male         205
+212 Chinstrap   male         205
+213 Chinstrap   male         206
+214    Gentoo female         207
+215 Chinstrap   male         207
+216    Adelie   male         208
+217    Gentoo female         208
+218    Gentoo   male         208
+219    Gentoo female         208
+220    Gentoo female         208
+221    Gentoo female         208
+222    Gentoo female         208
+223    Gentoo female         208
+224    Gentoo female         209
+225    Gentoo female         209
+226    Gentoo female         209
+227    Gentoo female         209
+228    Gentoo   male         209
+229    Adelie   male         210
+230    Gentoo female         210
+231    Gentoo female         210
+232    Gentoo female         210
+233    Gentoo female         210
+234    Gentoo female         210
+235    Gentoo female         210
+236    Gentoo female         210
+237    Gentoo female         210
+238    Gentoo female         210
+239    Gentoo female         210
+240 Chinstrap   male         210
+241 Chinstrap   male         210
+242 Chinstrap   male         210
+243    Gentoo female         211
+244    Gentoo female         211
+245    Gentoo female         212
+246    Gentoo female         212
+247    Gentoo female         212
+248    Gentoo female         212
+249    Gentoo female         212
+250    Gentoo female         212
+251 Chinstrap   male         212
+252    Gentoo   male         213
+253    Gentoo female         213
+254    Gentoo female         213
+255    Gentoo female         213
+256    Gentoo female         213
+257    Gentoo   male         213
+258    Gentoo female         214
+259    Gentoo female         214
+260    Gentoo female         214
+261    Gentoo   &lt;NA&gt;         214
+262    Gentoo female         214
+263    Gentoo female         214
+264    Gentoo   male         215
+265    Gentoo   male         215
+266    Gentoo female         215
+267    Gentoo   male         215
+268    Gentoo female         215
+269    Gentoo   male         215
+270    Gentoo   male         215
+271    Gentoo   male         215
+272    Gentoo female         215
+273    Gentoo female         215
+274    Gentoo   male         215
+275    Gentoo female         215
+276    Gentoo   male         216
+277    Gentoo   &lt;NA&gt;         216
+278    Gentoo   male         216
+279    Gentoo female         216
+280    Gentoo female         216
+281    Gentoo   male         216
+282    Gentoo   &lt;NA&gt;         216
+283    Gentoo female         216
+284    Gentoo   male         217
+285    Gentoo female         217
+286    Gentoo female         217
+287    Gentoo female         217
+288    Gentoo female         217
+289    Gentoo   &lt;NA&gt;         217
+290    Gentoo   male         218
+291    Gentoo   male         218
+292    Gentoo female         218
+293    Gentoo   male         218
+294    Gentoo female         218
+295    Gentoo   male         219
+296    Gentoo   male         219
+297    Gentoo female         219
+298    Gentoo female         219
+299    Gentoo   male         219
+300    Gentoo   male         220
+301    Gentoo female         220
+302    Gentoo   male         220
+303    Gentoo   male         220
+304    Gentoo   male         220
+305    Gentoo   male         220
+306    Gentoo female         220
+307    Gentoo   male         220
+308    Gentoo   male         221
+309    Gentoo   male         221
+310    Gentoo   male         221
+311    Gentoo   male         221
+312    Gentoo   male         221
+313    Gentoo   male         222
+314    Gentoo   male         222
+315    Gentoo   male         222
+316    Gentoo female         222
+317    Gentoo   male         222
+318    Gentoo   male         222
+319    Gentoo   male         223
+320    Gentoo   male         223
+321    Gentoo   male         224
+322    Gentoo   male         224
+323    Gentoo   male         224
+324    Gentoo   male         225
+325    Gentoo   male         225
+326    Gentoo   male         225
+327    Gentoo   male         225
+328    Gentoo   male         226
+329    Gentoo   male         228
+330    Gentoo   male         228
+331    Gentoo   male         228
+332    Gentoo   male         228
+333    Gentoo   male         229
+334    Gentoo   male         229
+335    Gentoo   male         230
+336    Gentoo   male         230
+337    Gentoo   male         230
+338    Gentoo   male         230
+339    Gentoo   male         230
+340    Gentoo   male         230
+341    Gentoo   male         230
+342    Gentoo   male         231
+343    Adelie   &lt;NA&gt;          NA
+344    Gentoo   &lt;NA&gt;          NA</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-6-2">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb74-2"><a></a>  <span class="fu">select</span>(species, sex, flipper_length_mm) <span class="sc">|&gt;</span></span>
-<span id="cb74-3"><a></a>  <span class="fu">arrange</span>(species, flipper_length_mm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb74-2"><a></a>  <span class="fu">select</span>(species, sex, flipper_len) <span class="sc">|&gt;</span></span>
+<span id="cb74-3"><a></a>  <span class="fu">arrange</span>(species, flipper_len)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 3
-   species sex    flipper_length_mm
-   &lt;fct&gt;   &lt;fct&gt;              &lt;int&gt;
- 1 Adelie  female               172
- 2 Adelie  female               174
- 3 Adelie  female               176
- 4 Adelie  female               178
- 5 Adelie  male                 178
- 6 Adelie  female               178
- 7 Adelie  &lt;NA&gt;                 179
- 8 Adelie  &lt;NA&gt;                 180
- 9 Adelie  male                 180
-10 Adelie  male                 180
-# ℹ 334 more rows</code></pre>
+<pre><code>      species    sex flipper_len
+1      Adelie female         172
+2      Adelie female         174
+3      Adelie female         176
+4      Adelie female         178
+5      Adelie   male         178
+6      Adelie female         178
+7      Adelie   &lt;NA&gt;         179
+8      Adelie   &lt;NA&gt;         180
+9      Adelie   male         180
+10     Adelie   male         180
+11     Adelie   male         180
+12     Adelie female         180
+13     Adelie   male         181
+14     Adelie female         181
+15     Adelie female         181
+16     Adelie female         181
+17     Adelie female         181
+18     Adelie female         182
+19     Adelie female         182
+20     Adelie   male         182
+21     Adelie   male         183
+22     Adelie female         183
+23     Adelie female         184
+24     Adelie   male         184
+25     Adelie   male         184
+26     Adelie female         184
+27     Adelie   male         184
+28     Adelie   male         184
+29     Adelie female         184
+30     Adelie female         185
+31     Adelie   male         185
+32     Adelie female         185
+33     Adelie female         185
+34     Adelie female         185
+35     Adelie female         185
+36     Adelie female         185
+37     Adelie   male         185
+38     Adelie female         186
+39     Adelie   &lt;NA&gt;         186
+40     Adelie female         186
+41     Adelie female         186
+42     Adelie female         186
+43     Adelie   male         186
+44     Adelie female         186
+45     Adelie female         187
+46     Adelie female         187
+47     Adelie female         187
+48     Adelie female         187
+49     Adelie female         187
+50     Adelie female         187
+51     Adelie female         187
+52     Adelie female         187
+53     Adelie   male         187
+54     Adelie female         187
+55     Adelie female         188
+56     Adelie   male         188
+57     Adelie   male         188
+58     Adelie female         188
+59     Adelie female         188
+60     Adelie female         189
+61     Adelie female         189
+62     Adelie female         189
+63     Adelie   male         189
+64     Adelie female         189
+65     Adelie   male         189
+66     Adelie   male         190
+67     Adelie   &lt;NA&gt;         190
+68     Adelie   male         190
+69     Adelie   male         190
+70     Adelie female         190
+71     Adelie female         190
+72     Adelie female         190
+73     Adelie female         190
+74     Adelie   male         190
+75     Adelie female         190
+76     Adelie   male         190
+77     Adelie female         190
+78     Adelie female         190
+79     Adelie   male         190
+80     Adelie   male         190
+81     Adelie female         190
+82     Adelie   male         190
+83     Adelie   male         190
+84     Adelie   male         190
+85     Adelie   male         191
+86     Adelie   male         191
+87     Adelie   male         191
+88     Adelie female         191
+89     Adelie female         191
+90     Adelie   male         191
+91     Adelie female         191
+92     Adelie female         191
+93     Adelie female         191
+94     Adelie female         191
+95     Adelie   male         192
+96     Adelie   male         192
+97     Adelie   male         192
+98     Adelie female         192
+99     Adelie female         192
+100    Adelie female         193
+101    Adelie   &lt;NA&gt;         193
+102    Adelie   male         193
+103    Adelie   male         193
+104    Adelie female         193
+105    Adelie female         193
+106    Adelie female         193
+107    Adelie   male         193
+108    Adelie female         193
+109    Adelie   male         193
+110    Adelie   male         194
+111    Adelie   male         194
+112    Adelie   male         194
+113    Adelie female         195
+114    Adelie   male         195
+115    Adelie female         195
+116    Adelie female         195
+117    Adelie   male         195
+118    Adelie   male         195
+119    Adelie female         195
+120    Adelie   male         195
+121    Adelie   male         195
+122    Adelie   male         195
+123    Adelie female         195
+124    Adelie   male         196
+125    Adelie   male         196
+126    Adelie female         196
+127    Adelie   male         196
+128    Adelie   male         196
+129    Adelie   male         196
+130    Adelie   male         197
+131    Adelie   male         197
+132    Adelie   male         197
+133    Adelie   male         197
+134    Adelie   male         197
+135    Adelie   male         198
+136    Adelie   male         198
+137    Adelie female         198
+138    Adelie   male         198
+139    Adelie female         199
+140    Adelie   male         199
+141    Adelie   male         199
+142    Adelie   male         199
+143    Adelie   male         200
+144    Adelie   male         200
+145    Adelie   male         201
+146    Adelie female         202
+147    Adelie   male         202
+148    Adelie   male         203
+149    Adelie   male         205
+150    Adelie   male         208
+151    Adelie   male         210
+152    Adelie   &lt;NA&gt;          NA
+153 Chinstrap female         178
+154 Chinstrap female         181
+155 Chinstrap female         181
+156 Chinstrap female         185
+157 Chinstrap female         187
+158 Chinstrap female         187
+159 Chinstrap female         187
+160 Chinstrap female         187
+161 Chinstrap   male         187
+162 Chinstrap female         187
+163 Chinstrap female         188
+164 Chinstrap female         189
+165 Chinstrap female         190
+166 Chinstrap female         190
+167 Chinstrap female         190
+168 Chinstrap   male         191
+169 Chinstrap female         191
+170 Chinstrap female         191
+171 Chinstrap female         192
+172 Chinstrap female         192
+173 Chinstrap   male         193
+174 Chinstrap female         193
+175 Chinstrap   male         193
+176 Chinstrap female         193
+177 Chinstrap   male         193
+178 Chinstrap   male         194
+179 Chinstrap female         194
+180 Chinstrap female         195
+181 Chinstrap   male         195
+182 Chinstrap female         195
+183 Chinstrap   male         195
+184 Chinstrap female         195
+185 Chinstrap female         195
+186 Chinstrap   male         196
+187 Chinstrap   male         196
+188 Chinstrap female         196
+189 Chinstrap female         196
+190 Chinstrap   male         197
+191 Chinstrap   male         197
+192 Chinstrap   male         197
+193 Chinstrap   male         197
+194 Chinstrap   male         197
+195 Chinstrap female         198
+196 Chinstrap   male         198
+197 Chinstrap female         198
+198 Chinstrap female         198
+199 Chinstrap female         199
+200 Chinstrap female         199
+201 Chinstrap female         200
+202 Chinstrap   male         200
+203 Chinstrap   male         201
+204 Chinstrap   male         201
+205 Chinstrap   male         201
+206 Chinstrap   male         201
+207 Chinstrap   male         201
+208 Chinstrap   male         202
+209 Chinstrap female         202
+210 Chinstrap   male         203
+211 Chinstrap   male         203
+212 Chinstrap   male         203
+213 Chinstrap   male         205
+214 Chinstrap   male         205
+215 Chinstrap   male         206
+216 Chinstrap   male         207
+217 Chinstrap   male         210
+218 Chinstrap   male         210
+219 Chinstrap   male         210
+220 Chinstrap   male         212
+221    Gentoo female         203
+222    Gentoo female         207
+223    Gentoo female         208
+224    Gentoo   male         208
+225    Gentoo female         208
+226    Gentoo female         208
+227    Gentoo female         208
+228    Gentoo female         208
+229    Gentoo female         208
+230    Gentoo female         209
+231    Gentoo female         209
+232    Gentoo female         209
+233    Gentoo female         209
+234    Gentoo   male         209
+235    Gentoo female         210
+236    Gentoo female         210
+237    Gentoo female         210
+238    Gentoo female         210
+239    Gentoo female         210
+240    Gentoo female         210
+241    Gentoo female         210
+242    Gentoo female         210
+243    Gentoo female         210
+244    Gentoo female         210
+245    Gentoo female         211
+246    Gentoo female         211
+247    Gentoo female         212
+248    Gentoo female         212
+249    Gentoo female         212
+250    Gentoo female         212
+251    Gentoo female         212
+252    Gentoo female         212
+253    Gentoo   male         213
+254    Gentoo female         213
+255    Gentoo female         213
+256    Gentoo female         213
+257    Gentoo female         213
+258    Gentoo   male         213
+259    Gentoo female         214
+260    Gentoo female         214
+261    Gentoo female         214
+262    Gentoo   &lt;NA&gt;         214
+263    Gentoo female         214
+264    Gentoo female         214
+265    Gentoo   male         215
+266    Gentoo   male         215
+267    Gentoo female         215
+268    Gentoo   male         215
+269    Gentoo female         215
+270    Gentoo   male         215
+271    Gentoo   male         215
+272    Gentoo   male         215
+273    Gentoo female         215
+274    Gentoo female         215
+275    Gentoo   male         215
+276    Gentoo female         215
+277    Gentoo   male         216
+278    Gentoo   &lt;NA&gt;         216
+279    Gentoo   male         216
+280    Gentoo female         216
+281    Gentoo female         216
+282    Gentoo   male         216
+283    Gentoo   &lt;NA&gt;         216
+284    Gentoo female         216
+285    Gentoo   male         217
+286    Gentoo female         217
+287    Gentoo female         217
+288    Gentoo female         217
+289    Gentoo female         217
+290    Gentoo   &lt;NA&gt;         217
+291    Gentoo   male         218
+292    Gentoo   male         218
+293    Gentoo female         218
+294    Gentoo   male         218
+295    Gentoo female         218
+296    Gentoo   male         219
+297    Gentoo   male         219
+298    Gentoo female         219
+299    Gentoo female         219
+300    Gentoo   male         219
+301    Gentoo   male         220
+302    Gentoo female         220
+303    Gentoo   male         220
+304    Gentoo   male         220
+305    Gentoo   male         220
+306    Gentoo   male         220
+307    Gentoo female         220
+308    Gentoo   male         220
+309    Gentoo   male         221
+310    Gentoo   male         221
+311    Gentoo   male         221
+312    Gentoo   male         221
+313    Gentoo   male         221
+314    Gentoo   male         222
+315    Gentoo   male         222
+316    Gentoo   male         222
+317    Gentoo female         222
+318    Gentoo   male         222
+319    Gentoo   male         222
+320    Gentoo   male         223
+321    Gentoo   male         223
+322    Gentoo   male         224
+323    Gentoo   male         224
+324    Gentoo   male         224
+325    Gentoo   male         225
+326    Gentoo   male         225
+327    Gentoo   male         225
+328    Gentoo   male         225
+329    Gentoo   male         226
+330    Gentoo   male         228
+331    Gentoo   male         228
+332    Gentoo   male         228
+333    Gentoo   male         228
+334    Gentoo   male         229
+335    Gentoo   male         229
+336    Gentoo   male         230
+337    Gentoo   male         230
+338    Gentoo   male         230
+339    Gentoo   male         230
+340    Gentoo   male         230
+341    Gentoo   male         230
+342    Gentoo   male         230
+343    Gentoo   male         231
+344    Gentoo   &lt;NA&gt;          NA</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-6-3">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb76-2"><a></a>  <span class="fu">select</span>(species, sex, flipper_length_mm) <span class="sc">|&gt;</span></span>
-<span id="cb76-3"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(flipper_length_mm))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb76-2"><a></a>  <span class="fu">select</span>(species, sex, flipper_len) <span class="sc">|&gt;</span></span>
+<span id="cb76-3"><a></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(flipper_len))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 3
-   species sex   flipper_length_mm
-   &lt;fct&gt;   &lt;fct&gt;             &lt;int&gt;
- 1 Gentoo  male                231
- 2 Gentoo  male                230
- 3 Gentoo  male                230
- 4 Gentoo  male                230
- 5 Gentoo  male                230
- 6 Gentoo  male                230
- 7 Gentoo  male                230
- 8 Gentoo  male                230
- 9 Gentoo  male                229
-10 Gentoo  male                229
-# ℹ 334 more rows</code></pre>
+<pre><code>      species    sex flipper_len
+1      Gentoo   male         231
+2      Gentoo   male         230
+3      Gentoo   male         230
+4      Gentoo   male         230
+5      Gentoo   male         230
+6      Gentoo   male         230
+7      Gentoo   male         230
+8      Gentoo   male         230
+9      Gentoo   male         229
+10     Gentoo   male         229
+11     Gentoo   male         228
+12     Gentoo   male         228
+13     Gentoo   male         228
+14     Gentoo   male         228
+15     Gentoo   male         226
+16     Gentoo   male         225
+17     Gentoo   male         225
+18     Gentoo   male         225
+19     Gentoo   male         225
+20     Gentoo   male         224
+21     Gentoo   male         224
+22     Gentoo   male         224
+23     Gentoo   male         223
+24     Gentoo   male         223
+25     Gentoo   male         222
+26     Gentoo   male         222
+27     Gentoo   male         222
+28     Gentoo female         222
+29     Gentoo   male         222
+30     Gentoo   male         222
+31     Gentoo   male         221
+32     Gentoo   male         221
+33     Gentoo   male         221
+34     Gentoo   male         221
+35     Gentoo   male         221
+36     Gentoo   male         220
+37     Gentoo female         220
+38     Gentoo   male         220
+39     Gentoo   male         220
+40     Gentoo   male         220
+41     Gentoo   male         220
+42     Gentoo female         220
+43     Gentoo   male         220
+44     Gentoo   male         219
+45     Gentoo   male         219
+46     Gentoo female         219
+47     Gentoo female         219
+48     Gentoo   male         219
+49     Gentoo   male         218
+50     Gentoo   male         218
+51     Gentoo female         218
+52     Gentoo   male         218
+53     Gentoo female         218
+54     Gentoo   male         217
+55     Gentoo female         217
+56     Gentoo female         217
+57     Gentoo female         217
+58     Gentoo female         217
+59     Gentoo   &lt;NA&gt;         217
+60     Gentoo   male         216
+61     Gentoo   &lt;NA&gt;         216
+62     Gentoo   male         216
+63     Gentoo female         216
+64     Gentoo female         216
+65     Gentoo   male         216
+66     Gentoo   &lt;NA&gt;         216
+67     Gentoo female         216
+68     Gentoo   male         215
+69     Gentoo   male         215
+70     Gentoo female         215
+71     Gentoo   male         215
+72     Gentoo female         215
+73     Gentoo   male         215
+74     Gentoo   male         215
+75     Gentoo   male         215
+76     Gentoo female         215
+77     Gentoo female         215
+78     Gentoo   male         215
+79     Gentoo female         215
+80     Gentoo female         214
+81     Gentoo female         214
+82     Gentoo female         214
+83     Gentoo   &lt;NA&gt;         214
+84     Gentoo female         214
+85     Gentoo female         214
+86     Gentoo   male         213
+87     Gentoo female         213
+88     Gentoo female         213
+89     Gentoo female         213
+90     Gentoo female         213
+91     Gentoo   male         213
+92     Gentoo female         212
+93     Gentoo female         212
+94     Gentoo female         212
+95     Gentoo female         212
+96     Gentoo female         212
+97     Gentoo female         212
+98  Chinstrap   male         212
+99     Gentoo female         211
+100    Gentoo female         211
+101    Adelie   male         210
+102    Gentoo female         210
+103    Gentoo female         210
+104    Gentoo female         210
+105    Gentoo female         210
+106    Gentoo female         210
+107    Gentoo female         210
+108    Gentoo female         210
+109    Gentoo female         210
+110    Gentoo female         210
+111    Gentoo female         210
+112 Chinstrap   male         210
+113 Chinstrap   male         210
+114 Chinstrap   male         210
+115    Gentoo female         209
+116    Gentoo female         209
+117    Gentoo female         209
+118    Gentoo female         209
+119    Gentoo   male         209
+120    Adelie   male         208
+121    Gentoo female         208
+122    Gentoo   male         208
+123    Gentoo female         208
+124    Gentoo female         208
+125    Gentoo female         208
+126    Gentoo female         208
+127    Gentoo female         208
+128    Gentoo female         207
+129 Chinstrap   male         207
+130 Chinstrap   male         206
+131    Adelie   male         205
+132 Chinstrap   male         205
+133 Chinstrap   male         205
+134    Adelie   male         203
+135    Gentoo female         203
+136 Chinstrap   male         203
+137 Chinstrap   male         203
+138 Chinstrap   male         203
+139    Adelie female         202
+140    Adelie   male         202
+141 Chinstrap   male         202
+142 Chinstrap female         202
+143    Adelie   male         201
+144 Chinstrap   male         201
+145 Chinstrap   male         201
+146 Chinstrap   male         201
+147 Chinstrap   male         201
+148 Chinstrap   male         201
+149    Adelie   male         200
+150    Adelie   male         200
+151 Chinstrap female         200
+152 Chinstrap   male         200
+153    Adelie female         199
+154    Adelie   male         199
+155    Adelie   male         199
+156    Adelie   male         199
+157 Chinstrap female         199
+158 Chinstrap female         199
+159    Adelie   male         198
+160    Adelie   male         198
+161    Adelie female         198
+162    Adelie   male         198
+163 Chinstrap female         198
+164 Chinstrap   male         198
+165 Chinstrap female         198
+166 Chinstrap female         198
+167    Adelie   male         197
+168    Adelie   male         197
+169    Adelie   male         197
+170    Adelie   male         197
+171    Adelie   male         197
+172 Chinstrap   male         197
+173 Chinstrap   male         197
+174 Chinstrap   male         197
+175 Chinstrap   male         197
+176 Chinstrap   male         197
+177    Adelie   male         196
+178    Adelie   male         196
+179    Adelie female         196
+180    Adelie   male         196
+181    Adelie   male         196
+182    Adelie   male         196
+183 Chinstrap   male         196
+184 Chinstrap   male         196
+185 Chinstrap female         196
+186 Chinstrap female         196
+187    Adelie female         195
+188    Adelie   male         195
+189    Adelie female         195
+190    Adelie female         195
+191    Adelie   male         195
+192    Adelie   male         195
+193    Adelie female         195
+194    Adelie   male         195
+195    Adelie   male         195
+196    Adelie   male         195
+197    Adelie female         195
+198 Chinstrap female         195
+199 Chinstrap   male         195
+200 Chinstrap female         195
+201 Chinstrap   male         195
+202 Chinstrap female         195
+203 Chinstrap female         195
+204    Adelie   male         194
+205    Adelie   male         194
+206    Adelie   male         194
+207 Chinstrap   male         194
+208 Chinstrap female         194
+209    Adelie female         193
+210    Adelie   &lt;NA&gt;         193
+211    Adelie   male         193
+212    Adelie   male         193
+213    Adelie female         193
+214    Adelie female         193
+215    Adelie female         193
+216    Adelie   male         193
+217    Adelie female         193
+218    Adelie   male         193
+219 Chinstrap   male         193
+220 Chinstrap female         193
+221 Chinstrap   male         193
+222 Chinstrap female         193
+223 Chinstrap   male         193
+224    Adelie   male         192
+225    Adelie   male         192
+226    Adelie   male         192
+227    Adelie female         192
+228    Adelie female         192
+229 Chinstrap female         192
+230 Chinstrap female         192
+231    Adelie   male         191
+232    Adelie   male         191
+233    Adelie   male         191
+234    Adelie female         191
+235    Adelie female         191
+236    Adelie   male         191
+237    Adelie female         191
+238    Adelie female         191
+239    Adelie female         191
+240    Adelie female         191
+241 Chinstrap   male         191
+242 Chinstrap female         191
+243 Chinstrap female         191
+244    Adelie   male         190
+245    Adelie   &lt;NA&gt;         190
+246    Adelie   male         190
+247    Adelie   male         190
+248    Adelie female         190
+249    Adelie female         190
+250    Adelie female         190
+251    Adelie female         190
+252    Adelie   male         190
+253    Adelie female         190
+254    Adelie   male         190
+255    Adelie female         190
+256    Adelie female         190
+257    Adelie   male         190
+258    Adelie   male         190
+259    Adelie female         190
+260    Adelie   male         190
+261    Adelie   male         190
+262    Adelie   male         190
+263 Chinstrap female         190
+264 Chinstrap female         190
+265 Chinstrap female         190
+266    Adelie female         189
+267    Adelie female         189
+268    Adelie female         189
+269    Adelie   male         189
+270    Adelie female         189
+271    Adelie   male         189
+272 Chinstrap female         189
+273    Adelie female         188
+274    Adelie   male         188
+275    Adelie   male         188
+276    Adelie female         188
+277    Adelie female         188
+278 Chinstrap female         188
+279    Adelie female         187
+280    Adelie female         187
+281    Adelie female         187
+282    Adelie female         187
+283    Adelie female         187
+284    Adelie female         187
+285    Adelie female         187
+286    Adelie female         187
+287    Adelie   male         187
+288    Adelie female         187
+289 Chinstrap female         187
+290 Chinstrap female         187
+291 Chinstrap female         187
+292 Chinstrap female         187
+293 Chinstrap   male         187
+294 Chinstrap female         187
+295    Adelie female         186
+296    Adelie   &lt;NA&gt;         186
+297    Adelie female         186
+298    Adelie female         186
+299    Adelie female         186
+300    Adelie   male         186
+301    Adelie female         186
+302    Adelie female         185
+303    Adelie   male         185
+304    Adelie female         185
+305    Adelie female         185
+306    Adelie female         185
+307    Adelie female         185
+308    Adelie female         185
+309    Adelie   male         185
+310 Chinstrap female         185
+311    Adelie female         184
+312    Adelie   male         184
+313    Adelie   male         184
+314    Adelie female         184
+315    Adelie   male         184
+316    Adelie   male         184
+317    Adelie female         184
+318    Adelie   male         183
+319    Adelie female         183
+320    Adelie female         182
+321    Adelie female         182
+322    Adelie   male         182
+323    Adelie   male         181
+324    Adelie female         181
+325    Adelie female         181
+326    Adelie female         181
+327    Adelie female         181
+328 Chinstrap female         181
+329 Chinstrap female         181
+330    Adelie   &lt;NA&gt;         180
+331    Adelie   male         180
+332    Adelie   male         180
+333    Adelie   male         180
+334    Adelie female         180
+335    Adelie   &lt;NA&gt;         179
+336    Adelie female         178
+337    Adelie   male         178
+338    Adelie female         178
+339 Chinstrap female         178
+340    Adelie female         176
+341    Adelie female         174
+342    Adelie female         172
+343    Adelie   &lt;NA&gt;          NA
+344    Gentoo   &lt;NA&gt;          NA</code></pre>
 </div>
 </div>
 </div>
@@ -1806,23 +4145,354 @@ Levels: apple pear</code></pre>
 <div id="tabset-7-1">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb78-2"><a></a>  <span class="fu">select</span>(bill_length_mm) <span class="sc">|&gt;</span></span>
-<span id="cb78-3"><a></a>  <span class="fu">mutate</span>(<span class="at">bill_length_mm_sq =</span> bill_length_mm<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb78-2"><a></a>  <span class="fu">select</span>(bill_len) <span class="sc">|&gt;</span></span>
+<span id="cb78-3"><a></a>  <span class="fu">mutate</span>(<span class="at">bill_len_sq =</span> bill_len<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 2
-   bill_length_mm bill_length_mm_sq
-            &lt;dbl&gt;             &lt;dbl&gt;
- 1           39.1             1529.
- 2           39.5             1560.
- 3           40.3             1624.
- 4           NA                 NA 
- 5           36.7             1347.
- 6           39.3             1544.
- 7           38.9             1513.
- 8           39.2             1537.
- 9           34.1             1163.
-10           42               1764 
-# ℹ 334 more rows</code></pre>
+<pre><code>    bill_len bill_len_sq
+1       39.1     1528.81
+2       39.5     1560.25
+3       40.3     1624.09
+4         NA          NA
+5       36.7     1346.89
+6       39.3     1544.49
+7       38.9     1513.21
+8       39.2     1536.64
+9       34.1     1162.81
+10      42.0     1764.00
+11      37.8     1428.84
+12      37.8     1428.84
+13      41.1     1689.21
+14      38.6     1489.96
+15      34.6     1197.16
+16      36.6     1339.56
+17      38.7     1497.69
+18      42.5     1806.25
+19      34.4     1183.36
+20      46.0     2116.00
+21      37.8     1428.84
+22      37.7     1421.29
+23      35.9     1288.81
+24      38.2     1459.24
+25      38.8     1505.44
+26      35.3     1246.09
+27      40.6     1648.36
+28      40.5     1640.25
+29      37.9     1436.41
+30      40.5     1640.25
+31      39.5     1560.25
+32      37.2     1383.84
+33      39.5     1560.25
+34      40.9     1672.81
+35      36.4     1324.96
+36      39.2     1536.64
+37      38.8     1505.44
+38      42.2     1780.84
+39      37.6     1413.76
+40      39.8     1584.04
+41      36.5     1332.25
+42      40.8     1664.64
+43      36.0     1296.00
+44      44.1     1944.81
+45      37.0     1369.00
+46      39.6     1568.16
+47      41.1     1689.21
+48      37.5     1406.25
+49      36.0     1296.00
+50      42.3     1789.29
+51      39.6     1568.16
+52      40.1     1608.01
+53      35.0     1225.00
+54      42.0     1764.00
+55      34.5     1190.25
+56      41.4     1713.96
+57      39.0     1521.00
+58      40.6     1648.36
+59      36.5     1332.25
+60      37.6     1413.76
+61      35.7     1274.49
+62      41.3     1705.69
+63      37.6     1413.76
+64      41.1     1689.21
+65      36.4     1324.96
+66      41.6     1730.56
+67      35.5     1260.25
+68      41.1     1689.21
+69      35.9     1288.81
+70      41.8     1747.24
+71      33.5     1122.25
+72      39.7     1576.09
+73      39.6     1568.16
+74      45.8     2097.64
+75      35.5     1260.25
+76      42.8     1831.84
+77      40.9     1672.81
+78      37.2     1383.84
+79      36.2     1310.44
+80      42.1     1772.41
+81      34.6     1197.16
+82      42.9     1840.41
+83      36.7     1346.89
+84      35.1     1232.01
+85      37.3     1391.29
+86      41.3     1705.69
+87      36.3     1317.69
+88      36.9     1361.61
+89      38.3     1466.89
+90      38.9     1513.21
+91      35.7     1274.49
+92      41.1     1689.21
+93      34.0     1156.00
+94      39.6     1568.16
+95      36.2     1310.44
+96      40.8     1664.64
+97      38.1     1451.61
+98      40.3     1624.09
+99      33.1     1095.61
+100     43.2     1866.24
+101     35.0     1225.00
+102     41.0     1681.00
+103     37.7     1421.29
+104     37.8     1428.84
+105     37.9     1436.41
+106     39.7     1576.09
+107     38.6     1489.96
+108     38.2     1459.24
+109     38.1     1451.61
+110     43.2     1866.24
+111     38.1     1451.61
+112     45.6     2079.36
+113     39.7     1576.09
+114     42.2     1780.84
+115     39.6     1568.16
+116     42.7     1823.29
+117     38.6     1489.96
+118     37.3     1391.29
+119     35.7     1274.49
+120     41.1     1689.21
+121     36.2     1310.44
+122     37.7     1421.29
+123     40.2     1616.04
+124     41.4     1713.96
+125     35.2     1239.04
+126     40.6     1648.36
+127     38.8     1505.44
+128     41.5     1722.25
+129     39.0     1521.00
+130     44.1     1944.81
+131     38.5     1482.25
+132     43.1     1857.61
+133     36.8     1354.24
+134     37.5     1406.25
+135     38.1     1451.61
+136     41.1     1689.21
+137     35.6     1267.36
+138     40.2     1616.04
+139     37.0     1369.00
+140     39.7     1576.09
+141     40.2     1616.04
+142     40.6     1648.36
+143     32.1     1030.41
+144     40.7     1656.49
+145     37.3     1391.29
+146     39.0     1521.00
+147     39.2     1536.64
+148     36.6     1339.56
+149     36.0     1296.00
+150     37.8     1428.84
+151     36.0     1296.00
+152     41.5     1722.25
+153     46.1     2125.21
+154     50.0     2500.00
+155     48.7     2371.69
+156     50.0     2500.00
+157     47.6     2265.76
+158     46.5     2162.25
+159     45.4     2061.16
+160     46.7     2180.89
+161     43.3     1874.89
+162     46.8     2190.24
+163     40.9     1672.81
+164     49.0     2401.00
+165     45.5     2070.25
+166     48.4     2342.56
+167     45.8     2097.64
+168     49.3     2430.49
+169     42.0     1764.00
+170     49.2     2420.64
+171     46.2     2134.44
+172     48.7     2371.69
+173     50.2     2520.04
+174     45.1     2034.01
+175     46.5     2162.25
+176     46.3     2143.69
+177     42.9     1840.41
+178     46.1     2125.21
+179     44.5     1980.25
+180     47.8     2284.84
+181     48.2     2323.24
+182     50.0     2500.00
+183     47.3     2237.29
+184     42.8     1831.84
+185     45.1     2034.01
+186     59.6     3552.16
+187     49.1     2410.81
+188     48.4     2342.56
+189     42.6     1814.76
+190     44.4     1971.36
+191     44.0     1936.00
+192     48.7     2371.69
+193     42.7     1823.29
+194     49.6     2460.16
+195     45.3     2052.09
+196     49.6     2460.16
+197     50.5     2550.25
+198     43.6     1900.96
+199     45.5     2070.25
+200     50.5     2550.25
+201     44.9     2016.01
+202     45.2     2043.04
+203     46.6     2171.56
+204     48.5     2352.25
+205     45.1     2034.01
+206     50.1     2510.01
+207     46.5     2162.25
+208     45.0     2025.00
+209     43.8     1918.44
+210     45.5     2070.25
+211     43.2     1866.24
+212     50.4     2540.16
+213     45.3     2052.09
+214     46.2     2134.44
+215     45.7     2088.49
+216     54.3     2948.49
+217     45.8     2097.64
+218     49.8     2480.04
+219     46.2     2134.44
+220     49.5     2450.25
+221     43.5     1892.25
+222     50.7     2570.49
+223     47.7     2275.29
+224     46.4     2152.96
+225     48.2     2323.24
+226     46.5     2162.25
+227     46.4     2152.96
+228     48.6     2361.96
+229     47.5     2256.25
+230     51.1     2611.21
+231     45.2     2043.04
+232     45.2     2043.04
+233     49.1     2410.81
+234     52.5     2756.25
+235     47.4     2246.76
+236     50.0     2500.00
+237     44.9     2016.01
+238     50.8     2580.64
+239     43.4     1883.56
+240     51.3     2631.69
+241     47.5     2256.25
+242     52.1     2714.41
+243     47.5     2256.25
+244     52.2     2724.84
+245     45.5     2070.25
+246     49.5     2450.25
+247     44.5     1980.25
+248     50.8     2580.64
+249     49.4     2440.36
+250     46.9     2199.61
+251     48.4     2342.56
+252     51.1     2611.21
+253     48.5     2352.25
+254     55.9     3124.81
+255     47.2     2227.84
+256     49.1     2410.81
+257     47.3     2237.29
+258     46.8     2190.24
+259     41.7     1738.89
+260     53.4     2851.56
+261     43.3     1874.89
+262     48.1     2313.61
+263     50.5     2550.25
+264     49.8     2480.04
+265     43.5     1892.25
+266     51.5     2652.25
+267     46.2     2134.44
+268     55.1     3036.01
+269     44.5     1980.25
+270     48.8     2381.44
+271     47.2     2227.84
+272       NA          NA
+273     46.8     2190.24
+274     50.4     2540.16
+275     45.2     2043.04
+276     49.9     2490.01
+277     46.5     2162.25
+278     50.0     2500.00
+279     51.3     2631.69
+280     45.4     2061.16
+281     52.7     2777.29
+282     45.2     2043.04
+283     46.1     2125.21
+284     51.3     2631.69
+285     46.0     2116.00
+286     51.3     2631.69
+287     46.6     2171.56
+288     51.7     2672.89
+289     47.0     2209.00
+290     52.0     2704.00
+291     45.9     2106.81
+292     50.5     2550.25
+293     50.3     2530.09
+294     58.0     3364.00
+295     46.4     2152.96
+296     49.2     2420.64
+297     42.4     1797.76
+298     48.5     2352.25
+299     43.2     1866.24
+300     50.6     2560.36
+301     46.7     2180.89
+302     52.0     2704.00
+303     50.5     2550.25
+304     49.5     2450.25
+305     46.4     2152.96
+306     52.8     2787.84
+307     40.9     1672.81
+308     54.2     2937.64
+309     42.5     1806.25
+310     51.0     2601.00
+311     49.7     2470.09
+312     47.5     2256.25
+313     47.6     2265.76
+314     52.0     2704.00
+315     46.9     2199.61
+316     53.5     2862.25
+317     49.0     2401.00
+318     46.2     2134.44
+319     50.9     2590.81
+320     45.5     2070.25
+321     50.9     2590.81
+322     50.8     2580.64
+323     50.1     2510.01
+324     49.0     2401.00
+325     51.5     2652.25
+326     49.8     2480.04
+327     48.1     2313.61
+328     51.4     2641.96
+329     45.7     2088.49
+330     50.7     2570.49
+331     42.5     1806.25
+332     52.2     2724.84
+333     45.2     2043.04
+334     49.3     2430.49
+335     50.2     2520.04
+336     45.6     2079.36
+337     51.9     2693.61
+338     46.8     2190.24
+339     45.7     2088.49
+340     55.8     3113.64
+341     43.5     1892.25
+342     49.6     2460.16
+343     50.8     2580.64
+344     50.2     2520.04</code></pre>
 </div>
 </div>
 </div>
@@ -1830,47 +4500,487 @@ Levels: apple pear</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb80-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb80-3"><a></a>  <span class="fu">select</span>(sex, flipper_length_mm) <span class="sc">|&gt;</span></span>
-<span id="cb80-4"><a></a>  <span class="fu">mutate</span>(<span class="at">size =</span> <span class="fu">if_else</span>(flipper_length_mm <span class="sc">&gt;</span> <span class="dv">217</span>, <span class="st">&quot;big&quot;</span>, <span class="st">&quot;small&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb80-3"><a></a>  <span class="fu">select</span>(sex, flipper_len) <span class="sc">|&gt;</span></span>
+<span id="cb80-4"><a></a>  <span class="fu">mutate</span>(<span class="at">size =</span> <span class="fu">if_else</span>(flipper_len <span class="sc">&gt;</span> <span class="dv">217</span>, <span class="st">&quot;big&quot;</span>, <span class="st">&quot;small&quot;</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 124 × 3
-   sex    flipper_length_mm size 
-   &lt;fct&gt;              &lt;int&gt; &lt;chr&gt;
- 1 female               211 small
- 2 male                 230 big  
- 3 female               210 small
- 4 male                 218 big  
- 5 male                 215 small
- 6 female               210 small
- 7 female               211 small
- 8 male                 219 big  
- 9 female               209 small
-10 male                 215 small
-# ℹ 114 more rows</code></pre>
+<pre><code>       sex flipper_len  size
+1   female         211 small
+2     male         230   big
+3   female         210 small
+4     male         218   big
+5     male         215 small
+6   female         210 small
+7   female         211 small
+8     male         219   big
+9   female         209 small
+10    male         215 small
+11  female         214 small
+12    male         216 small
+13  female         214 small
+14    male         213 small
+15  female         210 small
+16    male         217 small
+17  female         210 small
+18    male         221   big
+19  female         209 small
+20    male         222   big
+21    male         218   big
+22  female         215 small
+23  female         213 small
+24    male         215 small
+25  female         215 small
+26    male         215 small
+27    &lt;NA&gt;         216 small
+28    male         215 small
+29  female         210 small
+30    male         220   big
+31    male         222   big
+32  female         209 small
+33  female         207 small
+34    male         230   big
+35  female         220   big
+36    male         220   big
+37  female         213 small
+38    male         219   big
+39  female         208 small
+40    male         208 small
+41  female         208 small
+42    male         225   big
+43  female         210 small
+44    male         216 small
+45    male         222   big
+46  female         217 small
+47  female         210 small
+48    male         225   big
+49  female         213 small
+50    male         215 small
+51  female         210 small
+52    male         220   big
+53  female         210 small
+54    male         225   big
+55  female         217 small
+56    male         220   big
+57  female         208 small
+58    male         220   big
+59  female         208 small
+60    male         224   big
+61  female         208 small
+62    male         221   big
+63  female         214 small
+64    male         231   big
+65  female         219   big
+66    male         230   big
+67    &lt;NA&gt;         214 small
+68    male         229   big
+69  female         220   big
+70    male         223   big
+71  female         216 small
+72    male         221   big
+73    male         221   big
+74  female         217 small
+75  female         216 small
+76    male         230   big
+77  female         209 small
+78    male         220   big
+79  female         215 small
+80    male         223   big
+81  female         212 small
+82    male         221   big
+83  female         212 small
+84    male         224   big
+85  female         212 small
+86    male         228   big
+87  female         218   big
+88    male         218   big
+89  female         212 small
+90    male         230   big
+91  female         218   big
+92    male         228   big
+93  female         212 small
+94    male         224   big
+95  female         214 small
+96    male         226   big
+97    male         216 small
+98  female         222   big
+99  female         203 small
+100   male         225   big
+101 female         219   big
+102   male         228   big
+103 female         215 small
+104   male         228   big
+105   &lt;NA&gt;         216 small
+106   male         215 small
+107 female         210 small
+108   male         219   big
+109 female         208 small
+110   male         209 small
+111 female         216 small
+112   male         229   big
+113 female         213 small
+114   male         230   big
+115 female         217 small
+116   male         230   big
+117   &lt;NA&gt;         217 small
+118   male         222   big
+119 female         214 small
+120   &lt;NA&gt;          NA  &lt;NA&gt;
+121 female         215 small
+122   male         222   big
+123 female         212 small
+124   male         213 small</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-7-3">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb82-2"><a></a>  <span class="fu">select</span>(bill_length_mm) <span class="sc">|&gt;</span></span>
-<span id="cb82-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm)) <span class="sc">|&gt;</span></span>
-<span id="cb82-4"><a></a>  <span class="fu">mutate</span>(<span class="at">bill_length_mm_cumsum =</span> <span class="fu">cumsum</span>(bill_length_mm))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb82-2"><a></a>  <span class="fu">select</span>(bill_len) <span class="sc">|&gt;</span></span>
+<span id="cb82-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bill_len)) <span class="sc">|&gt;</span></span>
+<span id="cb82-4"><a></a>  <span class="fu">mutate</span>(<span class="at">bill_len_cumsum =</span> <span class="fu">cumsum</span>(bill_len))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 342 × 2
-   bill_length_mm bill_length_mm_cumsum
-            &lt;dbl&gt;                 &lt;dbl&gt;
- 1           39.1                  39.1
- 2           39.5                  78.6
- 3           40.3                 119. 
- 4           36.7                 156. 
- 5           39.3                 195. 
- 6           38.9                 234. 
- 7           39.2                 273  
- 8           34.1                 307. 
- 9           42                   349. 
-10           37.8                 387. 
-# ℹ 332 more rows</code></pre>
+<pre><code>    bill_len bill_len_cumsum
+1       39.1            39.1
+2       39.5            78.6
+3       40.3           118.9
+4       36.7           155.6
+5       39.3           194.9
+6       38.9           233.8
+7       39.2           273.0
+8       34.1           307.1
+9       42.0           349.1
+10      37.8           386.9
+11      37.8           424.7
+12      41.1           465.8
+13      38.6           504.4
+14      34.6           539.0
+15      36.6           575.6
+16      38.7           614.3
+17      42.5           656.8
+18      34.4           691.2
+19      46.0           737.2
+20      37.8           775.0
+21      37.7           812.7
+22      35.9           848.6
+23      38.2           886.8
+24      38.8           925.6
+25      35.3           960.9
+26      40.6          1001.5
+27      40.5          1042.0
+28      37.9          1079.9
+29      40.5          1120.4
+30      39.5          1159.9
+31      37.2          1197.1
+32      39.5          1236.6
+33      40.9          1277.5
+34      36.4          1313.9
+35      39.2          1353.1
+36      38.8          1391.9
+37      42.2          1434.1
+38      37.6          1471.7
+39      39.8          1511.5
+40      36.5          1548.0
+41      40.8          1588.8
+42      36.0          1624.8
+43      44.1          1668.9
+44      37.0          1705.9
+45      39.6          1745.5
+46      41.1          1786.6
+47      37.5          1824.1
+48      36.0          1860.1
+49      42.3          1902.4
+50      39.6          1942.0
+51      40.1          1982.1
+52      35.0          2017.1
+53      42.0          2059.1
+54      34.5          2093.6
+55      41.4          2135.0
+56      39.0          2174.0
+57      40.6          2214.6
+58      36.5          2251.1
+59      37.6          2288.7
+60      35.7          2324.4
+61      41.3          2365.7
+62      37.6          2403.3
+63      41.1          2444.4
+64      36.4          2480.8
+65      41.6          2522.4
+66      35.5          2557.9
+67      41.1          2599.0
+68      35.9          2634.9
+69      41.8          2676.7
+70      33.5          2710.2
+71      39.7          2749.9
+72      39.6          2789.5
+73      45.8          2835.3
+74      35.5          2870.8
+75      42.8          2913.6
+76      40.9          2954.5
+77      37.2          2991.7
+78      36.2          3027.9
+79      42.1          3070.0
+80      34.6          3104.6
+81      42.9          3147.5
+82      36.7          3184.2
+83      35.1          3219.3
+84      37.3          3256.6
+85      41.3          3297.9
+86      36.3          3334.2
+87      36.9          3371.1
+88      38.3          3409.4
+89      38.9          3448.3
+90      35.7          3484.0
+91      41.1          3525.1
+92      34.0          3559.1
+93      39.6          3598.7
+94      36.2          3634.9
+95      40.8          3675.7
+96      38.1          3713.8
+97      40.3          3754.1
+98      33.1          3787.2
+99      43.2          3830.4
+100     35.0          3865.4
+101     41.0          3906.4
+102     37.7          3944.1
+103     37.8          3981.9
+104     37.9          4019.8
+105     39.7          4059.5
+106     38.6          4098.1
+107     38.2          4136.3
+108     38.1          4174.4
+109     43.2          4217.6
+110     38.1          4255.7
+111     45.6          4301.3
+112     39.7          4341.0
+113     42.2          4383.2
+114     39.6          4422.8
+115     42.7          4465.5
+116     38.6          4504.1
+117     37.3          4541.4
+118     35.7          4577.1
+119     41.1          4618.2
+120     36.2          4654.4
+121     37.7          4692.1
+122     40.2          4732.3
+123     41.4          4773.7
+124     35.2          4808.9
+125     40.6          4849.5
+126     38.8          4888.3
+127     41.5          4929.8
+128     39.0          4968.8
+129     44.1          5012.9
+130     38.5          5051.4
+131     43.1          5094.5
+132     36.8          5131.3
+133     37.5          5168.8
+134     38.1          5206.9
+135     41.1          5248.0
+136     35.6          5283.6
+137     40.2          5323.8
+138     37.0          5360.8
+139     39.7          5400.5
+140     40.2          5440.7
+141     40.6          5481.3
+142     32.1          5513.4
+143     40.7          5554.1
+144     37.3          5591.4
+145     39.0          5630.4
+146     39.2          5669.6
+147     36.6          5706.2
+148     36.0          5742.2
+149     37.8          5780.0
+150     36.0          5816.0
+151     41.5          5857.5
+152     46.1          5903.6
+153     50.0          5953.6
+154     48.7          6002.3
+155     50.0          6052.3
+156     47.6          6099.9
+157     46.5          6146.4
+158     45.4          6191.8
+159     46.7          6238.5
+160     43.3          6281.8
+161     46.8          6328.6
+162     40.9          6369.5
+163     49.0          6418.5
+164     45.5          6464.0
+165     48.4          6512.4
+166     45.8          6558.2
+167     49.3          6607.5
+168     42.0          6649.5
+169     49.2          6698.7
+170     46.2          6744.9
+171     48.7          6793.6
+172     50.2          6843.8
+173     45.1          6888.9
+174     46.5          6935.4
+175     46.3          6981.7
+176     42.9          7024.6
+177     46.1          7070.7
+178     44.5          7115.2
+179     47.8          7163.0
+180     48.2          7211.2
+181     50.0          7261.2
+182     47.3          7308.5
+183     42.8          7351.3
+184     45.1          7396.4
+185     59.6          7456.0
+186     49.1          7505.1
+187     48.4          7553.5
+188     42.6          7596.1
+189     44.4          7640.5
+190     44.0          7684.5
+191     48.7          7733.2
+192     42.7          7775.9
+193     49.6          7825.5
+194     45.3          7870.8
+195     49.6          7920.4
+196     50.5          7970.9
+197     43.6          8014.5
+198     45.5          8060.0
+199     50.5          8110.5
+200     44.9          8155.4
+201     45.2          8200.6
+202     46.6          8247.2
+203     48.5          8295.7
+204     45.1          8340.8
+205     50.1          8390.9
+206     46.5          8437.4
+207     45.0          8482.4
+208     43.8          8526.2
+209     45.5          8571.7
+210     43.2          8614.9
+211     50.4          8665.3
+212     45.3          8710.6
+213     46.2          8756.8
+214     45.7          8802.5
+215     54.3          8856.8
+216     45.8          8902.6
+217     49.8          8952.4
+218     46.2          8998.6
+219     49.5          9048.1
+220     43.5          9091.6
+221     50.7          9142.3
+222     47.7          9190.0
+223     46.4          9236.4
+224     48.2          9284.6
+225     46.5          9331.1
+226     46.4          9377.5
+227     48.6          9426.1
+228     47.5          9473.6
+229     51.1          9524.7
+230     45.2          9569.9
+231     45.2          9615.1
+232     49.1          9664.2
+233     52.5          9716.7
+234     47.4          9764.1
+235     50.0          9814.1
+236     44.9          9859.0
+237     50.8          9909.8
+238     43.4          9953.2
+239     51.3         10004.5
+240     47.5         10052.0
+241     52.1         10104.1
+242     47.5         10151.6
+243     52.2         10203.8
+244     45.5         10249.3
+245     49.5         10298.8
+246     44.5         10343.3
+247     50.8         10394.1
+248     49.4         10443.5
+249     46.9         10490.4
+250     48.4         10538.8
+251     51.1         10589.9
+252     48.5         10638.4
+253     55.9         10694.3
+254     47.2         10741.5
+255     49.1         10790.6
+256     47.3         10837.9
+257     46.8         10884.7
+258     41.7         10926.4
+259     53.4         10979.8
+260     43.3         11023.1
+261     48.1         11071.2
+262     50.5         11121.7
+263     49.8         11171.5
+264     43.5         11215.0
+265     51.5         11266.5
+266     46.2         11312.7
+267     55.1         11367.8
+268     44.5         11412.3
+269     48.8         11461.1
+270     47.2         11508.3
+271     46.8         11555.1
+272     50.4         11605.5
+273     45.2         11650.7
+274     49.9         11700.6
+275     46.5         11747.1
+276     50.0         11797.1
+277     51.3         11848.4
+278     45.4         11893.8
+279     52.7         11946.5
+280     45.2         11991.7
+281     46.1         12037.8
+282     51.3         12089.1
+283     46.0         12135.1
+284     51.3         12186.4
+285     46.6         12233.0
+286     51.7         12284.7
+287     47.0         12331.7
+288     52.0         12383.7
+289     45.9         12429.6
+290     50.5         12480.1
+291     50.3         12530.4
+292     58.0         12588.4
+293     46.4         12634.8
+294     49.2         12684.0
+295     42.4         12726.4
+296     48.5         12774.9
+297     43.2         12818.1
+298     50.6         12868.7
+299     46.7         12915.4
+300     52.0         12967.4
+301     50.5         13017.9
+302     49.5         13067.4
+303     46.4         13113.8
+304     52.8         13166.6
+305     40.9         13207.5
+306     54.2         13261.7
+307     42.5         13304.2
+308     51.0         13355.2
+309     49.7         13404.9
+310     47.5         13452.4
+311     47.6         13500.0
+312     52.0         13552.0
+313     46.9         13598.9
+314     53.5         13652.4
+315     49.0         13701.4
+316     46.2         13747.6
+317     50.9         13798.5
+318     45.5         13844.0
+319     50.9         13894.9
+320     50.8         13945.7
+321     50.1         13995.8
+322     49.0         14044.8
+323     51.5         14096.3
+324     49.8         14146.1
+325     48.1         14194.2
+326     51.4         14245.6
+327     45.7         14291.3
+328     50.7         14342.0
+329     42.5         14384.5
+330     52.2         14436.7
+331     45.2         14481.9
+332     49.3         14531.2
+333     50.2         14581.4
+334     45.6         14627.0
+335     51.9         14678.9
+336     46.8         14725.7
+337     45.7         14771.4
+338     55.8         14827.2
+339     43.5         14870.7
+340     49.6         14920.3
+341     50.8         14971.1
+342     50.2         15021.3</code></pre>
 </div>
 </div>
 </div>
@@ -1885,22 +4995,38 @@ Levels: apple pear</code></pre>
 <div id="tabset-8-1">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb84-2"><a></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb84-2"><a></a>  <span class="fu">summarise</span>(<span class="fu">mean</span>(body_mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 1
-  `mean(body_mass_g, na.rm = TRUE)`
-                              &lt;dbl&gt;
-1                             4202.</code></pre>
+<pre><code>  mean(body_mass, na.rm = TRUE)
+1                      4201.754</code></pre>
 </div>
 </div>
 </div>
 <div id="tabset-8-2">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb86-2"><a></a>  <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span></span>
-<span id="cb86-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
-<span id="cb86-4"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span>  <span class="co"># give column a name</span></span>
-<span id="cb86-5"><a></a>  <span class="fu">ungroup</span>() <span class="co"># best practice after group_by()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb86-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<span id="cb86-3"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(body_mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb86-4"><a></a>            <span class="at">.by =</span> <span class="fu">c</span>(species, sex)) <span class="co"># new in dplyr 1.1.0. Note the `.`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    species    sex     mean
+1    Adelie   male 4043.493
+2    Adelie female 3368.836
+3    Gentoo female 4679.741
+4    Gentoo   male 5484.836
+5 Chinstrap female 3527.206
+6 Chinstrap   male 3938.971</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-8-3">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a><span class="co"># The &#39;old&#39; way</span></span>
+<span id="cb88-2"><a></a>penguins <span class="sc">|&gt;</span></span>
+<span id="cb88-3"><a></a>  <span class="fu">group_by</span>(species, sex) <span class="sc">|&gt;</span> </span>
+<span id="cb88-4"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
+<span id="cb88-5"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(body_mass, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span>  <span class="co"># give column a name</span></span>
+<span id="cb88-6"><a></a>  <span class="fu">ungroup</span>() <span class="co"># best practice after group_by()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   species   sex     mean
@@ -1914,38 +5040,17 @@ Levels: apple pear</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-8-3">
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb88-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex)) <span class="sc">|&gt;</span></span>
-<span id="cb88-3"><a></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb88-4"><a></a>            <span class="at">.by =</span> <span class="fu">c</span>(species, sex)) <span class="co"># new in dplyr 1.1.0, note the `.`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  species   sex     mean
-  &lt;fct&gt;     &lt;fct&gt;  &lt;dbl&gt;
-1 Adelie    male   4043.
-2 Adelie    female 3369.
-3 Gentoo    female 4680.
-4 Gentoo    male   5485.
-5 Chinstrap female 3527.
-6 Chinstrap male   3939.</code></pre>
-</div>
-</div>
-</div>
 <div id="tabset-8-4">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>penguins <span class="sc">|&gt;</span></span>
 <span id="cb90-2"><a></a>  <span class="fu">count</span>(species, island)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-  species   island        n
-  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;
-1 Adelie    Biscoe       44
-2 Adelie    Dream        56
-3 Adelie    Torgersen    52
-4 Chinstrap Dream        68
-5 Gentoo    Biscoe      124</code></pre>
+<pre><code>    species    island   n
+1    Adelie    Biscoe  44
+2    Adelie     Dream  56
+3    Adelie Torgersen  52
+4 Chinstrap     Dream  68
+5    Gentoo    Biscoe 124</code></pre>
 </div>
 </div>
 <p>Shortcut for</p>
@@ -1974,13 +5079,13 @@ display:block!important;
 <h2>Your turn!</h2>
 <ul>
 <li><p>Explore the <code>wheels</code> data!</p></li>
-<li><p>Share your code on <a href="https://developer.r-project.org/etherpad/p/r-foundations-2024" class="uri">https://developer.r-project.org/etherpad/p/r-foundations-2024</a></p></li>
+<li><p>Share your code on <a href="https://developer.r-project.org/etherpad/p/r-foundations-2025" class="uri">https://developer.r-project.org/etherpad/p/r-foundations-2025</a></p></li>
 </ul>
 </section>
 <section id="tidydatatutor.com" class="slide level2">
 <h2>tidydatatutor.com</h2>
 <p><a href="https://tidydatatutor.com" target="_blank">Tidy Data Tutor</a> lets you write R and Tidyverse code in your browser and see how your data frame changes at each step of a data analysis pipeline.</p>
-<p>DEMO</p>
+<p><span class="green">DEMO</span></p>
 </section></section>
 <section>
 <section id="end-matter" class="title-slide slide level1 yellow-bg center">
