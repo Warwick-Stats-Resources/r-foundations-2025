@@ -512,6 +512,12 @@ RStudio Help home demo
 -   The [Warwick R Users Viva Engage](https://web.yammer.com/main/org/warwick.ac.uk/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIxMTk5MzIzODczMjgifQ/all)
 
 
+# Minute card feedback {.coral-bg}
+
+What worked well today and what could be improved?
+
+[Go to form](https://docs.google.com/forms/d/e/1FAIpQLSfoARgzSwRlhejKA1q6RBcBkysq8N8uVsyE2XPViyj4R5i5vg/viewform?usp=dialog){.larger200}
+
 # End matter {.yellow-bg}
 
 ## Resources

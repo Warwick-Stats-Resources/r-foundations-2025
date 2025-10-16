@@ -609,6 +609,12 @@ count() and summarise(n = n()) give different orderings
 
 [DEMO]{.green}
 
+# Minute card feedback {.coral-bg}
+
+What worked well today and what could be improved?
+
+[Go to form](https://docs.google.com/forms/d/e/1FAIpQLScdayYNBgyG9bnFERyYuc90x_jWlcRuYa7IOfYii82vI7CyEQ/viewform?usp=dialog){.larger200}
+
 # End matter {.yellow-bg}
 
 ## Additional resources
