@@ -1345,10 +1345,10 @@ A1229 B1230 C1231
 <section id="notation" class="slide level2">
 <h2><code>~</code> notation</h2>
 <p>The <code>~</code> notation can be used to specify a model formula, where the LHS is the response and the RHS are a collection of predictors, e.g. </p>
-<p><code>body_mass_g ~ bill_length_mm + flipper_length_mm</code>.</p>
+<p><code>body_mass ~ bill_len + flipper_len</code>.</p>
 <p>This can be used as the <code>formula</code> argument when fitting a model, e.g. a linear model:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">lm</span>(body_mass_g <span class="sc">~</span> bill_length_mm <span class="sc">+</span> flipper_length_mm, <span class="at">data =</span> penguins) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a><span class="fu">lm</span>(body_mass <span class="sc">~</span> bill_len <span class="sc">+</span> flipper_len, <span class="at">data =</span> penguins) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>In the formula, crucially, the <code>+</code> does not have to mean it is a linear additive model and should be read more as “this variable <em>and</em> this one etc” which the model function might use additively (e.g. <code>lm</code>) or might not (e.g. many ML models).</p>
@@ -1842,11 +1842,11 @@ NULL</code></pre>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]   6.331252   4.410714  -2.674293 -11.093922   8.841681</code></pre>
+<pre><code>[1]  17.4096026   2.3775219   0.6147221 -10.7403103  -8.4754038</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a></a><span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 24.153713 16.208097  3.325539 19.987547  8.504005</code></pre>
+<pre><code>[1]  15.300532  -4.432553 -11.113749   4.697831  13.278166</code></pre>
 </div>
 </div>
 <p>So naming and order is important! Some guidelines</p>
@@ -1961,6 +1961,12 @@ Var(x) = \frac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2
 <span id="cb133-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section>
+<section id="minute-card-feedback" class="title-slide slide level1 coral-bg center">
+<h1>Minute card feedback</h1>
+<p>What worked well today and what could be improved?</p>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSclveRrfKQdkzgG6OaUHfTLH5Bg-AItAdwAXn1BsHKX8mQ_qQ/viewform?usp=publish-editor" class="larger200">Go to form</a></p>
+</section>
+
 <section>
 <section id="end-matter" class="title-slide slide level1 yellow-bg center">
 <h1>End matter</h1>
