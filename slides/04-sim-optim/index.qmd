@@ -478,6 +478,12 @@ gr <- function(x) {
 
 - Using a start value of `c(0, 0)`, experiment with the `optim()` function to see which methods converge
 
+# Minute card feedback {.coral-bg}
+
+What worked well today and what could be improved?
+
+[Go to form](https://docs.google.com/forms/d/e/1FAIpQLScq-5LxSAhNT8jURe7xlyqMjhGfTg5MbR9L4-xRN12A7L0gNg/viewform?usp=dialog){.larger200}
+
 # End matter {.yellow-bg}
 
 ## Resources

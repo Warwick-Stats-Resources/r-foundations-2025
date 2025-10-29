@@ -232,13 +232,13 @@ fit2$coefficients
 
 The `~` notation can be used to specify a model formula, where the LHS is the response and the RHS are a collection of predictors, e.g. 
 
-`body_mass_g ~ bill_length_mm + flipper_length_mm`. 
+`body_mass ~ bill_len + flipper_len`. 
 
 This can be used as the `formula` argument when fitting a model, e.g. a linear model:
 
 ```{r}
 #| eval: false
-lm(body_mass_g ~ bill_length_mm + flipper_length_mm, data = penguins) 
+lm(body_mass ~ bill_len + flipper_len, data = penguins) 
 ```
 
 . . .
@@ -786,6 +786,11 @@ variance <- function(x) {
 }
 ```
 
+# Minute card feedback {.coral-bg}
+
+What worked well today and what could be improved?
+
+[Go to form](https://docs.google.com/forms/d/e/1FAIpQLSclveRrfKQdkzgG6OaUHfTLH5Bg-AItAdwAXn1BsHKX8mQ_qQ/viewform?usp=publish-editor){.larger200}
 
 # End matter {.yellow-bg}
 
