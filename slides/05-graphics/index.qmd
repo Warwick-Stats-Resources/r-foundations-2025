@@ -19,7 +19,7 @@ format: warwickpres-revealjs
 
 ```{r}
 library(ggplot2) # for later in the session
-library(palmerpenguins)
+
 ```
 
 # Plots in base R {.blue-bg}
@@ -37,14 +37,14 @@ Base R graphics are useful for quick, exploratory "no-frills" plots.
 
 ```{r}
 #| dpi: 120
-boxplot(penguins$body_mass_g)
+boxplot(penguins$body_mass)
 ```
 
 ## Example 2
 
 ```{r}
 #| dpi: 120
-with(penguins, boxplot(body_mass_g ~ species))
+with(penguins, boxplot(body_mass ~ species))
 ```
 :::
 
@@ -55,14 +55,14 @@ with(penguins, boxplot(body_mass_g ~ species))
 
 ```{r}
 #| dpi: 120
-hist(penguins$body_mass_g)
+hist(penguins$body_mass)
 ```
 
 ## Density
 
 ```{r}
 #| dpi: 120
-plot(density(penguins$body_mass_g, na.rm = TRUE))
+plot(density(penguins$body_mass, na.rm = TRUE))
 ```
 :::
 
@@ -80,7 +80,7 @@ plot(1:10, 1:10)
 
 ```{r}
 #| dpi: 120
-plot(bill_length_mm ~ bill_depth_mm, 
+plot(bill_len ~ bill_dep, 
      data = penguins)
 ```
 :::
@@ -99,7 +99,7 @@ e.g. if you call `plot` on an object of type `lm`, it will call `plot.lm`
 
 ```{r}
 #| dpi: 120
-fit <- lm(bill_length_mm ~ bill_depth_mm, 
+fit <- lm(bill_len ~ bill_dep, 
           data = penguins, subset = species == "Gentoo")
 
 par(mfrow=c(2,2)) # see all four plots together
@@ -159,7 +159,7 @@ ggplot(penguins)
 ## Add aesthetics
 
 ```{r}
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm))
+ggplot(penguins, aes(x = bill_len, y = bill_dep))
 ```
 
 ## Add points
@@ -167,7 +167,7 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm))
 Layers are added with `+` (not `%>%` or `|>`)
 
 ```{r}
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+ggplot(penguins, aes(x = bill_len, y = bill_dep)) +
   geom_point()
 ```
 
@@ -177,8 +177,8 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
 ::: {.column width="50%"}
 ```{r}
 ggplot(penguins, 
-       aes(x = bill_length_mm, 
-           y = bill_depth_mm)) +
+       aes(x = bill_len, 
+           y = bill_dep)) +
   geom_point(aes(color = "blue"))
 ```
 :::
@@ -186,8 +186,8 @@ ggplot(penguins,
 ::: {.column width="50%"}
 ```{r}
 ggplot(penguins, 
-       aes(x = bill_length_mm, 
-           y = bill_depth_mm)) +
+       aes(x = bill_len, 
+           y = bill_dep)) +
   geom_point(color = "blue")
 ```
 :::
@@ -206,8 +206,8 @@ ggplot(penguins,
 #| label: bill-species
 #| fig-show: hide
 ggplot(data = penguins,
-       aes(x = bill_length_mm,
-           y = bill_depth_mm,
+       aes(x = bill_len,
+           y = bill_dep,
            group = species)) +
   geom_point(aes(color = species, 
                  shape = species),
@@ -231,8 +231,8 @@ Note that `color` and `shape` are *inside* `aes()` but `size` and `alpha` are *o
 #| label: bill-species-smooth
 #| fig-show: hide
 ggplot(data = penguins,
-       aes(x = bill_length_mm,
-           y = bill_depth_mm,
+       aes(x = bill_len,
+           y = bill_dep,
            group = species)) +
   geom_point(aes(color = species, 
                  shape = species),
@@ -265,8 +265,8 @@ Three groups of scales:
 #| label: bill-species-colour
 #| fig-show: hide
 ggplot(data = penguins,
-       aes(x = bill_length_mm,
-           y = bill_depth_mm,
+       aes(x = bill_len,
+           y = bill_dep,
            group = species)) +
   geom_point(aes(color = species, 
                  shape = species),
@@ -290,8 +290,8 @@ ggplot(data = penguins,
 #| label: bill-species-facet
 #| fig-show: hide
 ggplot(data = penguins,
-       aes(x = bill_length_mm,
-           y = bill_depth_mm,
+       aes(x = bill_len,
+           y = bill_dep,
            group = species)) +
   geom_point(aes(color = species, 
                  shape = species),
@@ -312,8 +312,8 @@ ggplot(data = penguins,
 #| label: bill-species-facet-free-x
 #| fig-show: hide
 ggplot(data = penguins,
-       aes(x = bill_length_mm,
-           y = bill_depth_mm,
+       aes(x = bill_len,
+           y = bill_dep,
            group = species)) +
   geom_point(aes(color = species, 
                  shape = species),
@@ -338,8 +338,8 @@ ggplot(data = penguins,
 #| label: bill-species-theme
 #| fig-show: hide
 ggplot(data = penguins,
-       aes(x = bill_length_mm,
-           y = bill_depth_mm,
+       aes(x = bill_len,
+           y = bill_dep,
            group = species)) +
   geom_point(aes(color = species, 
                  shape = species),
@@ -368,7 +368,7 @@ You may find the list of available geoms (and their help pages) useful:
 
 ```{r}
 ggplot(penguins) +
-  geom_boxplot(aes(y = body_mass_g))
+  geom_boxplot(aes(y = body_mass))
 ```
 
 Notes
@@ -380,7 +380,7 @@ Notes
 
 ```{r}
 ggplot(penguins) +
-  geom_boxplot(aes(species, body_mass_g))
+  geom_boxplot(aes(species, body_mass))
 ```
 
 
@@ -388,7 +388,7 @@ ggplot(penguins) +
 
 ```{r}
 ggplot(penguins) +
-  geom_histogram(aes(body_mass_g), 
+  geom_histogram(aes(body_mass), 
                  binwidth = 500)
 ```
 
@@ -396,7 +396,7 @@ ggplot(penguins) +
 
 ```{r}
 ggplot(penguins) +
-  geom_density(aes(body_mass_g))
+  geom_density(aes(body_mass))
 ```
 
 ## Scatterplot with vectors
@@ -423,9 +423,9 @@ Check out the galleries of these data viz practitioners working with `ggplot2`:
 
 -   [Nicole Rennie](https://nrennie.rbind.io){target="_blank"}
 
-Also, #TidyTuesday on Mastodon is a great source for further inspiration
+Also, [TidyTuesday](https://github.com/rfordatascience/tidytuesday) (#TidyTuesday on Mastodon and BlueSky) is a great source for further inspiration and practice.
 
-## ggplot2 resources
+## ggplot2 resources {.smaller90}
 
 -   [R for Data Science book](https://r4ds.had.co.nz/index.html): Chapters [3: Data Visualisation](https://r4ds.had.co.nz/data-visualisation.html) and [28: Graphics for Communication](https://r4ds.had.co.nz/graphics-for-communication.html), to get up and running quickly
 
@@ -434,6 +434,8 @@ Also, #TidyTuesday on Mastodon is a great source for further inspiration
 -   [Plotting anything with ggplot2 webinar](https://www.youtube.com/watch?v=h29g21z0a68) with Thomas Lin Pederson (one of the main ggplot2 authors)
 
 -   [R graphics cookbook](https://r-graphics.org), a practical guide that provides more than 150 recipes to help you generate high-quality graphs quickly
+
+- [The Art of Data Visualisation with ggplot2: The TidyTuesday Cookbook](https://nrennie.rbind.io/art-of-viz/), by Nicola Rennie
 
 -   [Cedric Scherer's tutorial](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
 
@@ -459,7 +461,7 @@ Back and forward arrows allow you to navigate through graphs that have been plot
 
 Plots can be saved in various formats using the Export drop down menu, which also has an option to copy to the clipboard.
 
-**DEMO**
+[DEMO]{.green}
 
 # Tables {.lavendar-bg}
 
@@ -467,9 +469,11 @@ Plots can be saved in various formats using the Export drop down menu, which als
 
 We're just going to scratch the surface of this today.
 
-We'll be using the **gt** and **gtsummary** packages, but there are many of other.
+We'll be using the **gt** and **gtsummary** packages, but there are many other good options.
 
-Here's a good [overview](https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/) of many different packages.
+Here's a good [overview](https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/) of many different packages for making tables in R.
+
+Other interesting tables packages not mentioned in the above article, but worth exploring, are [**rtables**](https://insightsengineering.github.io/rtables/latest-tag/) and [**tinytable**](https://vincentarelbundock.github.io/tinytable/).
 
 ## gt
 
@@ -601,6 +605,8 @@ regression_tab
 ## Table inspiration
 
 The winners of the RStudio/Posit Table Contest
+
+- [2025](https://posit.co/blog/2025-table-contest-winners/)
 
 - [2024](https://posit.co/blog/2024-table-contest-winners/)
 
