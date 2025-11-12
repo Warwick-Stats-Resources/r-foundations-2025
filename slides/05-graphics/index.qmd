@@ -407,6 +407,40 @@ ggplot(data = NULL, aes(x = 1:10, y = 1:10)) +
 ```
 
 
+## ggplot2 4.0.0
+
+A big update to ggplot2 was released in September 2025. 
+
+The [announcement blog post](https://tidyverse.org/blog/2025/09/ggplot2-4-0-0/) 
+and [styling blog post](https://tidyverse.org/blog/2025/10/ggplot2-styling/) contain details of the changes.
+
+## Ink and paper in ggplot2 4.0.0
+
+::: panel-tabset
+### plot
+
+![]( `r knitr::fig_chunk("ink-paper", "png") `){width="80%"}
+
+### code
+
+```{r}
+#| label: ink-paper
+#| fig-show: hide
+
+
+# University of Warwick brand colours
+purple <- "#440379"
+coral <- "#F1977F"
+pale_yellow <- "#FFF8E4"
+
+ggplot(penguins, aes(bill_len, bill_dep)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal(paper = pale_yellow, ink = purple, accent = coral)
+```
+
+:::
+
 ## Extensions
 
 See extensions at <https://exts.ggplot2.tidyverse.org/gallery/>
