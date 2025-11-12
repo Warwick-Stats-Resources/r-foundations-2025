@@ -249,7 +249,7 @@ In the formula, crucially, the `+` does not have to mean it is a linear additive
 This is a bit of an aside in the context of this session, but discusses a point that Louis Aslett, one of the APTS module leaders, mentioned to me creates confusion in his course.
 :::
 
-# Control flow {.lavendar-bg}
+# Control flow {.lavender-bg}
 
 ## Control structures
 

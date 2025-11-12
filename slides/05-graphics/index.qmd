@@ -463,7 +463,7 @@ Plots can be saved in various formats using the Export drop down menu, which als
 
 [DEMO]{.green}
 
-# Tables {.lavendar-bg}
+# Tables {.lavender-bg}
 
 ## Getting started with tables
 

@@ -445,7 +445,7 @@ quarto publish <document>
 - [Quarto for R and RStudio workshop](https://posit-conf-2023.github.io/quarto-r/)
 
 
-# Congratulations! {.lavendar-bg .center-h}
+# Congratulations! {.lavender-bg .center-h}
 
 </br>
 
