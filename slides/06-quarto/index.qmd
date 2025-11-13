@@ -7,10 +7,16 @@ date-format: long
 format: warwickpres-revealjs
 ---
 
+## Overview
+
+- Intro to Quarto
+- html document
+- revealjs presentation
+- website
 
 ## Disclaimer
 
-These slides are almost entirely copied from Tom Mock's 'Getting Started with Quarto' workshop at rstudio::conf(2022).
+These slides are mostly copied from Tom Mock's 'Getting Started with Quarto' workshop at rstudio::conf(2022).
 
 - [Workshop website](https://rstudio-conf-2022.github.io/get-started-quarto/)
 - [Workshop repo](https://github.com/rstudio-conf-2022/get-started-quarto)
@@ -51,7 +57,7 @@ We learned from 10 years of literate programming with `knitr` + `rmarkdown`
 
 - `knitr` and `jupyter` engines
 
-- Works in RStudio, Jupyter Notebooks, VS Code
+- Works in RStudio, Jupyter Notebooks, VS Code, Positron
 
 . . .
 
@@ -85,6 +91,18 @@ Quarto comes **"batteries included"** straight out of the box
 
 See [FAQs](https://quarto.org/docs/faq/rmarkdown.html), including a conversion from RMarkdown formats to Quarto equivalents.
 
+## Quarto resources and inspiration
+
+- [Quarto docs](https://quarto.org)
+
+- [Quarto gallery](https://quarto.org/docs/gallery/)
+
+- [Awesome Quarto](https://github.com/mcanouil/awesome-quarto)
+
+- [Quarto extensions](https://m.canouil.dev/quarto-extensions/)
+
+# YAML, text, code {.green-bg .larger200}
+
 ## Anatomy of a Quarto document
 
 -   Metadata (YAML)
@@ -103,9 +121,10 @@ format: html
 #| echo: fenced
 #| eval: true
 library(dplyr)
-mtcars %>% 
-  group_by(cyl) %>%
-  summarize(mean = mean(mpg), .groups = "drop")
+penguins |>
+  filter(!is.na(sex)) |>
+  summarise(mean = mean(body_mass, na.rm = TRUE),
+            .by = c(species, sex)) 
 ```
 
 ## Anatomy of a Quarto document
@@ -364,19 +383,11 @@ format:
 ``` yaml
 ---
 title: Quarto
-subtitle: R Foundations 2024
+subtitle: R Foundations 2025
 author: Ella Kaye, Department of Statistics
-date: 2024-11-21
+date: 2025-11-14
 date-format: long
-format: 
-  warwickpres-revealjs:
-    execute:
-      echo: true
-      code-overflow: wrap
-    title-slide-attributes: 
-      data-background-image: ../../images/warwick-logo-white.png
-      data-background-size: 15%
-      data-background-position: 100% 0%
+format: warwickpres-revealjs
 ---
 ```
 
@@ -384,13 +395,7 @@ format:
 
 - [Official guide](https://quarto.org/docs/presentations/)
 
-- [Slidecraft 101](https://emilhvitfeldt.com/blog#category=slidecraft%20101) by Emil Hvitfeldt
-
-  - Colours and Fonts
-  - Code and Output
-  - Theme variants
-  - Advanced slide themes
-  - 7 tips and tricks
+- [Slidecrafting](https://slidecrafting-book.com) by Emil Hvitfeldt
 
 # Demo {.coral-bg}
 
