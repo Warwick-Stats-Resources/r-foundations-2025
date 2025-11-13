@@ -1358,11 +1358,18 @@
     "text": "License\nLicensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
   },
   {
+    "objectID": "slides/06-quarto/index.html#overview",
+    "href": "slides/06-quarto/index.html#overview",
+    "title": "Quarto",
+    "section": "Overview",
+    "text": "Overview\n\nIntro to Quarto\nhtml document\nrevealjs presentation\nwebsite"
+  },
+  {
     "objectID": "slides/06-quarto/index.html#disclaimer",
     "href": "slides/06-quarto/index.html#disclaimer",
     "title": "Quarto",
     "section": "Disclaimer",
-    "text": "Disclaimer\nThese slides are almost entirely copied from Tom Mock’s ‘Getting Started with Quarto’ workshop at rstudio::conf(2022).\n\nWorkshop website\nWorkshop repo\n\nShared under Creative Commons 4.0 License."
+    "text": "Disclaimer\nThese slides are mostly copied from Tom Mock’s ‘Getting Started with Quarto’ workshop at rstudio::conf(2022).\n\nWorkshop website\nWorkshop repo\n\nShared under Creative Commons 4.0 License."
   },
   {
     "objectID": "slides/06-quarto/index.html#hello-quarto",
@@ -1397,7 +1404,7 @@
     "href": "slides/06-quarto/index.html#for-everyone",
     "title": "Quarto",
     "section": "For everyone",
-    "text": "For everyone\n\nWorks with R, Python, Julia, Observable JS\nknitr and jupyter engines\nWorks in RStudio, Jupyter Notebooks, VS Code\n\n\nFor the R Foundations course, we’ll focus on R and RStudio"
+    "text": "For everyone\n\nWorks with R, Python, Julia, Observable JS\nknitr and jupyter engines\nWorks in RStudio, Jupyter Notebooks, VS Code, Positron\n\n\nFor the R Foundations course, we’ll focus on R and RStudio"
   },
   {
     "objectID": "slides/06-quarto/index.html#so-what-is-quarto-1",
@@ -1421,6 +1428,13 @@
     "text": "Quarto for RMarkdown users\nSee FAQs, including a conversion from RMarkdown formats to Quarto equivalents."
   },
   {
+    "objectID": "slides/06-quarto/index.html#quarto-resources-and-inspiration",
+    "href": "slides/06-quarto/index.html#quarto-resources-and-inspiration",
+    "title": "Quarto",
+    "section": "Quarto resources and inspiration",
+    "text": "Quarto resources and inspiration\n\nQuarto docs\nQuarto gallery\nAwesome Quarto\nQuarto extensions"
+  },
+  {
     "objectID": "slides/06-quarto/index.html#anatomy-of-a-quarto-document",
     "href": "slides/06-quarto/index.html#anatomy-of-a-quarto-document",
     "title": "Quarto",
@@ -1432,7 +1446,7 @@
     "href": "slides/06-quarto/index.html#anatomy-of-a-quarto-document-1",
     "title": "Quarto",
     "section": "Anatomy of a Quarto document",
-    "text": "Anatomy of a Quarto document\n\nCode\n\n\n```{r}\n#| eval: true\nlibrary(dplyr)\nmtcars %&gt;% \n  group_by(cyl) %&gt;%\n  summarize(mean = mean(mpg), .groups = \"drop\")\n```\n\n# A tibble: 3 × 2\n    cyl  mean\n  &lt;dbl&gt; &lt;dbl&gt;\n1     4  26.7\n2     6  19.7\n3     8  15.1"
+    "text": "Anatomy of a Quarto document\n\nCode\n\n\n```{r}\n#| eval: true\nlibrary(dplyr)\npenguins |&gt;\n  filter(!is.na(sex)) |&gt;\n  summarise(mean = mean(body_mass, na.rm = TRUE),\n            .by = c(species, sex)) \n```\n\n    species    sex     mean\n1    Adelie   male 4043.493\n2    Adelie female 3368.836\n3    Gentoo female 4679.741\n4    Gentoo   male 5484.836\n5 Chinstrap female 3527.206\n6 Chinstrap   male 3938.971"
   },
   {
     "objectID": "slides/06-quarto/index.html#anatomy-of-a-quarto-document-2",
@@ -1551,14 +1565,14 @@
     "href": "slides/06-quarto/index.html#this-quarto-presentation",
     "title": "Quarto",
     "section": "This Quarto presentation",
-    "text": "This Quarto presentation\n---\ntitle: Quarto\nsubtitle: R Foundations 2024\nauthor: Ella Kaye, Department of Statistics\ndate: 2024-11-21\ndate-format: long\nformat: \n  warwickpres-revealjs:\n    execute:\n      echo: true\n      code-overflow: wrap\n    title-slide-attributes: \n      data-background-image: ../../images/warwick-logo-white.png\n      data-background-size: 15%\n      data-background-position: 100% 0%\n---"
+    "text": "This Quarto presentation\n---\ntitle: Quarto\nsubtitle: R Foundations 2025\nauthor: Ella Kaye, Department of Statistics\ndate: 2025-11-14\ndate-format: long\nformat: warwickpres-revealjs\n---"
   },
   {
     "objectID": "slides/06-quarto/index.html#more-on-quarto-presentations",
     "href": "slides/06-quarto/index.html#more-on-quarto-presentations",
     "title": "Quarto",
     "section": "More on Quarto presentations",
-    "text": "More on Quarto presentations\n\nOfficial guide\nSlidecraft 101 by Emil Hvitfeldt\n\nColours and Fonts\nCode and Output\nTheme variants\nAdvanced slide themes\n7 tips and tricks"
+    "text": "More on Quarto presentations\n\nOfficial guide\nSlidecrafting by Emil Hvitfeldt"
   },
   {
     "objectID": "slides/06-quarto/index.html#web-publishing-venues",
