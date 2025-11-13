@@ -652,6 +652,12 @@ The winners of the RStudio/Posit Table Contest
 
 *Contest does not appear to have been held in 2023.*
 
+# Minute card feedback {.coral-bg}
+
+What worked well today and what could be improved?
+
+[Go to form](https://docs.google.com/forms/d/e/1FAIpQLSc4dEpLV6b2RwmOA5Q7Cq02sXdkQYw7IRSfIu_LHSpH6L3Qxw/viewform?usp=dialog){.larger200}
+
 
 # End matter {.yellow-bg}
 
