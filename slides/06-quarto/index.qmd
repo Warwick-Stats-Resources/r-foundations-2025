@@ -7,6 +7,12 @@ date-format: long
 format: warwickpres-revealjs
 ---
 
+## SkillsForge
+
+[Sign-up on SkillsForge](https://skillsforge.warwick.ac.uk/warwick/#he/dev/eventDetails,;em,providerCode=ST,providerOrgAlias=warwick,number=7,;) (or go to <https://skillsforge.warwick.ac.uk> and search for "ST7")
+
+[Form to get credit](https://docs.google.com/forms/d/e/1FAIpQLSedLCHX19QcLwnqsxyO5slF7kk02v0ER6s_b4pJnUitSW7aPw/viewform?usp=dialog)
+
 ## Overview
 
 - Intro to Quarto
